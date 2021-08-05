@@ -16,46 +16,52 @@
   </header>
 
   <section class="traveler-dashboard" id="the-dashboard">
-    <h2 class="welcome">Welcome, User!</h2>
+    <h2 class="welcome" id="welcome-msg">Welcome, User!</h2>
     <img class="current-trip" src="https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="lit up city at night">
     <p class="trip-name">Trip Location Name Here</p>
-    <button class="my-trips" id="my-trips-btn">My Trips</button>
-    <button class="adventure">Choose My Next Adventure</button>
-    <button class="user-info">About Me</button>
+    <button class="my-trips-button" id="my-trips-btn">My Trips</button>
+    <button class="adventure-button">Choose My Next Adventure</button>
+    <button class="user-info-button">About Me</button>
   </section>
 
   <section class="my-trips" id="trips-page">
     <h2>My Trips</h2>
     <h3>Upcoming</h3>
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
+    <div class="upcoming-container">
+       <div class="glide">
+        <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
-          <li class="glide__slide">0</li>
-          <li class="glide__slide">1</li>
-          <li class="glide__slide">2</li>
+           <li class="glide__slide">0</li>
+           <li class="glide__slide">1</li>
+           <li class="glide__slide">2</li>
         </ul>
+        </div>
       </div>
     </div>
     <h3>Pending</h3>
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
-          <li class="glide__slide">0</li>
-          <li class="glide__slide">1</li>
-          <li class="glide__slide">2</li>
-        </ul>
+    <div class="pending-container">
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">0</li>
+            <li class="glide__slide">1</li>
+            <li class="glide__slide">2</li>
+          </ul>
+        </div>
       </div>
     </div>
     <h3>Past</h3>
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
-          <li class="glide__slide">0</li>
-          <li class="glide__slide">1</li>
-          <li class="glide__slide">2</li>
-        </ul>
+    <div class="past-container">
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">0</li>
+            <li class="glide__slide">1</li>
+            <li class="glide__slide">2</li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </div> 
   </section>
 
   <section class="user-info hidden">
