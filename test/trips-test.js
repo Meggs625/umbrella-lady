@@ -92,6 +92,7 @@ describe('Trips', () => {
       "destination": "Jakarta, Indonesia",
       "estimatedLodgingCostPerDay": 70,
       "estimatedFlightCostPerPerson": 890,
+      // eslint-disable-next-line max-len
       "image": "https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
       "alt": "lit up city at night"
     }];
@@ -99,6 +100,45 @@ describe('Trips', () => {
     const locationCosts = newDestination.returnDestinationCosts(6)
     const tripCost = myTrips.calculateCostByDestination(locationCosts)
     expect(tripCost).to.equal(3630)
+  })
+
+  it('should calculate total cost for traveling within a given year', () => {
+    let destinationRepo = new DestinationCatalog([
+      {
+        "id": 49,
+        "destination": "Castries, St Lucia",
+        "estimatedLodgingCostPerDay": 650,
+        "estimatedFlightCostPerPerson": 90,
+        "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
+        "alt": "aerial photography of rocky mountain under cloudy sky"
+      },
+      {
+        "id": 29,
+        "destination": "Willemstad, Curaçao",
+        "estimatedLodgingCostPerDay": 80,
+        "estimatedFlightCostPerPerson": 1100,
+        "image": "https://images.unsplash.com/photo-1541748603027-cbfefa3a6c8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80",
+        "alt": "brightly colored buildings near body of water"
+      },
+      {
+        "id": 19,
+        "destination": "Quito, Ecuador",
+        "estimatedLodgingCostPerDay": 60,
+        "estimatedFlightCostPerPerson": 500,
+        "image": "https://images.unsplash.com/photo-1501684691657-cf3012635478?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+        "alt": "a city at night with cloudy, snowy mountains in the distance"
+      },
+      {
+        "id": 6,
+        "destination": "Jakarta, Indonesia",
+        "estimatedLodgingCostPerDay": 70,
+        "estimatedFlightCostPerPerson": 890,
+        "image": "https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "lit up city at night"
+      }
+    ])
+    const thisYearsTravels = myTrips.calculateAnnualTripCosts('2021', destinationRepo);
+    expect(thisYearsTravels).to.equal(13330)
   })
 
 })
