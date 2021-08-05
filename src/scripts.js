@@ -7,6 +7,8 @@ import domUpdates from './domUpdates';
 import {getData} from './apiCalls';
 import Traveler from './Traveler';
 import DestinationCatalog from './DestinationCatalog';
+import TripVault from './TripVault';
+import Trips from './Trips';
 
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -18,7 +20,7 @@ import './images/icons8-user-30.png';
 const myTripsBtn = document.getElementById('my-trips-btn');
 const dashboard = document.getElementById('the-dashboard');
 const myTrips = document.getElementById('trips-page');
-let traveler, catalog, vault;
+let traveler, catalog, trips;
 
 window.addEventListener('load', fetchData)
 myTripsBtn.addEventListener('click', renderTripsPage)
@@ -30,15 +32,28 @@ function fetchData() {
     getData('trips'), 
     getData('destinations')
   ])
-  .then(data => {
-    createTravelerData(data[0])
+    .then(data => {
+      createTravelerData(data[0])
+      createTripsData(data[1].trips)
 
-  })
+    })
 }
 
 function createTravelerData(theTraveler) {
   traveler = new Traveler(theTraveler);
+  domUpdates.renderWelcome(traveler.name)
 } 
+
+function createTripsData(allTrips) {
+  //this should be a method moved to the TripsVault
+  const userTrips = [];
+  allTrips.forEach(trip => {
+    if (trip.userID === traveler.id) {
+      userTrips.push(trip)
+    }
+  })
+  trips = userTrips;
+}
 
 function renderTripsPage() {
   domUpdates.toggleView(myTrips, dashboard)
