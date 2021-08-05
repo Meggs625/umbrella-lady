@@ -86,22 +86,6 @@ describe('Trips', () => {
     expect(thisTrip).to.deep.equal(tripInfo[3])
   })
 
-  it('should calculate the total cost for a trip based on trip id', () => {
-    const jakarta = [{
-      "id": 6,
-      "destination": "Jakarta, Indonesia",
-      "estimatedLodgingCostPerDay": 70,
-      "estimatedFlightCostPerPerson": 890,
-      // eslint-disable-next-line max-len
-      "image": "https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
-      "alt": "lit up city at night"
-    }];
-    const newDestination = new DestinationCatalog(jakarta)
-    const locationCosts = newDestination.returnDestinationCosts(6)
-    const tripCost = myTrips.calculateCostByDestination(locationCosts)
-    expect(tripCost).to.equal(3630)
-  })
-
   it('should calculate total cost for traveling within a given year', () => {
     let destinationRepo = new DestinationCatalog([
       {

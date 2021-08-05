@@ -16,8 +16,6 @@ class DestinationCatalog {
       selectedDestination.estimatedFlightCostPerPerson]
   }
 
-
-
 }
 
 export default DestinationCatalog; 
