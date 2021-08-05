@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import Trips from '../src/Trips';
+import DestinationCatalog from '../src/DestinationCatalog'
 
 describe('Trips', () => {
   let myTrips, tripInfo;
@@ -34,6 +35,16 @@ describe('Trips', () => {
       "duration": 19,
       "status": "approved",
       "suggestedActivities": []
+    }, 
+    {
+      "id": 6,
+      "userID": 2,
+      "destinationID": 6,
+      "travelers": 3,
+      "date": "2021/08/03",
+      "duration": 9,
+      "status": "pending",
+      "suggestedActivities": []
     }]
     myTrips = new Trips(tripInfo)
   })
@@ -52,7 +63,7 @@ describe('Trips', () => {
 
   it('should return all the trips with a certain status', () => {
     const pendingTrips = myTrips.findTripsByStatus('pending');
-    expect(pendingTrips).to.deep.equal([tripInfo[0]])
+    expect(pendingTrips).to.deep.equal([tripInfo[0], tripInfo[3]])
   })
 
   it('should return all the trips with a different status', () => {
@@ -71,18 +82,23 @@ describe('Trips', () => {
   })
 
   it('should return a trip of the same date', () => {
-    const currentTrip = {
-      "id": 6,
-      "userID": 2,
-      "destinationID": 35,
-      "travelers": 3,
-      "date": "2022/06/29",
-      "duration": 9,
-      "status": "pending",
-      "suggestedActivities": []
-    }
+    const thisTrip = myTrips.findTripsByDate('2021/08/03', 'current')
+    expect(thisTrip).to.deep.equal(tripInfo[3])
+  })
 
-    
+  it('should calculate the total cost for a trip based on trip id', () => {
+    const jakarta = [{
+      "id": 6,
+      "destination": "Jakarta, Indonesia",
+      "estimatedLodgingCostPerDay": 70,
+      "estimatedFlightCostPerPerson": 890,
+      "image": "https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+      "alt": "lit up city at night"
+    }];
+    const newDestination = new DestinationCatalog(jakarta)
+    const locationCosts = newDestination.returnDestinationCosts(6)
+    const tripCost = myTrips.calculateCostByDestination(locationCosts)
+    expect(tripCost).to.equal(3630)
   })
 
 })

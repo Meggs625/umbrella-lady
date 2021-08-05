@@ -21,7 +21,13 @@ describe('Destination Catalog', () => {
   })
 
   it('should return a specific destination, identified by id number', () => {
-    let columbia = newCatlog.findDestinationById(4);
+    const columbia = newCatlog.findDestinationById(4);
     expect(columbia).to.deep.equal(sampleDestinationData[3])
+  })
+
+  // eslint-disable-next-line max-len
+  it('should return an array of the id, estimated lodging & flight costs, respectively', () => {
+    const locationCosts = newCatlog.returnDestinationCosts(6)
+    expect(locationCosts).to.deep.equal([6, 70, 890])
   })
 })
