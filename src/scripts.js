@@ -9,6 +9,9 @@ import Traveler from './Traveler';
 import DestinationCatalog from './DestinationCatalog';
 import TripVault from './TripVault';
 import Trips from './Trips';
+import Glide from '@glidejs/glide';
+
+
 
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -57,4 +60,19 @@ function createTripsData(allTrips) {
 
 function renderTripsPage() {
   domUpdates.toggleView(myTrips, dashboard)
+  new Glide('.glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1
+  }).mount();
+  new Glide('.pending-glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1
+  }).mount();
+  new Glide('.past-glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1
+  }).mount();
 }

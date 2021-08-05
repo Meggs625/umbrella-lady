@@ -9,9 +9,10 @@
 .upcoming-container,
 .pending-container,
 .past-container {
-  height: 20%;
-  width: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 60%;
+  width: 75%;  
+}
+
+.glide_slide {
+  height: 40px;
 }

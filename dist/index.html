@@ -24,7 +24,7 @@
     <button class="user-info-button">About Me</button>
   </section>
 
-  <section class="my-trips" id="trips-page">
+  <section class="my-trips hidden" id="trips-page">
     <h2>My Trips</h2>
     <h3>Upcoming</h3>
     <div class="upcoming-container">
@@ -36,11 +36,15 @@
            <li class="glide__slide">2</li>
         </ul>
         </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+        </div>
       </div>
     </div>
     <h3>Pending</h3>
     <div class="pending-container">
-      <div class="glide">
+      <div class="pending-glide">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li class="glide__slide">0</li>
@@ -48,17 +52,25 @@
             <li class="glide__slide">2</li>
           </ul>
         </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
+        </div>
       </div>
     </div>
     <h3>Past</h3>
     <div class="past-container">
-      <div class="glide">
+      <div class="past-glide">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li class="glide__slide">0</li>
             <li class="glide__slide">1</li>
             <li class="glide__slide">2</li>
           </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
         </div>
       </div>
     </div> 
@@ -72,7 +84,7 @@
     <p>Total Trip Cost: $10,000</p>
     <button class="return-home">Return Home</button>
 
-  </section>
+  </section>   
   <script src="bundle.js"></script>
 </body>
 </html>

@@ -8,7 +8,8 @@ const domUpdates = {
   renderWelcome(name) {
     const welcomeMsg = document.getElementById('welcome-msg');
     welcomeMsg.innerText = `Welcome, ${name}!`
-  }
+  },
+
 
 }
 
