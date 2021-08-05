@@ -1,0 +1,16 @@
+button {
+  background-color: $secondary-backgroud;
+  width: 10em;
+  height: 3em;
+  border-radius: 10px;
+  margin: 15px;
+  font-size: 1em;
+  box-shadow: 4px 6px 6px #7D7D7D;
+  border-color: solid $primary-font 1px;
+  cursor: pointer;
+
+  &:hover {
+  box-shadow: -4px -6px 6px #7D7D7D;
+  background-color: $accent-color;
+  }
+}

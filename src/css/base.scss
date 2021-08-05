@@ -1,18 +1,17 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 @import 'variables';
 @import 'normalize';
+@import 'foundation';
 @import 'myTrips';
 @import 'header';
 @import 'dashboard';
 @import 'buttons';
 
 
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 
-body {
-  background: $primary-background
-}
+// body {
+//   background: $primary-background
+// }
 
-.hidden {
-  display: none;
-}
+

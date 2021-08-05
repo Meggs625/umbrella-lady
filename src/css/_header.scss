@@ -1,3 +1,22 @@
-h1 {
-  font-family: $main-font;
+header {
+  background-color: $secondary-backgroud;
+  height: 8%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+   align-items: center;
 }
+
+h1 {
+  font-family: $title-font;
+  color: $secondary-font;
+  margin-right: 10px
+}
+
+.umbrella-logo {
+  height: 2.5em;
+  width: 2.5em;
+  margin-right: 10px;
+  transform: rotate(20deg);
+}
+
