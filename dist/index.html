@@ -4,13 +4,68 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Umbrella Lady Travel ☂️</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  <script src="bundle.js"></script>
+  <header>
+    <div class="name-and-logo">
+      <h1>Umbrella Lady</h1>
+      <img class="umbrella-logo" src="./images/icons8-umbrella-48.png">
+    </div>
+  </header>
+
+  <section class="traveler-dashboard">
+    <h2>Welcome, User!</h2>
+    <img class="current-trip" src="https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="lit up city at night">
+    <p>Trip Location Name Here</p>
+    <button class="my-trips">My Trips</button>
+    <button class="adventure">Choose My Next Adventure</button>
+    <button class="user-info">About Me</button>
+  </section>
+
+  <section class="my-trips">
+    <h2>My Trips</h2>
+    <h3>Upcoming</h3>
+    <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          <li class="glide__slide">0</li>
+          <li class="glide__slide">1</li>
+          <li class="glide__slide">2</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Pending</h3>
+    <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          <li class="glide__slide">0</li>
+          <li class="glide__slide">1</li>
+          <li class="glide__slide">2</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Past</h3>
+    <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          <li class="glide__slide">0</li>
+          <li class="glide__slide">1</li>
+          <li class="glide__slide">2</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="user-info">
+    <img class="user-icon" src="./images/icons8-user-30.png" alt="user avatar icon">
+    <h2> Hi, User!</h2>
+    <p>You are a Thrill Seeker!</p>
+    <p>So far this year, you've taken 10 trips</p>
+    <p>Total Trip Cost: $10,000</p>
+    <button class="return-home">Return Home</button>
+
+  </section>
 
 </body>
 </html>
