@@ -52,9 +52,9 @@ describe('Destination', () => {
   })
 
   // eslint-disable-next-line max-len
-  it('should return an array of the estimated lodging & flight costs, respectively', () => {
+  it('should return an array of the id, estimated lodging & flight costs, respectively', () => {
     let estimatedCosts = ourDestination.returnCosts()
-    expect(estimatedCosts).to.deep.equal([150, 650])
+    expect(estimatedCosts).to.deep.equal([5, 150, 650])
   })
 
 

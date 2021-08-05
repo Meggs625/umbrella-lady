@@ -9,7 +9,7 @@ class Destination {
   }
 
   returnCosts() {
-    return [this.lodgingCost, this.flightCost];
+    return [this.id, this.lodgingCost, this.flightCost];
   }
 
 }
