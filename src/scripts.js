@@ -4,6 +4,10 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates';
+import {getData} from './apiCalls';
+import Traveler from './Traveler';
+import DestinationCatalog from './DestinationCatalog';
+
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
@@ -13,10 +17,28 @@ import './images/icons8-user-30.png';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
 const dashboard = document.getElementById('the-dashboard');
-const myTrips = document.getElementById('trips-page')
+const myTrips = document.getElementById('trips-page');
+let traveler, catalog, vault;
 
-
+window.addEventListener('load', fetchData)
 myTripsBtn.addEventListener('click', renderTripsPage)
+
+
+function fetchData() {
+  Promise.all([
+    getData('travelers/2'), 
+    getData('trips'), 
+    getData('destinations')
+  ])
+  .then(data => {
+    createTravelerData(data[0])
+
+  })
+}
+
+function createTravelerData(theTraveler) {
+  traveler = new Traveler(theTraveler);
+} 
 
 function renderTripsPage() {
   domUpdates.toggleView(myTrips, dashboard)
