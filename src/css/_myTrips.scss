@@ -1,0 +1,17 @@
+.my-trips {
+  height: 92%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upcoming-container,
+.pending-container,
+.past-container {
+  height: 20%;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

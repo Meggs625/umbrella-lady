@@ -52,7 +52,7 @@ function createTripsData(allTrips) {
       userTrips.push(trip)
     }
   })
-  trips = userTrips;
+  trips = new Trips(userTrips);
 }
 
 function renderTripsPage() {
