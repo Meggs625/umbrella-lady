@@ -24,17 +24,21 @@ import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn =document.getElementById('adventure-btn');
 const infoBtn = document.getElementById('user-info-btn');
-const returnHomeBtn = document.getElementById('return-home');
+const returnHomeFromTripsBtn = document.getElementById('return-home');
+const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
 const dashboard = document.getElementById('the-dashboard');
-const myTrips = document.getElementById('trips-page');
+const myTripsPage = document.getElementById('trips-page');
 const userInfoPage = document.getElementById('user-info-page');
 let traveler, catalog, trips;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
 adventureBtn.addEventListener('click', sayHello);
-infoBtn.addEventListener('click', renderUserInfoPage)
-returnHomeBtn.addEventListener('click', renderHomePage);
+infoBtn.addEventListener('click', renderUserInfoPage);
+returnHomeFromUserInfoBtn.addEventListener('click', function() {
+  renderHomePage(userInfoPage)});
+returnHomeFromTripsBtn.addEventListener('click', function() {
+  renderHomePage(myTripsPage)});
 
 
 function fetchData() {
@@ -76,7 +80,7 @@ function sayHello() {
 
 function renderTripsPage() {
   console.log(trips)
-  domUpdates.toggleView(myTrips, dashboard);
+  domUpdates.toggleView(myTripsPage, dashboard);
   renderPendingSlides();
   renderPastSlides();
   renderCurrentTrip();
@@ -132,8 +136,9 @@ function getDestinationInfo(tripInfo) {
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
 }
 
-function renderHomePage() {
-  domUpdates.toggleView(dashboard, myTrips);
+function renderHomePage(pageToHide) {
+  domUpdates.toggleView(dashboard, pageToHide);
+  
 }
 
 function renderUserInfoPage() {
