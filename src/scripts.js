@@ -43,7 +43,7 @@ returnHomeFromTripsBtn.addEventListener('click', function() {
 
 function fetchData() {
   Promise.all([
-    getData('travelers/2'), 
+    getData('travelers/26'), 
     getData('trips'), 
     getData('destinations')
   ])
