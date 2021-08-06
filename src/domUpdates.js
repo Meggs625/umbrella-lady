@@ -12,9 +12,12 @@ const domUpdates = {
 
   renderTrips(tripList) {
     const ul = document.getElementById(`past-slides`);
-    let card = '';
-    tripList.forEach(trip => {
-      card += `
+    if (tripList.length === 0) {
+      this.renderPlaceHolder(ul)
+    } else {   
+      let card = '';
+      tripList.forEach(trip => {
+        card += `
       <li class="glide_slide">
         <img class="slide-pics" src="${trip[2]}"> 
         <div class="trip-details">
@@ -22,15 +25,19 @@ const domUpdates = {
           <p class="trip-tag">${trip[0]}</p>
         </div>
       </li>`
-    })
-    ul.innerHTML = card;
+      })
+      ul.innerHTML = card;
+    }
   },
 
   renderPendingTrips(pendingList) {
     const ul = document.getElementById(`pending-slides`);
-    let card = '';
-    pendingList.forEach(trip => {
-      card += `
+    if (pendingList.length === 0) {
+      this.renderPlaceHolder(ul)
+    } else {      
+      let card = '';
+      pendingList.forEach(trip => {
+        card += `
       <li class="glide_slide">
         <img class="slide-pics" src="${trip[2]}"> 
         <div class="trip-details">
@@ -38,8 +45,9 @@ const domUpdates = {
           <p class="trip-tag">${trip[0]}</p>
         </div>
       </li>`
-    })
-    ul.innerHTML = card;
+      })
+      ul.innerHTML = card;
+    }
   },
 
   renderCurrentTrip(currentInfo) {
@@ -55,11 +63,13 @@ const domUpdates = {
   },
 
   renderFutureTrips(theList) {
-    console.log(theList)
     const ul = document.getElementById(`upcoming-slides`);
-    let card = '';
-    theList.forEach(trip => {
-      card += `
+    if (theList.length === 0) {
+      this.renderPlaceHolder(ul)
+    } else {   
+      let card = '';
+      theList.forEach(trip => {
+        card += `
       <li class="glide_slide">
         <img class="slide-pics" src="${trip[2]}"> 
         <div class="trip-details">
@@ -67,8 +77,20 @@ const domUpdates = {
           <p class="trip-tag">${trip[0]}</p>
         </div>
       </li>`
-    })
-    ul.innerHTML = card;
+      })
+      ul.innerHTML = card;
+    }
+  },
+
+  renderPlaceHolder(parentElement) {
+    parentElement.innerHTML = `
+    <li class="glide_slide">
+        <img class="slide-pics" src="./images/icons8-user-30.png"> 
+        <div class="trip-details">
+          <p class="trip-tag">Nothing Here</p>
+          <p class="trip-tag">Plan a New Trip Soon!</p>
+        </div>
+      </li>`;
   }
 }
 
