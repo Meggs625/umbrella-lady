@@ -38,7 +38,7 @@ function fetchData() {
     .then(data => {
       createTravelerData(data[0])
       createTripsData(data[1].trips)
-
+      createDestinationData(data[2].destinations)
     })
 }
 
@@ -58,8 +58,15 @@ function createTripsData(allTrips) {
   trips = new Trips(userTrips);
 }
 
+function createDestinationData(allDestinations) {
+  catalog = new DestinationCatalog(allDestinations)
+}
+
 function renderTripsPage() {
-  domUpdates.toggleView(myTrips, dashboard)
+  domUpdates.toggleView(myTrips, dashboard);
+  const pastTrips = trips.findTripsByDate('2021/08/04', 'past');
+  const pastTripInfo = getDestinationInfo(pastTrips)
+  domUpdates.renderTrips(pastTripInfo, 'past')
   new Glide('.glide', {
     type: 'carousel',
     startAt: 0,
@@ -75,4 +82,11 @@ function renderTripsPage() {
     startAt: 0,
     perView: 1
   }).mount();
+}
+
+function getDestinationInfo(tripInfo) {
+  return tripInfo.map(trip => {
+    const destinationInfo = catalog.findDestinationById(trip.destinationID)
+    return [trip.date, destinationInfo.destination, destinationInfo.image];
+  }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
 }
