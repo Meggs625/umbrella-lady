@@ -11,11 +11,14 @@ class Trips {
   findTripsByDate(searchDate, timeFrame) {
     switch (timeFrame) {
     case 'past':
-      return this.trips.filter(trip => trip.date < searchDate)
+      return this.trips.filter(trip => trip.date < searchDate && 
+        trip.status !== 'pending')
     case 'current':
-      return this.trips.find(trip => trip.date === searchDate);
+      return this.trips.filter(trip => trip.date === searchDate &&
+        trip.status !== 'pending');
     case 'future':
-      return this.trips.filter(trip => trip.date > searchDate)
+      return this.trips.filter(trip => trip.date > searchDate &&
+        trip.status !== 'pending')
     }
   }
 

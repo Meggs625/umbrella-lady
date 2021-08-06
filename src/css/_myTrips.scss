@@ -6,12 +6,53 @@
   align-items: center;
 }
 
+.current {
+  height: auto;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .upcoming-container,
 .pending-container,
 .past-container {
-  height: 20%;
+  height: auto;
+  width: 75%;  
+}
+
+.glide_slide {
+  height: auto;
   width: 75%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
+
+.trip-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1em;
+}
+
+.slide-pics,
+.current-trip-img {
+  width: 75%;
+  height: auto;
+  border: 1px solid $primary-font;
+}
+
+.glide__arrows {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
+

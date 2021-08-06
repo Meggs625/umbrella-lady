@@ -9,6 +9,9 @@ import Traveler from './Traveler';
 import DestinationCatalog from './DestinationCatalog';
 import TripVault from './TripVault';
 import Trips from './Trips';
+import Glide from '@glidejs/glide';
+
+
 
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -16,26 +19,34 @@ import Trips from './Trips';
 import './images/icons8-umbrella-48.png';
 import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
+import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
+const adventureBtn =document.getElementById('adventure-btn');
+const infoBtn = document.getElementById('user-info-btn');
+const returnHomeBtn = document.getElementById('return-home');
 const dashboard = document.getElementById('the-dashboard');
 const myTrips = document.getElementById('trips-page');
+const userInfoPage = document.getElementById('user-info-page');
 let traveler, catalog, trips;
 
-window.addEventListener('load', fetchData)
-myTripsBtn.addEventListener('click', renderTripsPage)
+window.addEventListener('load', fetchData);
+myTripsBtn.addEventListener('click', renderTripsPage);
+adventureBtn.addEventListener('click', sayHello);
+infoBtn.addEventListener('click', renderUserInfoPage)
+returnHomeBtn.addEventListener('click', renderHomePage);
 
 
 function fetchData() {
   Promise.all([
-    getData('travelers/2'), 
+    getData('travelers/28'), 
     getData('trips'), 
     getData('destinations')
   ])
     .then(data => {
       createTravelerData(data[0])
       createTripsData(data[1].trips)
-
+      createDestinationData(data[2].destinations)
     })
 }
 
@@ -55,6 +66,75 @@ function createTripsData(allTrips) {
   trips = new Trips(userTrips);
 }
 
+function createDestinationData(allDestinations) {
+  catalog = new DestinationCatalog(allDestinations)
+}
+
+function sayHello() {
+  console.log(trips.trips)
+}
+
 function renderTripsPage() {
-  domUpdates.toggleView(myTrips, dashboard)
+  domUpdates.toggleView(myTrips, dashboard);
+  renderPendingSlides();
+  renderPastSlides();
+  renderCurrentTrip();
+  
+  new Glide('.glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1
+  }).mount();
+  new Glide('.pending-glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1
+  }).mount();
+  new Glide('.past-glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1
+  }).mount();
+}
+
+function renderPastSlides() {
+  const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
+  const pastTripInfo = getDestinationInfo(pastTrips);
+  domUpdates.renderTrips(pastTripInfo);
+}
+
+function renderPendingSlides() {
+  const pendingTrips = trips.findTripsByStatus('pending')
+  const pendingTripInfo = getDestinationInfo(pendingTrips);
+  domUpdates.renderPendingTrips(pendingTripInfo);
+}
+
+function renderCurrentTrip() {
+  const currentTrip = trips.findTripsByDate('2021/03/28', 'current');
+  if (currentTrip.length !== 0) {
+    const thisTrip = getDestinationInfo(currentTrip);
+    domUpdates.renderCurrentTrip(thisTrip);
+  } 
+  findFutureSlides();  
+}
+
+function findFutureSlides() {
+  const futureTrips = trips.findTripsByDate('2021/03/28', 'future');
+  const futureTripInfo = getDestinationInfo(futureTrips);
+  domUpdates.renderFutureTrips(futureTripInfo);
+}
+
+function getDestinationInfo(tripInfo) {
+  return tripInfo.map(trip => {
+    const destinationInfo = catalog.findDestinationById(trip.destinationID)
+    return [trip.date, destinationInfo.destination, destinationInfo.image];
+  }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
+}
+
+function renderHomePage() {
+  domUpdates.toggleView(dashboard, myTrips);
+}
+
+function renderUserInfoPage() {
+  domUpdates.toggleView(userInfoPage, dashboard)
 }
