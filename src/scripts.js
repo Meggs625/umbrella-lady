@@ -39,7 +39,7 @@ returnHomeBtn.addEventListener('click', renderHomePage);
 
 function fetchData() {
   Promise.all([
-    getData('travelers/28'), 
+    getData('travelers/2'), 
     getData('trips'), 
     getData('destinations')
   ])
@@ -75,6 +75,7 @@ function sayHello() {
 }
 
 function renderTripsPage() {
+  console.log(trips)
   domUpdates.toggleView(myTrips, dashboard);
   renderPendingSlides();
   renderPastSlides();
@@ -136,5 +137,7 @@ function renderHomePage() {
 }
 
 function renderUserInfoPage() {
-  domUpdates.toggleView(userInfoPage, dashboard)
+  domUpdates.toggleView(userInfoPage, dashboard);
+  const tripCost = trips.calculateAnnualTripCosts('2020', catalog)
+  domUpdates.renderUserInfo(traveler, trips.trips, tripCost)
 }

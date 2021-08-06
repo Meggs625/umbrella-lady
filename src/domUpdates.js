@@ -91,6 +91,17 @@ const domUpdates = {
           <p class="trip-tag">Plan a New Trip Soon!</p>
         </div>
       </li>`;
+  },
+
+  renderUserInfo(theUser, tripLog, annualTripCost) {
+    const userDisplay = document.getElementById('info-display');
+    console.log(tripLog)
+    userDisplay.innerHTML = `
+    <h2> Hi, ${theUser.name}</h2>
+    <p>You are a ${theUser.type}!</p>
+    <p>So far this year, you've taken ${tripLog.length} trips</p>
+    <p>Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}</p>
+    <button class="return-home">Return Home</button>`
   }
 }
 
