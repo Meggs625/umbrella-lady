@@ -19,6 +19,7 @@ import Glide from '@glidejs/glide';
 import './images/icons8-umbrella-48.png';
 import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
+import './images/pexels-nubia-navarro-(nubikini)-385997.jpg';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
 const dashboard = document.getElementById('the-dashboard');
@@ -64,9 +65,9 @@ function createDestinationData(allDestinations) {
 
 function renderTripsPage() {
   domUpdates.toggleView(myTrips, dashboard);
-  const pastTrips = trips.findTripsByDate('2021/08/04', 'past');
-  const pastTripInfo = getDestinationInfo(pastTrips)
-  domUpdates.renderTrips(pastTripInfo, 'past')
+  displayPastTrips()
+  // displayPendingTrips()
+ 
   new Glide('.glide', {
     type: 'carousel',
     startAt: 0,
@@ -82,6 +83,19 @@ function renderTripsPage() {
     startAt: 0,
     perView: 1
   }).mount();
+}
+
+function displayPastTrips() {
+  const pastTrips = trips.findTripsByDate('2021/08/04', 'past');
+  const pastTripInfo = getDestinationInfo(pastTrips);
+  domUpdates.renderTrips(pastTripInfo, 'past-slides');
+}
+
+function displayPendingTrips() {
+  const pendingTrips = trips.findTripsByStatus('pending');
+  const pendingTripsInfo = getDestinationInfo(pendingTrips);
+  domUpdates.renderTrips(pendingTripsInfo, 'past-slides')
+
 }
 
 function getDestinationInfo(tripInfo) {
