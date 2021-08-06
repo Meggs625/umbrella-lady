@@ -74,6 +74,7 @@ function renderTripsPage() {
   domUpdates.toggleView(myTrips, dashboard);
   renderPendingSlides();
   renderPastSlides();
+  renderCurrentTrip();
   
   new Glide('.glide', {
     type: 'carousel',
@@ -102,6 +103,23 @@ function renderPendingSlides() {
   const pendingTrips = trips.findTripsByStatus('pending')
   const pendingTripInfo = getDestinationInfo(pendingTrips);
   domUpdates.renderPendingTrips(pendingTripInfo);
+}
+
+function renderCurrentTrip() {
+  const currentTrip = trips.findTripsByDate('2021/08/04', 'current');
+  if (currentTrip.length !== 0) {
+    const thisTrip = getDestinationInfo(currentTrip);
+    domUpdates.renderCurrentTrip(thisTrip);
+  } else {
+    findFutureSlides();
+  }
+}
+
+function findFutureSlides() {
+  const futureTrips = trips.findTripsByDate('2021/08/04', 'future');
+  // if (futureTrips.length !== 0) {
+
+  // }
 }
 
 function getDestinationInfo(tripInfo) {

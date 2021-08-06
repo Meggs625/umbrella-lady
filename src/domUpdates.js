@@ -40,6 +40,22 @@ const domUpdates = {
       </li>`
     })
     ul.innerHTML = card;
+  },
+
+  renderCurrentTrip(currentInfo) {
+    const currentDisplayArea = document.getElementById('current-trip-area');
+    currentDisplayArea.classList.remove('hidden');
+    const displayTrip = document.getElementById('display-current-trip');
+    displayTrip.innerHTML = `
+    <img class="current-trip-img" src="${currentInfo[2]}"> 
+    <div class="trip-details">
+      <p class="trip-tag">${currentInfo[1]}</p>
+      <p class="trip-tag">${currentInfo[0]}</p>
+    </div>`
+  },
+
+  renderCurrentOrFutureTrips(theList) {
+    console.log(theList)
   }
 
 }
