@@ -67,14 +67,14 @@ function createDestinationData(allDestinations) {
 }
 
 function sayHello() {
-  console.log('howdy! Do not worry, all will be well')
+  console.log(trips)
 }
 
 function renderTripsPage() {
   domUpdates.toggleView(myTrips, dashboard);
-  const pastTrips = trips.findTripsByDate('2021/08/04', 'past');
-  const pastTripInfo = getDestinationInfo(pastTrips);
-  domUpdates.renderTrips(pastTripInfo);
+  renderPendingSlides();
+  renderPastSlides();
+  
   new Glide('.glide', {
     type: 'carousel',
     startAt: 0,
@@ -90,6 +90,18 @@ function renderTripsPage() {
     startAt: 0,
     perView: 1
   }).mount();
+}
+
+function renderPastSlides() {
+  const pastTrips = trips.findTripsByDate('2021/08/04', 'past');
+  const pastTripInfo = getDestinationInfo(pastTrips);
+  domUpdates.renderTrips(pastTripInfo);
+}
+
+function renderPendingSlides() {
+  const pendingTrips = trips.findTripsByStatus('pending')
+  const pendingTripInfo = getDestinationInfo(pendingTrips);
+  domUpdates.renderPendingTrips(pendingTripInfo);
 }
 
 function getDestinationInfo(tripInfo) {

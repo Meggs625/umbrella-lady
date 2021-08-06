@@ -24,6 +24,22 @@ const domUpdates = {
       </li>`
     })
     ul.innerHTML = card;
+  },
+
+  renderPendingTrips(pendingList) {
+    const ul = document.getElementById(`pending-slides`);
+    let card = '';
+    pendingList.forEach(trip => {
+      card += `
+      <li class="glide_slide">
+        <img class="slide-pics" src="${trip[2]}"> 
+        <div class="trip-details">
+          <p class="trip-tag">${trip[1]}</p>
+          <p class="trip-tag">${trip[0]}</p>
+        </div>
+      </li>`
+    })
+    ul.innerHTML = card;
   }
 
 }
