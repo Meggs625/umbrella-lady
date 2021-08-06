@@ -6,18 +6,28 @@
   align-items: center;
 }
 
+
 .welcome {
   font-size: 2em;
   margin: 30px;
+  text-align: center;
 }
 
-.current-trip {
+.welcome-pic {
   height: auto;
-  width: 40%;
+  width: 60%;
   margin-bottom: 30px;
 }
 
-.trip-name {
-  font-size: 1em;
+.tag-line {
+  font-size: 1.25em;
   margin-bottom: 40px;
+  font-family: $title-font;
+}
+
+.dashboard-buttons {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -17,11 +17,13 @@
 
   <section class="traveler-dashboard" id="the-dashboard">
     <h2 class="welcome" id="welcome-msg">Welcome, User!</h2>
-    <img class="current-trip" src="https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="lit up city at night">
-    <p class="trip-name">Trip Location Name Here</p>
-    <button class="my-trips-button" id="my-trips-btn">My Trips</button>
-    <button class="adventure-button" id="adventure-btn">Choose My Next Adventure</button>
-    <button class="user-info-button" id="user-info-btn">About Me</button>
+    <img class="welcome-pic" src="./images/pexels-pixabay-274249.png" alt="pool side chairs and umbrella">
+    <h3 class="tag-line">Let Us Find Your Next Paradise</h3>
+    <div class="dashboard-buttons">
+      <button class="my-trips-button" id="my-trips-btn">My Trips</button>
+      <button class="adventure-button" id="adventure-btn">Choose My Next Adventure</button>
+      <button class="user-info-button" id="user-info-btn">About Me</button>
+  </div>
   </section>
 
   <section class="my-trips hidden" id="trips-page">
@@ -42,8 +44,8 @@
         </ul>
         </div>
         <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="">prev</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+          <button class="glide__arrow glide__arrow--left" data-glide-dir=""><</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
         </div>
       </div>
     </div>
@@ -72,12 +74,14 @@
           </ul>
         </div>
         <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
         </div>
       </div>
     </div> 
-    <button id="return-home">Return Home</button>
+    <div class="my-trips-home-button">
+      <button id="return-home">Return Home</button>
+    </div>
   </section>
 
   <section class="user-info hidden" id="user-info-page">
