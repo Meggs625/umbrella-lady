@@ -97,10 +97,10 @@ const domUpdates = {
     const userDisplay = document.getElementById('info-display');
     console.log(tripLog)
     userDisplay.innerHTML = `
-    <h2> Hi, ${theUser.name}</h2>
+    <h2> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
-    <li class="user-descriptor">So far this year, you've taken ${tripLog.length} trips</p>
-    <li class="user-descriptor">Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}</p>`
+    <li class="user-descriptor">So far, you've taken ${tripLog.length} trips with us.</p>
+    <li class="user-descriptor">Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}.</p>`
   }
 }
 
