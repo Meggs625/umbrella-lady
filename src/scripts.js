@@ -19,15 +19,18 @@ import Glide from '@glidejs/glide';
 import './images/icons8-umbrella-48.png';
 import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
-import './images/pexels-nubia-navarro-(nubikini)-385997.jpg';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
+const adventureBtn =document.getElementById('adventure-btn');
+const returnHomeBtn = document.getElementById('return-home');
 const dashboard = document.getElementById('the-dashboard');
 const myTrips = document.getElementById('trips-page');
 let traveler, catalog, trips;
 
-window.addEventListener('load', fetchData)
-myTripsBtn.addEventListener('click', renderTripsPage)
+window.addEventListener('load', fetchData);
+myTripsBtn.addEventListener('click', renderTripsPage);
+adventureBtn.addEventListener('click', sayHello);
+returnHomeBtn.addEventListener('click', renderHomePage);
 
 
 function fetchData() {
@@ -63,11 +66,15 @@ function createDestinationData(allDestinations) {
   catalog = new DestinationCatalog(allDestinations)
 }
 
+function sayHello() {
+  console.log('howdy! Do not worry, all will be well')
+}
+
 function renderTripsPage() {
   domUpdates.toggleView(myTrips, dashboard);
-  displayPastTrips()
-  // displayPendingTrips()
- 
+  const pastTrips = trips.findTripsByDate('2021/08/04', 'past');
+  const pastTripInfo = getDestinationInfo(pastTrips);
+  domUpdates.renderTrips(pastTripInfo);
   new Glide('.glide', {
     type: 'carousel',
     startAt: 0,
@@ -85,22 +92,13 @@ function renderTripsPage() {
   }).mount();
 }
 
-function displayPastTrips() {
-  const pastTrips = trips.findTripsByDate('2021/08/04', 'past');
-  const pastTripInfo = getDestinationInfo(pastTrips);
-  domUpdates.renderTrips(pastTripInfo, 'past-slides');
-}
-
-function displayPendingTrips() {
-  const pendingTrips = trips.findTripsByStatus('pending');
-  const pendingTripsInfo = getDestinationInfo(pendingTrips);
-  domUpdates.renderTrips(pendingTripsInfo, 'past-slides')
-
-}
-
 function getDestinationInfo(tripInfo) {
   return tripInfo.map(trip => {
     const destinationInfo = catalog.findDestinationById(trip.destinationID)
     return [trip.date, destinationInfo.destination, destinationInfo.image];
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
+}
+
+function renderHomePage() {
+  domUpdates.toggleView(dashboard, myTrips);
 }

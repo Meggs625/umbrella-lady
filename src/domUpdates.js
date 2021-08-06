@@ -10,22 +10,10 @@ const domUpdates = {
     welcomeMsg.innerText = `Welcome, ${name}!`
   },
 
-  renderTrips(tripList, element) {
-    const ul = document.getElementById(`${element}`);
-    if (!tripList) {
-      ul.innerHTML = `
-      <li class="glide_slide">
-        <img class="slide-pics" src="/images/pexels-nubia-navarro-(nubikini)-385997.jpg"
-          alt="mini bus all packed up and ready for adventure"> 
-        <div class="trip-details">
-          <p class="trip-tag">Nothing To See Here</p>
-          <p class="trip-tag">Time to Find a New Adventure!</p>
-        </div>
-      </li>`
-    }
+  renderTrips(tripList) {
+    const ul = document.getElementById(`past-slides`);
     let card = '';
     tripList.forEach(trip => {
-      console.log(trip[2])
       card += `
       <li class="glide_slide">
         <img class="slide-pics" src="${trip[2]}"> 

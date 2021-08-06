@@ -9,7 +9,7 @@
 .upcoming-container,
 .pending-container,
 .past-container {
-  height: 60%;
+  height: auto;
   width: 75%;  
 }
 
@@ -40,6 +40,3 @@
   padding: 0px;
 }
 
-// .trip-tag {
-//   padding: 10px;
-// }

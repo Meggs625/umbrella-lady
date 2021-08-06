@@ -20,7 +20,7 @@
     <img class="current-trip" src="https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="lit up city at night">
     <p class="trip-name">Trip Location Name Here</p>
     <button class="my-trips-button" id="my-trips-btn">My Trips</button>
-    <button class="adventure-button">Choose My Next Adventure</button>
+    <button class="adventure-button" id="adventure-btn">Choose My Next Adventure</button>
     <button class="user-info-button">About Me</button>
   </section>
 
@@ -47,7 +47,9 @@
       <div class="pending-glide">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides" id="pending-slides">
-            
+            <li class="glide__slide">0</li>
+            <li class="glide__slide">1</li>
+            <li class="glide__slide">2</li>            
           </ul>
         </div>
         <div class="glide__arrows" data-glide-el="controls">
@@ -70,6 +72,7 @@
         </div>
       </div>
     </div> 
+    <button id="return-home">Return Home</button>
   </section>
 
   <section class="user-info hidden">
