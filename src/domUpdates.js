@@ -43,7 +43,6 @@ const domUpdates = {
   },
 
   renderCurrentTrip(currentInfo) {
-    console.log(currentInfo)
     const currentDisplayArea = document.getElementById('current-trip-area');
     currentDisplayArea.classList.remove('hidden');
     const displayTrip = document.getElementById('display-current-trip');
@@ -55,10 +54,23 @@ const domUpdates = {
     </div>`
   },
 
-  renderCurrentOrFutureTrips(theList) {
+  renderFutureTrips(theList) {
     console.log(theList)
+    const ul = document.getElementById(`upcoming-slides`);
+    let card = '';
+    theList.forEach(trip => {
+      card += `
+      <li class="glide_slide">
+        <img class="slide-pics" src="${trip[2]}"> 
+        <div class="trip-details">
+          <p class="trip-tag">${trip[1]}</p>
+          <p class="trip-tag">${trip[0]}</p>
+        </div>
+      </li>`
+    })
+    ul.innerHTML = card;
   }
-
 }
+
 
 export default domUpdates;
