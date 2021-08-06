@@ -6,6 +6,21 @@
   align-items: center;
 }
 
+.current {
+  height: auto;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .upcoming-container,
 .pending-container,
 .past-container {
@@ -28,7 +43,8 @@
   font-size: 1em;
 }
 
-.slide-pics {
+.slide-pics,
+.current-trip-img {
   width: 75%;
   height: auto;
   border: 1px solid $primary-font;
