@@ -19,23 +19,27 @@ import Glide from '@glidejs/glide';
 import './images/icons8-umbrella-48.png';
 import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
+import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn =document.getElementById('adventure-btn');
+const infoBtn = document.getElementById('user-info-btn');
 const returnHomeBtn = document.getElementById('return-home');
 const dashboard = document.getElementById('the-dashboard');
 const myTrips = document.getElementById('trips-page');
+const userInfoPage = document.getElementById('user-info-page');
 let traveler, catalog, trips;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
 adventureBtn.addEventListener('click', sayHello);
+infoBtn.addEventListener('click', renderUserInfoPage)
 returnHomeBtn.addEventListener('click', renderHomePage);
 
 
 function fetchData() {
   Promise.all([
-    getData('travelers/2'), 
+    getData('travelers/28'), 
     getData('trips'), 
     getData('destinations')
   ])
@@ -129,4 +133,8 @@ function getDestinationInfo(tripInfo) {
 
 function renderHomePage() {
   domUpdates.toggleView(dashboard, myTrips);
+}
+
+function renderUserInfoPage() {
+  domUpdates.toggleView(userInfoPage, dashboard)
 }

@@ -85,7 +85,7 @@ const domUpdates = {
   renderPlaceHolder(parentElement) {
     parentElement.innerHTML = `
     <li class="glide_slide">
-        <img class="slide-pics" src="./images/icons8-user-30.png"> 
+        <img class="slide-pics" src="./images/pexels-nubia-navarro-_nubikini_-385997.png"> 
         <div class="trip-details">
           <p class="trip-tag">Nothing Here</p>
           <p class="trip-tag">Plan a New Trip Soon!</p>
