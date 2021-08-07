@@ -22,7 +22,6 @@ class Trips {
     }
   }
 
-
   calculateAnnualTripCosts(year, destinationRepo) {
     let sum = 0;
     const annualTrips =  this.trips.filter(trip => trip.date.includes(year));
@@ -32,9 +31,14 @@ class Trips {
       sum += (trip.duration * allCosts[1])  
       sum += (trip.travelers * allCosts[2])        
     })
-    return sum;
+    return sum + (sum * 0.1);
   }
 
+  calculateNewTripCost(destinationID, numPassengers, duration, destinationRepo) {
+    const allCosts = destinationRepo.returnDestinationCosts(destinationID);
+    const sum = (numPassengers * allCosts[2]) + (duration * allCosts[1])
+    return sum + (sum * 0.1);
+  }
 }
 
 export default Trips;

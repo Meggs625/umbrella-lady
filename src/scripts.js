@@ -37,6 +37,7 @@ const dashboard = document.getElementById('the-dashboard');
 const myTripsPage = document.getElementById('trips-page');
 const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
+const newTripPage = document.getElementById('new-trip-page');
 let traveler, catalog, trips;
 
 window.addEventListener('load', fetchData);
@@ -154,16 +155,17 @@ function getDestinationInfo(tripInfo) {
 }
 
 function gatherNewTripInfo(event) {
-  // event.preventDefault();
-  if ((event.target.className === 'location-selection')) {
-    
+  let destinationId;
+  if (event.target.className === 'location-selection') {
+    destinationId = parseInt(event.target.id);
   }
-  console.log(event)
   const tripDuration = calculateDuration();
-  //returns number
   const travelerTotal = parseInt(numTravelers.value);
-  //travelertotal is now number
-  console.log(typeof(travelerTotal), typeof(tripDuration))
+  const tripCost = trips. calculateNewTripCost(
+    destinationId, travelerTotal, tripDuration, catalog);
+  const thisDestination = catalog.findDestinationById(destinationId);
+  domUpdates.toggleView(newTripPage, adventurePage)
+  // domUpdates.renderTripDetails(thisDestination, tripCost)
 }
 
 function calculateDuration() {

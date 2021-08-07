@@ -98,7 +98,7 @@ const domUpdates = {
 
   renderUserInfo(theUser, tripLog, annualTripCost) {
     const userDisplay = document.getElementById('info-display');
-    console.log(tripLog)
+    // console.log(tripLog)
     userDisplay.innerHTML = `
     <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
@@ -107,7 +107,6 @@ const domUpdates = {
   }, 
 
   renderDestinationCards(destinations) {
-    console.log(destinations)
     const sortedLocations = destinations.sort((place1, place2) =>
       place1.destination > place2.destination ? 1 : -1);
     const destinationDisplay = document.getElementById('the-grid');
