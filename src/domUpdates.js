@@ -127,10 +127,11 @@ const domUpdates = {
     console.log(destinationInfo)
     tripDisplay.innerHTML = `
     <h3 class="new-trip-location">${destinationInfo.destination}</h3>
-    <img class="new-trip-img" 
+    <img class="new-trip-pic" 
     src="${destinationInfo.image}" alt="${destinationInfo.alt}">
-    <p class="new-trip-cost-info">Excellent! For this trip, the cost
-      will be ${tripCost}, which already includes our 10% agency fee.</p>
+    <h4 class="encouragement">Excellent!<h4>
+    <p class="new-trip-cost-info">For this trip, 
+    the cost will be $${tripCost.toLocaleString('en-US')}*</p>
     `
   }
 }
