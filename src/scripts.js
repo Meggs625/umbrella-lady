@@ -137,7 +137,12 @@ function findFutureSlides() {
 function getDestinationInfo(tripInfo) {
   return tripInfo.map(trip => {
     const destinationInfo = catalog.findDestinationById(trip.destinationID)
-    return [trip.date, destinationInfo.destination, destinationInfo.image, destinationInfo.alt];
+    return [
+      trip.date, 
+      destinationInfo.destination, 
+      destinationInfo.image, 
+      destinationInfo.alt
+    ];
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
 }
 
