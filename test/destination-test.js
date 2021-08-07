@@ -10,6 +10,7 @@ describe('Destination', () => {
       "destination": "Madrid, Spain",
       "estimatedLodgingCostPerDay": 150,
       "estimatedFlightCostPerPerson": 650,
+      // eslint-disable-next-line max-len
       "image": "https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
       "alt": "city with clear skys and a road in the day time"
     }

@@ -15,7 +15,8 @@ import dayjs from 'dayjs';
 
 
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+// An example of how you tell webpack to use an image 
+// (also need to link to it in the index.html)
 // import './images/turing-logo.png'
 import './images/icons8-umbrella-48.png';
 import './images/icons8-umbrella-48 (1).png';
@@ -43,7 +44,7 @@ const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
-let traveler, catalog, trips, newTrip, pendingSlides;
+let traveler, catalog, trips, newTrip;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
