@@ -22,6 +22,7 @@ import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';
+// import { addDevServerEntrypoints } from 'webpack-dev-server';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
@@ -42,7 +43,7 @@ const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
-let traveler, catalog, trips;
+let traveler, catalog, trips, newTrip;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
@@ -174,25 +175,63 @@ function gatherNewTripInfo(event) {
   if (event.target.className === 'location-selection') {
     destinationId = parseInt(event.target.id);
   }
-  const tripDuration = calculateDuration();
+
+  const date2 = dayjs(startDate.value).format('YYYY/MM/DD');
+  const date1 = dayjs(endDate.value).format('YYYY/MM/DD');
+  const tripDuration = calculateDuration(date2, date1);
   const travelerTotal = parseInt(numTravelers.value);
   const tripCost = trips. calculateNewTripCost(
     destinationId, travelerTotal, tripDuration, catalog);
   const thisDestination = catalog.findDestinationById(destinationId);
+  newTrip = {
+    id: Date.now(),
+    userID: traveler.id,
+    destinationID: destinationId,
+    travelers: travelerTotal,
+    date: date2,
+    duration: tripDuration,
+    status: 'pending',
+    suggestedActivities: ['walking', 'relaxing']
+  }
   domUpdates.toggleView(newTripPage, adventurePage)
   domUpdates.renderTripDetails(thisDestination, tripCost)
 }
 
-function calculateDuration() {
-  const date2 = dayjs(startDate.value).format('YYYY/MM/DD');
+function calculateDuration(date2, date1) {  
   const depart = dayjs(date2)
-  const date1 = dayjs(endDate.value).format('YYYY/MM/DD');
   const returnDate = dayjs(date1)
   return returnDate.diff(depart, 'day');
 }
 
 function displayConfirmation() {
+
+  submitNewTrip(newTrip);
   domUpdates.toggleView(confirmationPage, newTripPage);
+}
+
+function submitNewTrip(theNewTrip) {
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(theNewTrip)
+  })
+    .then(response => checkForErrors(response))
+    .then(newTripPost => addTrip(newTripPost))
+    .catch(error => console.log(error))
+}
+
+function checkForErrors(res) {
+  if (!res.ok) {
+    throw new Error("Please make sure to supply all needed information");
+  } else {
+    return res.json();
+  }
+}
+
+function addTrip(newTripPost) {
+  console.log(trips.trips)
+  trips.trips.push(newTripPost);
+  console.log(trips)
 }
 
 function renderAdventurePage(hidePage) {
@@ -210,3 +249,4 @@ function renderUserInfoPage() {
   const tripCost = trips.calculateAnnualTripCosts('2020', catalog)
   domUpdates.renderUserInfo(traveler, trips.trips, tripCost)
 }
+

@@ -3,4 +3,4 @@ export const getData = (dataSet) => {
     .then(response => response.json())
     .then(data => data)
     .catch(err => console.log(`${dataSet} error: ${err}`))
-}
+};
