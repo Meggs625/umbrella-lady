@@ -1,18 +1,19 @@
 header {
-  background-color: $secondary-backgroud;
+  background-color: $primary-font;
   height: 8%;
   width: 100%;
   display: flex;
   justify-content: flex-end;
-   align-items: center;
+  align-items: center;
+  border-bottom: .25em solid $accent-color;
 }
 
 h1 {
   font-family: $title-font;
-  color: $secondary-font;
+  color: $accent-color;
   margin-right: 10px;
-  -webkit-text-stroke-width: .1px;
-  -webkit-text-stroke-color: black;
+  // -webkit-text-stroke-width: .1px;
+  // -webkit-text-stroke-color: black;
 }
 
 .umbrella-logo {

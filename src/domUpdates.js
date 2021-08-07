@@ -10,16 +10,16 @@ const domUpdates = {
     welcomeMsg.innerText = `Welcome, ${name}!`
   },
 
-  renderTrips(tripList) {
+  renderPastTrips(pastList) {
     const ul = document.getElementById(`past-slides`);
-    if (tripList.length === 0) {
+    if (pastList.length === 0) {
       this.renderPlaceHolder(ul)
     } else {   
       let card = '';
-      tripList.forEach(trip => {
+      pastList.forEach(trip => {
         card += `
       <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}"> 
+        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
           <p class="trip-tag">${trip[1]}</p>
           <p class="trip-tag">${trip[0]}</p>
@@ -39,7 +39,7 @@ const domUpdates = {
       pendingList.forEach(trip => {
         card += `
       <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}"> 
+        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
           <p class="trip-tag">${trip[1]}</p>
           <p class="trip-tag">${trip[0]}</p>
@@ -55,10 +55,10 @@ const domUpdates = {
     currentDisplayArea.classList.remove('hidden');
     const displayTrip = document.getElementById('display-current-trip');
     displayTrip.innerHTML = `
-    <img class="current-trip-img" src="${currentInfo[0][2]}"> 
+    <img class="current-trip-img" src="${currentInfo[2]}" alt="${currentInfo[3]}"> 
     <div class="trip-details">
-      <p class="trip-tag">${currentInfo[0][1]}</p>
-      <p class="trip-tag">${currentInfo[0][0]}</p>
+      <p class="trip-tag">${currentInfo[1]}</p>
+      <p class="trip-tag">${currentInfo[0]}</p>
     </div>`
   },
 
@@ -71,7 +71,7 @@ const domUpdates = {
       theList.forEach(trip => {
         card += `
       <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}"> 
+        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
           <p class="trip-tag">${trip[1]}</p>
           <p class="trip-tag">${trip[0]}</p>
@@ -85,7 +85,8 @@ const domUpdates = {
   renderPlaceHolder(parentElement) {
     parentElement.innerHTML = `
     <li class="glide_slide">
-        <img class="slide-pics" src="./images/pexels-nubia-navarro-_nubikini_-385997.png"> 
+        <img class="slide-pics" src="./images/pexels-nubia-navarro-_nubikini_-385997.png" 
+        alt="minibus packed up for a trip"> 
         <div class="trip-details">
           <p class="trip-tag">Nothing Here</p>
           <p class="trip-tag">Plan a New Trip Soon!</p>
@@ -97,10 +98,10 @@ const domUpdates = {
     const userDisplay = document.getElementById('info-display');
     console.log(tripLog)
     userDisplay.innerHTML = `
-    <h2> Hi, ${theUser.name}</h2>
+    <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
-    <li class="user-descriptor">So far this year, you've taken ${tripLog.length} trips</p>
-    <li class="user-descriptor">Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}</p>`
+    <li class="user-descriptor">So far, you've booked ${tripLog.length} trips with us.</p>
+    <li class="user-descriptor">Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}.</p>`
   }
 }
 

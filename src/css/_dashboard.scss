@@ -1,23 +1,31 @@
 .traveler-dashboard {
   height: 92%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }
+
 
 .welcome {
-  font-size: 2em;
+  font-size: 3em;
   margin: 30px;
+  text-align: center;
+  font-family: $title-font;  
 }
 
-.current-trip {
+.welcome-pic {
   height: auto;
-  width: 40%;
-  margin-bottom: 30px;
+  width: 60%;
+  border-radius: 20px;
+  box-shadow: $image-shadow;
 }
 
-.trip-name {
-  font-size: 1em;
-  margin-bottom: 40px;
+.tag-line {
+  font-size: 1.25em;
+  margin: 60px 0px 20px 0px;
+  font-family: $title-font;  
+}
+
+.dashboard-buttons {
+  height: auto;
+  @include flexAlignColumn();
 }

@@ -20,9 +20,10 @@ import './images/icons8-umbrella-48.png';
 import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
+import './images/pexels-pixabay-274249.png';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
-const adventureBtn =document.getElementById('adventure-btn');
+const adventureBtn = document.getElementById('adventure-btn');
 const infoBtn = document.getElementById('user-info-btn');
 const returnHomeFromTripsBtn = document.getElementById('return-home');
 const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
@@ -36,14 +37,16 @@ myTripsBtn.addEventListener('click', renderTripsPage);
 adventureBtn.addEventListener('click', sayHello);
 infoBtn.addEventListener('click', renderUserInfoPage);
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
-  renderHomePage(userInfoPage)});
+  renderHomePage(userInfoPage)
+});
 returnHomeFromTripsBtn.addEventListener('click', function() {
-  renderHomePage(myTripsPage)});
+  renderHomePage(myTripsPage)
+});
 
 
 function fetchData() {
   Promise.all([
-    getData('travelers/26'), 
+    getData('travelers/33'), 
     getData('trips'), 
     getData('destinations')
   ])
@@ -105,7 +108,7 @@ function renderTripsPage() {
 function renderPastSlides() {
   const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
   const pastTripInfo = getDestinationInfo(pastTrips);
-  domUpdates.renderTrips(pastTripInfo);
+  domUpdates.renderPastTrips(pastTripInfo);
 }
 
 function renderPendingSlides() {
@@ -118,7 +121,7 @@ function renderCurrentTrip() {
   const currentTrip = trips.findTripsByDate('2021/03/28', 'current');
   if (currentTrip.length !== 0) {
     const thisTrip = getDestinationInfo(currentTrip);
-    domUpdates.renderCurrentTrip(thisTrip);
+    domUpdates.renderCurrentTrip(thisTrip[0]);
   } 
   findFutureSlides();  
 }
@@ -132,7 +135,7 @@ function findFutureSlides() {
 function getDestinationInfo(tripInfo) {
   return tripInfo.map(trip => {
     const destinationInfo = catalog.findDestinationById(trip.destinationID)
-    return [trip.date, destinationInfo.destination, destinationInfo.image];
+    return [trip.date, destinationInfo.destination, destinationInfo.image, destinationInfo.alt];
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
 }
 

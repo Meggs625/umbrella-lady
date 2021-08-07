@@ -1,24 +1,31 @@
 .my-trips {
   height: 92%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
+}
+
+.my-trips-header {
+  font-family: $title-font;
+  margin: 20px;
+  font-size: 2.5em;
+}
+
+.trips-time-headings {
+  font-family: $title-font;
+  font-size: 2em;
+  margin: 20px 0px 10px 0px;
+  text-decoration: underline;
 }
 
 .current {
   height: auto;
   width: 75%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
   justify-content: center;
 }
 
 .current-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }
 
 .upcoming-container,
@@ -31,16 +38,13 @@
 .glide_slide {
   height: auto;
   width: 75%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }
 
 .trip-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1em;
+  @include flexAlignColumn();
+  font-size: $mobile-size;
+  margin-top: 20px;
 }
 
 .slide-pics,
@@ -48,6 +52,8 @@
   width: 75%;
   height: auto;
   border: 1px solid $primary-font;
+  box-shadow: $image-shadow;
+  border-radius: 20px;
 }
 
 .glide__arrows {
@@ -56,3 +62,7 @@
   padding: 0px;
 }
 
+.my-trips-home-button {
+  height: auto;
+  @include flexAlignColumn();
+}
