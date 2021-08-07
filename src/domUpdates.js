@@ -10,14 +10,13 @@ const domUpdates = {
     welcomeMsg.innerText = `Welcome, ${name}!`
   },
 
-  renderTrips(tripList) {
-    console.log(tripList)
+  renderPastTrips(pastList) {
     const ul = document.getElementById(`past-slides`);
-    if (tripList.length === 0) {
+    if (pastList.length === 0) {
       this.renderPlaceHolder(ul)
     } else {   
       let card = '';
-      tripList.forEach(trip => {
+      pastList.forEach(trip => {
         card += `
       <li class="glide_slide">
         <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
@@ -86,7 +85,8 @@ const domUpdates = {
   renderPlaceHolder(parentElement) {
     parentElement.innerHTML = `
     <li class="glide_slide">
-        <img class="slide-pics" src="./images/pexels-nubia-navarro-_nubikini_-385997.png"> 
+        <img class="slide-pics" src="./images/pexels-nubia-navarro-_nubikini_-385997.png" 
+        alt="minibus packed up for a trip"> 
         <div class="trip-details">
           <p class="trip-tag">Nothing Here</p>
           <p class="trip-tag">Plan a New Trip Soon!</p>

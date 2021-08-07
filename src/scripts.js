@@ -106,9 +106,9 @@ function renderTripsPage() {
 }
 
 function renderPastSlides() {
-  const pastTrips = trips.findTripsByDate('2022/10/17', 'past');
+  const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
   const pastTripInfo = getDestinationInfo(pastTrips);
-  domUpdates.renderTrips(pastTripInfo);
+  domUpdates.renderPastTrips(pastTripInfo);
 }
 
 function renderPendingSlides() {
@@ -118,7 +118,7 @@ function renderPendingSlides() {
 }
 
 function renderCurrentTrip() {
-  const currentTrip = trips.findTripsByDate('2022/10/17', 'current');
+  const currentTrip = trips.findTripsByDate('2021/03/28', 'current');
   if (currentTrip.length !== 0) {
     const thisTrip = getDestinationInfo(currentTrip);
     domUpdates.renderCurrentTrip(thisTrip[0]);
@@ -127,7 +127,7 @@ function renderCurrentTrip() {
 }
 
 function findFutureSlides() {
-  const futureTrips = trips.findTripsByDate('2022/10/17', 'future');
+  const futureTrips = trips.findTripsByDate('2021/03/28', 'future');
   const futureTripInfo = getDestinationInfo(futureTrips);
   domUpdates.renderFutureTrips(futureTripInfo);
 }
