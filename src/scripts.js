@@ -26,7 +26,7 @@ import './images/pexels-pixabay-274249.png';
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
-const returnToBrowsing = document.getElementById('continue-browsing-btn');
+const returnToBrowsingBtn = document.getElementById('continue-browsing-btn');
 const infoBtn = document.getElementById('user-info-btn');
 const startDate = document.getElementById('trip-start');
 const endDate = document.getElementById('trip-end');
@@ -34,12 +34,14 @@ const numTravelers = document.getElementById('num-travelers');
 const tripGrid = document.getElementById('the-grid');
 const returnHomeFromTripsBtn = document.getElementById('return-home');
 const returnHomeFromAdvenBtn = document.getElementById('home-from-adventure');
+const returnHomeFromConfirm = document.getElementById('home-from-confirmation');
 const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
 const dashboard = document.getElementById('the-dashboard');
 const myTripsPage = document.getElementById('trips-page');
 const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
+const confirmationPage = document.getElementById('confirmation-page');
 let traveler, catalog, trips;
 
 window.addEventListener('load', fetchData);
@@ -51,14 +53,20 @@ infoBtn.addEventListener('click', renderUserInfoPage);
 tripGrid.addEventListener('click', function(event) {
   gatherNewTripInfo(event)
 });
-returnToBrowsing.addEventListener('click', function() {
+returnToBrowsingBtn.addEventListener('click', function() {
   renderAdventurePage(newTripPage)
+});
+confirmBtn.addEventListener('click', function() {
+  displayConfirmation(confirmationPage)
 });
 returnHomeFromTripsBtn.addEventListener('click', function() {
   renderHomePage(myTripsPage)
 });
 returnHomeFromAdvenBtn.addEventListener('click', function() {
   renderHomePage(adventurePage);
+});
+returnHomeFromConfirm.addEventListener('click', function() {
+  renderHomePage(confirmationPage)
 });
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
@@ -181,6 +189,10 @@ function calculateDuration() {
   const date1 = dayjs(endDate.value).format('YYYY/MM/DD');
   const returnDate = dayjs(date1)
   return returnDate.diff(depart, 'day');
+}
+
+function displayConfirmation() {
+  domUpdates.toggleView(confirmationPage, newTripPage);
 }
 
 function renderAdventurePage(hidePage) {

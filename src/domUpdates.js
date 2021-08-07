@@ -129,11 +129,12 @@ const domUpdates = {
     <h3 class="new-trip-location">${destinationInfo.destination}</h3>
     <img class="new-trip-pic" 
     src="${destinationInfo.image}" alt="${destinationInfo.alt}">
-    <h4 class="encouragement">Excellent!<h4>
-    <p class="new-trip-cost-info">For this trip, 
+    <h4 class="encouragement" id="small-encouragement">Excellent!<h4>
+    <p class="new-trip-cost-info" id="pending-cost-info">For this trip, 
     the cost will be $${tripCost.toLocaleString('en-US')}*</p>
     `
   }
+
 }
 
 
