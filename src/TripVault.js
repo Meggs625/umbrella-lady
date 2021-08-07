@@ -3,6 +3,10 @@ class TripVault {
     this.trips = tripData;
   }
 
+  findTravelerTripsById(id) {
+    return this.trips.filter(trip => trip.userID === id)
+  }
+
   calculateCostByDestination(destinationCosts) {
     const theTrip = this.trips.find(trip => trip.id === destinationCosts[0])
     const lodgingCost = theTrip.duration * destinationCosts[1];

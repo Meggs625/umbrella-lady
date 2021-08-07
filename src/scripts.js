@@ -44,7 +44,7 @@ const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
-let traveler, catalog, trips, newTrip;
+let traveler, catalog, vault, trips, newTrip;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
@@ -67,9 +67,6 @@ returnHomeFromTripsBtn.addEventListener('click', function() {
 returnHomeFromAdvenBtn.addEventListener('click', function() {
   renderHomePage(adventurePage);
 });
-// returnHomeFromConfirm.addEventListener('click', function() {
-//   renderHomePage(confirmationPage)
-// });
 returnHomeFromConfirm.addEventListener('click', refreshPage)
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
@@ -95,14 +92,9 @@ function createTravelerData(theTraveler) {
 } 
 
 function createTripsData(allTrips) {
-  //this should be a method moved to the TripsVault
-  const userTrips = [];
-  allTrips.forEach(trip => {
-    if (trip.userID === traveler.id) {
-      userTrips.push(trip)
-    }
-  })
-  trips = new Trips(userTrips);
+  vault = new TripVault(allTrips);
+  const travelerTrips = vault.findTravelerTripsById(traveler.id);
+  trips = new Trips(travelerTrips)
 }
 
 function createDestinationData(allDestinations) {
@@ -115,7 +107,6 @@ function renderTripsPage() {
   renderPendingSlides();
   renderPastSlides();
   renderCurrentTrip();
-  // destrorySlides();
   
   new Glide('.glide', {
     type: 'carousel',
@@ -183,9 +174,6 @@ function gatherNewTripInfo(event) {
   const date1 = dayjs(endDate.value).format('YYYY/MM/DD');
   const tripDuration = calculateDuration(date2, date1);
   const travelerTotal = parseInt(numTravelers.value);
-  const tripCost = trips. calculateNewTripCost(
-    destinationId, travelerTotal, tripDuration, catalog);
-  const thisDestination = catalog.findDestinationById(destinationId);
   newTrip = {
     id: Date.now(),
     userID: traveler.id,
@@ -196,6 +184,8 @@ function gatherNewTripInfo(event) {
     status: 'pending',
     suggestedActivities: ['walking', 'relaxing']
   }
+  const tripCost = trips.calculateNewTripCost(newTrip, catalog);
+  const thisDestination = catalog.findDestinationById(destinationId);
   domUpdates.toggleView(newTripPage, adventurePage)
   domUpdates.renderTripDetails(thisDestination, tripCost)
 }
