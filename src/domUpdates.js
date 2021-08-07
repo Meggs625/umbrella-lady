@@ -55,7 +55,8 @@ const domUpdates = {
     currentDisplayArea.classList.remove('hidden');
     const displayTrip = document.getElementById('display-current-trip');
     displayTrip.innerHTML = `
-    <img class="current-trip-img" src="${currentInfo[2]}" alt="${currentInfo[3]}"> 
+    <img class="current-trip-img" 
+    src="${currentInfo[2]}" alt="${currentInfo[3]}"> 
     <div class="trip-details">
       <p class="trip-tag">${currentInfo[1]}</p>
       <p class="trip-tag">${currentInfo[0]}</p>
@@ -85,7 +86,8 @@ const domUpdates = {
   renderPlaceHolder(parentElement) {
     parentElement.innerHTML = `
     <li class="glide_slide">
-        <img class="slide-pics" src="./images/pexels-nubia-navarro-_nubikini_-385997.png" 
+        <img class="slide-pics" 
+        src="./images/pexels-nubia-navarro-_nubikini_-385997.png" 
         alt="minibus packed up for a trip"> 
         <div class="trip-details">
           <p class="trip-tag">Nothing Here</p>
@@ -102,6 +104,19 @@ const domUpdates = {
     <li class="user-descriptor">You are a ${theUser.type}!</p>
     <li class="user-descriptor">So far, you've booked ${tripLog.length} trips with us.</p>
     <li class="user-descriptor">Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}.</p>`
+  }, 
+
+  renderDestinationCards(destinations) {
+    console.log(destinations)
+    const destinationDisplay = document.getElementById('the-grid');
+    destinationDisplay.innerHTML = '';
+    destinations.forEach(item => {destinationDisplay.innerHTML += 
+      `<section class="display-card" id="destination-card">
+        <h3 class="card-heading">${item.destination} </h3>
+        <img class="card-image" src="${item.image}" alt="alt">
+        <button class="location-selection" id="${item.id}">Trips Details</button>
+      </section>`;
+    })
   }
 }
 

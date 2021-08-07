@@ -1,0 +1,45 @@
+.choose-adventure {
+  @include flexAlignColumn();
+}
+
+.adventure-heading {
+  font-family: $title-font;
+  margin: 20px;
+  font-size: 2.5em;
+}
+
+form {
+  height: auto;
+  @include flexAlignColumn();
+}
+
+label {
+  margin: 10px;
+}
+
+.num-passengers {
+  width: 190px;
+  height: 27px;
+  margin-bottom: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1em 0em;
+}
+
+.display-card {
+  height: 250px;
+  width: 300px;
+  margin: auto;
+  background-size: cover;
+  @include flexAlignColumn();
+}
+
+.card-image {
+  width: 75%;
+  height: auto;
+  border-radius: 20px;
+}
+

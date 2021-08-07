@@ -27,6 +27,7 @@ const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const infoBtn = document.getElementById('user-info-btn');
 const returnHomeFromTripsBtn = document.getElementById('return-home');
+const returnHomeFromAdvenBtn = document.getElementById('home-from-adventure');
 const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
 const dashboard = document.getElementById('the-dashboard');
 const myTripsPage = document.getElementById('trips-page');
@@ -38,11 +39,14 @@ window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
 adventureBtn.addEventListener('click', renderAdventurePage);
 infoBtn.addEventListener('click', renderUserInfoPage);
-returnHomeFromUserInfoBtn.addEventListener('click', function() {
-  renderHomePage(userInfoPage)
-});
 returnHomeFromTripsBtn.addEventListener('click', function() {
   renderHomePage(myTripsPage)
+});
+returnHomeFromAdvenBtn.addEventListener('click', function() {
+  renderHomePage(adventurePage);
+});
+returnHomeFromUserInfoBtn.addEventListener('click', function() {
+  renderHomePage(userInfoPage)
 });
 
 
@@ -139,6 +143,7 @@ function getDestinationInfo(tripInfo) {
 
 function renderAdventurePage() {
   domUpdates.toggleView(adventurePage, dashboard);
+  domUpdates.renderDestinationCards(catalog.destinations);
 }
 
 function renderHomePage(pageToHide) {
