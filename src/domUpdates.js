@@ -120,6 +120,18 @@ const domUpdates = {
         </button>
       </section>`;
     })
+  },
+
+  renderTripDetails(destinationInfo, tripCost) {
+    const tripDisplay = document.getElementById('selected-trip');
+    console.log(destinationInfo)
+    tripDisplay.innerHTML = `
+    <h3 class="new-trip-location">${destinationInfo.destination}</h3>
+    <img class="new-trip-img" 
+    src="${destinationInfo.image}" alt="${destinationInfo.alt}">
+    <p class="new-trip-cost-info">Excellent! For this trip, the cost
+      will be ${tripCost}, which already includes our 10% agency fee.</p>
+    `
   }
 }
 

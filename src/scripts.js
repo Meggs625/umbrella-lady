@@ -25,6 +25,8 @@ import './images/pexels-pixabay-274249.png';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
+const confirmBtn = document.getElementById('confirmation-btn');
+const returnToBrowsing = document.getElementById('continue-browsing-btn');
 const infoBtn = document.getElementById('user-info-btn');
 const startDate = document.getElementById('trip-start');
 const endDate = document.getElementById('trip-end');
@@ -42,10 +44,15 @@ let traveler, catalog, trips;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
-adventureBtn.addEventListener('click', renderAdventurePage);
+adventureBtn.addEventListener('click', function() {
+  renderAdventurePage(dashboard)
+});
 infoBtn.addEventListener('click', renderUserInfoPage);
 tripGrid.addEventListener('click', function(event) {
   gatherNewTripInfo(event)
+});
+returnToBrowsing.addEventListener('click', function() {
+  renderAdventurePage(newTripPage)
 });
 returnHomeFromTripsBtn.addEventListener('click', function() {
   renderHomePage(myTripsPage)
@@ -165,7 +172,7 @@ function gatherNewTripInfo(event) {
     destinationId, travelerTotal, tripDuration, catalog);
   const thisDestination = catalog.findDestinationById(destinationId);
   domUpdates.toggleView(newTripPage, adventurePage)
-  // domUpdates.renderTripDetails(thisDestination, tripCost)
+  domUpdates.renderTripDetails(thisDestination, tripCost)
 }
 
 function calculateDuration() {
@@ -176,8 +183,8 @@ function calculateDuration() {
   return returnDate.diff(depart, 'day');
 }
 
-function renderAdventurePage() {
-  domUpdates.toggleView(adventurePage, dashboard);
+function renderAdventurePage(hidePage) {
+  domUpdates.toggleView(adventurePage, hidePage);
   domUpdates.renderDestinationCards(catalog.destinations);
 }
 
