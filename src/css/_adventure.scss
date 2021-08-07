@@ -27,6 +27,7 @@ label {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1em 0em;
+  width: 100%;
 }
 
 .display-card {
@@ -35,10 +36,12 @@ label {
   margin: auto;
   background-size: cover;
   @include flexAlignColumn();
+  justify-content: space-around;
+  text-align: center;
 }
 
 .card-image {
-  width: 75%;
+  width: 70%;
   height: auto;
   border-radius: 20px;
 }
