@@ -8,21 +8,23 @@
 
 
 .welcome {
-  font-size: 2em;
+  font-size: 3em;
   margin: 30px;
   text-align: center;
+  font-family: $title-font;  
 }
 
 .welcome-pic {
   height: auto;
   width: 60%;
-  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: $image-shadow;
 }
 
 .tag-line {
   font-size: 1.25em;
-  margin-bottom: 40px;
-  font-family: $title-font;
+  margin: 60px 0px 20px 0px;
+  font-family: $title-font;  
 }
 
 .dashboard-buttons {
