@@ -10,6 +10,7 @@ import DestinationCatalog from './DestinationCatalog';
 import TripVault from './TripVault';
 import Trips from './Trips';
 import Glide from '@glidejs/glide';
+import dayjs from 'dayjs';
 
 
 
@@ -30,11 +31,12 @@ const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
 const dashboard = document.getElementById('the-dashboard');
 const myTripsPage = document.getElementById('trips-page');
 const userInfoPage = document.getElementById('user-info-page');
+const adventurePage = document.getElementById('adventure-page');
 let traveler, catalog, trips;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
-adventureBtn.addEventListener('click', sayHello);
+adventureBtn.addEventListener('click', renderAdventurePage);
 infoBtn.addEventListener('click', renderUserInfoPage);
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
@@ -75,10 +77,6 @@ function createTripsData(allTrips) {
 
 function createDestinationData(allDestinations) {
   catalog = new DestinationCatalog(allDestinations)
-}
-
-function sayHello() {
-  console.log(trips.trips)
 }
 
 function renderTripsPage() {
@@ -137,6 +135,10 @@ function getDestinationInfo(tripInfo) {
     const destinationInfo = catalog.findDestinationById(trip.destinationID)
     return [trip.date, destinationInfo.destination, destinationInfo.image, destinationInfo.alt];
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
+}
+
+function renderAdventurePage() {
+  domUpdates.toggleView(adventurePage, dashboard);
 }
 
 function renderHomePage(pageToHide) {
