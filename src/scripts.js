@@ -43,7 +43,7 @@ const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
-let traveler, catalog, trips, newTrip;
+let traveler, catalog, trips, newTrip, pendingSlides;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
@@ -66,9 +66,10 @@ returnHomeFromTripsBtn.addEventListener('click', function() {
 returnHomeFromAdvenBtn.addEventListener('click', function() {
   renderHomePage(adventurePage);
 });
-returnHomeFromConfirm.addEventListener('click', function() {
-  renderHomePage(confirmationPage)
-});
+// returnHomeFromConfirm.addEventListener('click', function() {
+//   renderHomePage(confirmationPage)
+// });
+returnHomeFromConfirm.addEventListener('click', refreshPage)
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
 });
@@ -113,6 +114,7 @@ function renderTripsPage() {
   renderPendingSlides();
   renderPastSlides();
   renderCurrentTrip();
+  // destrorySlides();
   
   new Glide('.glide', {
     type: 'carousel',
@@ -201,6 +203,11 @@ function calculateDuration(date2, date1) {
   const depart = dayjs(date2)
   const returnDate = dayjs(date1)
   return returnDate.diff(depart, 'day');
+}
+
+function refreshPage() { 
+  domUpdates.toggleView(dashboard, confirmationPage);
+  location.reload();
 }
 
 function displayConfirmation() {
