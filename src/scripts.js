@@ -26,6 +26,10 @@ import './images/pexels-pixabay-274249.png';
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const infoBtn = document.getElementById('user-info-btn');
+const startDate = document.getElementById('trip-start');
+const endDate = document.getElementById('trip-end');
+const numTravelers = document.getElementById('num-travelers');
+const tripGrid = document.getElementById('the-grid');
 const returnHomeFromTripsBtn = document.getElementById('return-home');
 const returnHomeFromAdvenBtn = document.getElementById('home-from-adventure');
 const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
@@ -39,6 +43,9 @@ window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
 adventureBtn.addEventListener('click', renderAdventurePage);
 infoBtn.addEventListener('click', renderUserInfoPage);
+tripGrid.addEventListener('click', function(event) {
+  gatherNewTripInfo(event)
+});
 returnHomeFromTripsBtn.addEventListener('click', function() {
   renderHomePage(myTripsPage)
 });
@@ -144,6 +151,27 @@ function getDestinationInfo(tripInfo) {
       destinationInfo.alt
     ];
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
+}
+
+function gatherNewTripInfo(event) {
+  // event.preventDefault();
+  if ((event.target.className === 'location-selection')) {
+    
+  }
+  console.log(event)
+  const tripDuration = calculateDuration();
+  //returns number
+  const travelerTotal = parseInt(numTravelers.value);
+  //travelertotal is now number
+  console.log(typeof(travelerTotal), typeof(tripDuration))
+}
+
+function calculateDuration() {
+  const date2 = dayjs(startDate.value).format('YYYY/MM/DD');
+  const depart = dayjs(date2)
+  const date1 = dayjs(endDate.value).format('YYYY/MM/DD');
+  const returnDate = dayjs(date1)
+  return returnDate.diff(depart, 'day');
 }
 
 function renderAdventurePage() {
