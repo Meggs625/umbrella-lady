@@ -13,10 +13,16 @@ button {
   box-shadow: -4px -6px 6px #7D7D7D;
   background-color: $accent-color;
   }
-
 }
 
 .glide__arrow {
   width: 50px;
   height: 20px;
+}
+
+.location-selection {
+  width: 100px;
+  height: 30px;
+  font-size: .75em;
+  padding-top: 5px;
 }
