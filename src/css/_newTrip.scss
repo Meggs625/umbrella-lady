@@ -1,0 +1,38 @@
+.new-trip {
+  @include flexAlignColumn();
+}
+
+.trip-choice {
+  @include flexAlignColumn();
+  width: 80%;
+  height: auto;
+  text-align: center;
+}
+
+.new-trip-location {
+  margin-top: 30px;
+}
+
+.new-trip-pic {
+  width: 70%;
+  height: auto;
+  border: 1px solid $primary-font;
+  box-shadow: $image-shadow;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.encouragement {
+  font-size: 2.5em;
+  font-family: $title-font;
+  margin: 20px;
+}
+
+.included-fee {
+  font-size: 0.5em;
+  margin: 60px;
+}
+
+.new-trip-cost-info {
+  margin-bottom: 20px;
+}

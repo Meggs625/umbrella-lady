@@ -1,6 +1,8 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 @import 'variables';
+@import 'newTrip';
 @import 'adventure';
+@import 'confirmation';
 @import 'normalize';
 @import 'foundation';
 @import 'myTrips';

@@ -22,29 +22,54 @@ import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';
+// import { addDevServerEntrypoints } from 'webpack-dev-server';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
+const confirmBtn = document.getElementById('confirmation-btn');
+const returnToBrowsingBtn = document.getElementById('continue-browsing-btn');
 const infoBtn = document.getElementById('user-info-btn');
+const startDate = document.getElementById('trip-start');
+const endDate = document.getElementById('trip-end');
+const numTravelers = document.getElementById('num-travelers');
+const tripGrid = document.getElementById('the-grid');
 const returnHomeFromTripsBtn = document.getElementById('return-home');
 const returnHomeFromAdvenBtn = document.getElementById('home-from-adventure');
+const returnHomeFromConfirm = document.getElementById('home-from-confirmation');
 const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
 const dashboard = document.getElementById('the-dashboard');
 const myTripsPage = document.getElementById('trips-page');
 const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
-let traveler, catalog, trips;
+const newTripPage = document.getElementById('new-trip-page');
+const confirmationPage = document.getElementById('confirmation-page');
+let traveler, catalog, trips, newTrip, pendingSlides;
 
 window.addEventListener('load', fetchData);
 myTripsBtn.addEventListener('click', renderTripsPage);
-adventureBtn.addEventListener('click', renderAdventurePage);
+adventureBtn.addEventListener('click', function() {
+  renderAdventurePage(dashboard)
+});
 infoBtn.addEventListener('click', renderUserInfoPage);
+tripGrid.addEventListener('click', function(event) {
+  gatherNewTripInfo(event)
+});
+returnToBrowsingBtn.addEventListener('click', function() {
+  renderAdventurePage(newTripPage)
+});
+confirmBtn.addEventListener('click', function() {
+  displayConfirmation(confirmationPage)
+});
 returnHomeFromTripsBtn.addEventListener('click', function() {
   renderHomePage(myTripsPage)
 });
 returnHomeFromAdvenBtn.addEventListener('click', function() {
   renderHomePage(adventurePage);
 });
+// returnHomeFromConfirm.addEventListener('click', function() {
+//   renderHomePage(confirmationPage)
+// });
+returnHomeFromConfirm.addEventListener('click', refreshPage)
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
 });
@@ -89,6 +114,7 @@ function renderTripsPage() {
   renderPendingSlides();
   renderPastSlides();
   renderCurrentTrip();
+  // destrorySlides();
   
   new Glide('.glide', {
     type: 'carousel',
@@ -137,12 +163,86 @@ function findFutureSlides() {
 function getDestinationInfo(tripInfo) {
   return tripInfo.map(trip => {
     const destinationInfo = catalog.findDestinationById(trip.destinationID)
-    return [trip.date, destinationInfo.destination, destinationInfo.image, destinationInfo.alt];
+    return [
+      trip.date, 
+      destinationInfo.destination, 
+      destinationInfo.image, 
+      destinationInfo.alt
+    ];
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
 }
 
-function renderAdventurePage() {
-  domUpdates.toggleView(adventurePage, dashboard);
+function gatherNewTripInfo(event) {
+  let destinationId;
+  if (event.target.className === 'location-selection') {
+    destinationId = parseInt(event.target.id);
+  }
+
+  const date2 = dayjs(startDate.value).format('YYYY/MM/DD');
+  const date1 = dayjs(endDate.value).format('YYYY/MM/DD');
+  const tripDuration = calculateDuration(date2, date1);
+  const travelerTotal = parseInt(numTravelers.value);
+  const tripCost = trips. calculateNewTripCost(
+    destinationId, travelerTotal, tripDuration, catalog);
+  const thisDestination = catalog.findDestinationById(destinationId);
+  newTrip = {
+    id: Date.now(),
+    userID: traveler.id,
+    destinationID: destinationId,
+    travelers: travelerTotal,
+    date: date2,
+    duration: tripDuration,
+    status: 'pending',
+    suggestedActivities: ['walking', 'relaxing']
+  }
+  domUpdates.toggleView(newTripPage, adventurePage)
+  domUpdates.renderTripDetails(thisDestination, tripCost)
+}
+
+function calculateDuration(date2, date1) {  
+  const depart = dayjs(date2)
+  const returnDate = dayjs(date1)
+  return returnDate.diff(depart, 'day');
+}
+
+function refreshPage() { 
+  domUpdates.toggleView(dashboard, confirmationPage);
+  location.reload();
+}
+
+function displayConfirmation() {
+
+  submitNewTrip(newTrip);
+  domUpdates.toggleView(confirmationPage, newTripPage);
+}
+
+function submitNewTrip(theNewTrip) {
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(theNewTrip)
+  })
+    .then(response => checkForErrors(response))
+    .then(newTripPost => addTrip(newTripPost))
+    .catch(error => console.log(error))
+}
+
+function checkForErrors(res) {
+  if (!res.ok) {
+    throw new Error("Please make sure to supply all needed information");
+  } else {
+    return res.json();
+  }
+}
+
+function addTrip(newTripPost) {
+  console.log(trips.trips)
+  trips.trips.push(newTripPost);
+  console.log(trips)
+}
+
+function renderAdventurePage(hidePage) {
+  domUpdates.toggleView(adventurePage, hidePage);
   domUpdates.renderDestinationCards(catalog.destinations);
 }
 
@@ -156,3 +256,4 @@ function renderUserInfoPage() {
   const tripCost = trips.calculateAnnualTripCosts('2020', catalog)
   domUpdates.renderUserInfo(traveler, trips.trips, tripCost)
 }
+

@@ -98,7 +98,7 @@ const domUpdates = {
 
   renderUserInfo(theUser, tripLog, annualTripCost) {
     const userDisplay = document.getElementById('info-display');
-    console.log(tripLog)
+    // console.log(tripLog)
     userDisplay.innerHTML = `
     <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
@@ -107,17 +107,34 @@ const domUpdates = {
   }, 
 
   renderDestinationCards(destinations) {
-    console.log(destinations)
+    const sortedLocations = destinations.sort((place1, place2) =>
+      place1.destination > place2.destination ? 1 : -1);
     const destinationDisplay = document.getElementById('the-grid');
     destinationDisplay.innerHTML = '';
-    destinations.forEach(item => {destinationDisplay.innerHTML += 
+    sortedLocations.forEach(item => {destinationDisplay.innerHTML += 
       `<section class="display-card" id="destination-card">
         <h3 class="card-heading">${item.destination} </h3>
-        <img class="card-image" src="${item.image}" alt="alt">
-        <button class="location-selection" id="${item.id}">Trips Details</button>
+        <img class="card-image" src="${item.image}" alt="${item.alt}">
+        <button class="location-selection" id="${item.id}">
+        Trips Details
+        </button>
       </section>`;
     })
+  },
+
+  renderTripDetails(destinationInfo, tripCost) {
+    const tripDisplay = document.getElementById('selected-trip');
+    console.log(destinationInfo)
+    tripDisplay.innerHTML = `
+    <h3 class="new-trip-location">${destinationInfo.destination}</h3>
+    <img class="new-trip-pic" 
+    src="${destinationInfo.image}" alt="${destinationInfo.alt}">
+    <h4 class="encouragement" id="small-encouragement">Excellent!<h4>
+    <p class="new-trip-cost-info" id="pending-cost-info">For this trip, 
+    the cost will be $${tripCost.toLocaleString('en-US')}*</p>
+    `
   }
+
 }
 
 

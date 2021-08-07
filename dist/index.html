@@ -84,17 +84,36 @@
     <h2 class="adventure-heading">Where To?</h2>
     <form>
       <label for="start">Start Date:</label>
-      <input class="start-date" id="trip-start" type="date" name="start" value="2020-01-22">
+      <input class="start-date" id="trip-start" type="date" name="start" required>
       <label for="end">End Date:</label>
-      <input class="end-date" id="trip-end" type="date" name="end" value="2020-01-22">
+      <input class="end-date" id="trip-end" type="date" name="end" required>
       <label for="passengers">Number of Passengers:</label>
-      <input class="num-passengers" id="num-travelers" type="text" name="passengers" placeholder="How many travelers?">
-      <button class="trip-submit" id="trip-submit-btn">Submit</button>
+      <input class="num-passengers" id="num-travelers" type="text" name="passengers" 
+        placeholder="How many travelers?" required>
+      <!-- <button class="trip-submit" id="trip-submit-btn">Submit</button> -->
     </form>
     <button id="home-from-adventure">Return Home</button>
     <section class="grid-container" id="the-grid">
 
     </section>
+  </section>
+
+  <section class="new-trip hidden" id="new-trip-page">
+    <h2 class="adventure-heading">Your Selection</h2>
+    <section class="trip-choice" id="selected-trip">
+
+    </section> 
+    <div class="new-trip-buttons">
+      <button id="confirmation-btn">Let's Do It!</button>
+      <button id="continue-browsing-btn">Return to Browsing</button>   
+    </div>   
+    <p class="included-fee">*10% agency fee included</p> 
+  </section>
+
+  <section class="confirmation hidden" id="confirmation-page">
+    <h2 class="adventure-heading">AMAZING!</h2>
+    <p class="pending-message">Your trip request has been sent to an agent for review.</p>
+    <button id="home-from-confirmation">Return Home</button>
   </section>
 
   <section class="user-info hidden" id="user-info-page">
