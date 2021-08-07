@@ -11,6 +11,7 @@ const domUpdates = {
   },
 
   renderTrips(tripList) {
+    console.log(tripList)
     const ul = document.getElementById(`past-slides`);
     if (tripList.length === 0) {
       this.renderPlaceHolder(ul)
@@ -19,7 +20,7 @@ const domUpdates = {
       tripList.forEach(trip => {
         card += `
       <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}"> 
+        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
           <p class="trip-tag">${trip[1]}</p>
           <p class="trip-tag">${trip[0]}</p>
@@ -39,7 +40,7 @@ const domUpdates = {
       pendingList.forEach(trip => {
         card += `
       <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}"> 
+        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
           <p class="trip-tag">${trip[1]}</p>
           <p class="trip-tag">${trip[0]}</p>
@@ -55,10 +56,10 @@ const domUpdates = {
     currentDisplayArea.classList.remove('hidden');
     const displayTrip = document.getElementById('display-current-trip');
     displayTrip.innerHTML = `
-    <img class="current-trip-img" src="${currentInfo[0][2]}"> 
+    <img class="current-trip-img" src="${currentInfo[2]}" alt="${currentInfo[3]}"> 
     <div class="trip-details">
-      <p class="trip-tag">${currentInfo[0][1]}</p>
-      <p class="trip-tag">${currentInfo[0][0]}</p>
+      <p class="trip-tag">${currentInfo[1]}</p>
+      <p class="trip-tag">${currentInfo[0]}</p>
     </div>`
   },
 
@@ -71,7 +72,7 @@ const domUpdates = {
       theList.forEach(trip => {
         card += `
       <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}"> 
+        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
           <p class="trip-tag">${trip[1]}</p>
           <p class="trip-tag">${trip[0]}</p>

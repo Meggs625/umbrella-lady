@@ -46,7 +46,7 @@ returnHomeFromTripsBtn.addEventListener('click', function() {
 
 function fetchData() {
   Promise.all([
-    getData('travelers/47'), 
+    getData('travelers/33'), 
     getData('trips'), 
     getData('destinations')
   ])
@@ -106,7 +106,7 @@ function renderTripsPage() {
 }
 
 function renderPastSlides() {
-  const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
+  const pastTrips = trips.findTripsByDate('2022/10/17', 'past');
   const pastTripInfo = getDestinationInfo(pastTrips);
   domUpdates.renderTrips(pastTripInfo);
 }
@@ -118,16 +118,16 @@ function renderPendingSlides() {
 }
 
 function renderCurrentTrip() {
-  const currentTrip = trips.findTripsByDate('2021/03/28', 'current');
+  const currentTrip = trips.findTripsByDate('2022/10/17', 'current');
   if (currentTrip.length !== 0) {
     const thisTrip = getDestinationInfo(currentTrip);
-    domUpdates.renderCurrentTrip(thisTrip);
+    domUpdates.renderCurrentTrip(thisTrip[0]);
   } 
   findFutureSlides();  
 }
 
 function findFutureSlides() {
-  const futureTrips = trips.findTripsByDate('2021/03/28', 'future');
+  const futureTrips = trips.findTripsByDate('2022/10/17', 'future');
   const futureTripInfo = getDestinationInfo(futureTrips);
   domUpdates.renderFutureTrips(futureTripInfo);
 }
@@ -135,7 +135,7 @@ function findFutureSlides() {
 function getDestinationInfo(tripInfo) {
   return tripInfo.map(trip => {
     const destinationInfo = catalog.findDestinationById(trip.destinationID)
-    return [trip.date, destinationInfo.destination, destinationInfo.image];
+    return [trip.date, destinationInfo.destination, destinationInfo.image, destinationInfo.alt];
   }).sort((trip1, trip2) => (trip1.date > trip2.date ? 1 : -1))
 }
 
