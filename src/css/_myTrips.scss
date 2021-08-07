@@ -1,9 +1,7 @@
 .my-trips {
   height: 92%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }
 
 .my-trips-header {
@@ -22,16 +20,12 @@
 .current {
   height: auto;
   width: 75%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
   justify-content: center;
 }
 
 .current-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }
 
 .upcoming-container,
@@ -44,16 +38,12 @@
 .glide_slide {
   height: auto;
   width: 75%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }
 
 .trip-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1em;
+  @include flexAlignColumn();
+  font-size: $mobile-size;
   margin-top: 20px;
 }
 
@@ -74,7 +64,5 @@
 
 .my-trips-home-button {
   height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }

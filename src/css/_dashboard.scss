@@ -1,9 +1,7 @@
 .traveler-dashboard {
   height: 92%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }
 
 
@@ -29,7 +27,5 @@
 
 .dashboard-buttons {
   height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexAlignColumn();
 }

@@ -1,6 +1,7 @@
 //Fonts
 $title-font: 'Style Script', cursive;
 $main-font: 'Poppins', sans-serif;
+$mobile-size: 1em;
 
 //Colors
 $primary-font: #4A1807;
@@ -12,7 +13,13 @@ $accent-color: #3DE4C9;
 //Shadow effects:
 $image-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
+//Mixins
 
+@mixin flexAlignColumn() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 // $primary-font: #1E2640;
 // $secondary-font: #F9BDC0;
