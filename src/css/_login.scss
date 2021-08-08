@@ -1,0 +1,47 @@
+.login-page {
+  height: 100vh;
+  width: 100vw;
+  @include flexAlignColumn();
+  justify-content: space-between;
+}
+
+.form-area {
+  @include flexAlignColumn();
+  width: 70%;
+  height: 90%;
+  box-shadow: $image-shadow;
+  margin-top: 30px;
+  border-radius: 20px;
+  background: $primary-font;
+}
+
+.login-welcome {
+  height: 40%;
+  width: auto;
+  @include flexAlignColumn();
+  margin-top: 50px;
+  text-align: center;
+  justify-content: space-between; 
+  color: $primary-background;
+  
+}
+
+span {
+  padding-top: 50px;
+  font-family: $title-font;
+  color: $accent-color;
+  font-size: 1.5em;
+}
+
+.login-label {
+  color: $primary-background;
+}
+
+footer {
+  height: 10%;
+  width: 80%;
+  // margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
