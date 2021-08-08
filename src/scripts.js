@@ -11,6 +11,7 @@ import TripVault from './TripVault';
 import Trips from './Trips';
 import Glide from '@glidejs/glide';
 import dayjs from 'dayjs';
+import MicroModal from 'micromodal';
 
 
 // An example of how you tell webpack to use an image 
@@ -28,6 +29,7 @@ import './images/icons8-twitter-30.png';
 const loginSubmitBtn = document.getElementById('user-login-submit-btn');
 const userNameField = document.getElementById('name-field');
 const passwordField = document.getElementById('password-field');
+const loginError = document.getElementById('login-error');
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
@@ -94,9 +96,8 @@ function validateUser(event) {
   if (isTraveler && isNum && isPassword) {
     fetchData(partTwo)
     renderHomePage(loginPage)
-    console.log('victory')
   } else {
-    console.log('try again')
+    loginError.MicroModal.init();
   }
 }
 

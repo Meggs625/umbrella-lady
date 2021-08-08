@@ -14,6 +14,9 @@
     <div class="form-area">
       <h1 class="login-welcome"> Welcome to <span>The Umbrella Lady</span></h1>
       <img class="umbrella-login" src="./images/icons8-umbrella-48 (1).png" alt="colorful umbrella icon">
+      <section class="login-error"> 
+
+      </section>
       <form>
         <label class="login-label" for="name-field">User Name:</label>
         <input class="user-name" id="name-field"type="text" pattern="[a-zA-Z0-9-]+"name="user" required>
@@ -151,6 +154,24 @@
     </ul>
     <button class="return-home" id="home-from-user">Return Home</button>
   </section>   
+
+  
+<div id="modal-1" aria-hidden="true">
+  <div tabindex="-1" data-micromodal-close>
+    <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+      <header>
+        <h2 id="modal-1-title">
+          Modal Title
+        </h2>       
+        <button aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <div id="modal-1-content">
+        Modal Content
+      </div>
+    </div>
+  </div>
+</div>
+
   <script src="bundle.js"></script>
 </body>
 </html>
