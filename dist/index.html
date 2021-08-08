@@ -82,15 +82,16 @@
 
   <section class="choose-adventure hidden" id="adventure-page">
     <h2 class="adventure-heading">Where To?</h2>
+    <h3 class="error-message" id="error-msg"></h3>
     <form>
       <label for="start">Start Date:</label>
-      <input class="start-date" id="trip-start" type="date" name="start">
+      <input class="start-date" id="trip-start" type="date" name="start" required>
       <label for="end">End Date:</label>
-      <input class="end-date" id="trip-end" type="date" name="end">
+      <input class="end-date" id="trip-end" type="date" name="end" required>
       <label for="passengers">Number of Passengers:</label>
       <input class="num-passengers" id="num-travelers" type="text" name="passengers" 
-        placeholder="How many travelers?">
-      <!-- <button class="trip-submit" id="trip-submit-btn">Submit</button> -->
+        placeholder="How many travelers?" required>
+      <button class="trip-submit" id="trip-submit-btn">Submit</button>
     </form>
     <button id="home-from-adventure">Return Home</button>
     <section class="grid-container" id="the-grid">
