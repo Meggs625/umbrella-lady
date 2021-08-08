@@ -1,10 +1,4 @@
 .confirmation {
-  height: 60%;
-  margin: 40px;
-  list-style-type: none;
-  text-align: center;
-  box-shadow: $image-shadow;
-  border-radius: 20px;
-  @include flexAlignColumn();
-  justify-content: center;
+  @include informationalCard();
+  @include flexAlignColumn();  
 }

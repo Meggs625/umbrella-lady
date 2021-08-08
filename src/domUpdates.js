@@ -102,8 +102,10 @@ const domUpdates = {
     userDisplay.innerHTML = `
     <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
-    <li class="user-descriptor">So far, you've booked ${tripLog.length} trips with us.</p>
-    <li class="user-descriptor">Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}.</p>`
+    <li class="user-descriptor">
+      So far, you've booked ${tripLog.length} trips with us.</p>
+    <li class="user-descriptor">
+      Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}.</p>`
   }, 
 
   renderDestinationCards(destinations) {
@@ -111,7 +113,8 @@ const domUpdates = {
       place1.destination > place2.destination ? 1 : -1);
     const destinationDisplay = document.getElementById('the-grid');
     destinationDisplay.innerHTML = '';
-    sortedLocations.forEach(item => {destinationDisplay.innerHTML += 
+    sortedLocations.forEach(item => {
+      destinationDisplay.innerHTML += 
       `<section class="display-card" id="destination-card">
         <h3 class="card-heading">${item.destination} </h3>
         <img class="card-image" src="${item.image}" alt="${item.alt}">

@@ -9,9 +9,9 @@ button {
   border-color: solid $primary-font 1px;
   cursor: pointer;
 
-  &:hover {
-  box-shadow: -4px -6px 6px #7D7D7D;
-  background-color: $accent-color;
+    &:hover {
+    box-shadow: -4px -6px 6px #7D7D7D;
+    background-color: $accent-color;
   }
 }
 

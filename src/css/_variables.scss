@@ -21,9 +21,18 @@ $image-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px
   align-items: center;
 }
 
-// $primary-font: #1E2640;
-// $secondary-font: #F9BDC0;
-// $primary-background: #f5e9b5;
-// $secondary-backgroud: #15B5B0;
-// $accent-color: #6DECE0
+@mixin informationalCard() {
+  height: 60%;
+  margin: 40px;
+  list-style-type: none;
+  text-align: center;
+  box-shadow: $image-shadow;
+  border-radius: 20px;
+  justify-content: center;
+}
 
+@mixin setHeightAndWidth() {
+  height: auto;
+  width: 75%;
+}
+ 
