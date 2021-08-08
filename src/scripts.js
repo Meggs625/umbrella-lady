@@ -88,6 +88,7 @@ function fetchData() {
     })
 }
 
+
 function createTravelerData(theTraveler) {
   traveler = new Traveler(theTraveler);
   domUpdates.renderWelcome(traveler.name)
