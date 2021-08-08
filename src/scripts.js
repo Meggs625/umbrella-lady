@@ -23,6 +23,9 @@ import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';
+import './images/icons8-facebook-30.png';
+import './images/icons8-instagram-logo-30.png';
+import './images/icons8-twitter-30.png';
 
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
@@ -217,7 +220,8 @@ function gatherNewTripInfo(event) {
   }
   const tripCost = trips.calculateNewTripCost(newTrip, catalog);
   const thisDestination = catalog.findDestinationById(destinationId);
-  domUpdates.toggleView(newTripPage, adventurePage)
+  domUpdates.toggleView(newTripPage, adventurePage);
+  window.scrollTo(0, 0);
   domUpdates.renderTripDetails(thisDestination, tripCost)
 }
 
@@ -240,10 +244,10 @@ function refreshPage() {
   location.reload();
 }
 
-function displayConfirmation() {
-  window.scrollTo(0, 0);
+function displayConfirmation() {  
   submitNewTrip(newTrip);
   domUpdates.toggleView(confirmationPage, newTripPage);
+  window.scrollTo(0, 0);
 }
 
 function submitNewTrip(theNewTrip) {

@@ -10,12 +10,31 @@
   <title>Umbrella Lady Travel ☂️</title>
 </head>
 <body>
-  <header>
+  <section class="login-page">
+    <h1 class="login-welcome"> Welcome to <span>The Umbrella Lady</span></h1>
+    <img class="umbrella-login" src="./images/icons8-umbrella-48 (1).png" alt="colorful umbrella icon">
+    <form>
+      <label for="name-field">User Name:</label>
+      <input class="user-name" id="name-field" type="text" name="user" required>
+      <label for="password-field">Password:</label>
+      <input class="password" id="password-field" type="text" name="pass" required>
+      <button type="submit" id="user-login-submit-btn">Submit</button>
+    </form>
+    <footer>
+      <a href="our-page-section" class="our-story"> Our Story </a>
+      <div>
+        <a class="facebook-icon" arai-label="future link to our Facebook page">
+          <img class="facebook" src="./image/icons8-facebook-30.png" alt="Facebook icon">
+        </a>
+      </div>
+    </footer>
+  </section>
+  <header class="hidden">
     <h1>Umbrella Lady</h1>
-    <img class="umbrella-logo" src="./images/icons8-umbrella-48 (1).png" alt="small umbrella">
+    <img class="umbrella-logo" src="./images/icons8-umbrella-48 (1).png" alt="small umbrella icon">
   </header>
 
-  <section class="traveler-dashboard" id="the-dashboard">
+  <section class="traveler-dashboard hidden" id="the-dashboard">
     <h2 class="welcome" id="welcome-msg">Welcome, User!</h2>
     <img class="welcome-pic" src="./images/pexels-pixabay-274249.png" alt="tropical pool side chairs and umbrella">
     <h3 class="tag-line">Let Us Find Your Next Paradise</h3>
@@ -84,14 +103,14 @@
     <h2 class="adventure-heading">Where To?</h2>
     <h3 class="error-message" id="error-msg"></h3>
     <form>
-      <label for="start">Start Date:</label>
+      <label for="trip-start">Start Date:</label>
       <input class="start-date" id="trip-start" type="date" name="start" required>
-      <label for="end">End Date:</label>
+      <label for="trip-end">End Date:</label>
       <input class="end-date" id="trip-end" type="date" name="end" required>
-      <label for="passengers">Number of Passengers:</label>
+      <label for="num-travelers">Number of Passengers:</label>
       <input class="num-passengers" id="num-travelers" type="text" name="passengers" 
         placeholder="How many travelers?" required>
-      <button class="trip-submit" id="trip-submit-btn">Submit</button>
+      <button type="submit" class="trip-submit" id="trip-submit-btn">Submit</button>
     </form>
     <button id="home-from-adventure">Return Home</button>
     <section class="grid-container" id="the-grid">
