@@ -10,34 +10,36 @@
   <title>Umbrella Lady Travel ☂️</title>
 </head>
 <body>
-  <section class="login-page">
-    <h1 class="login-welcome"> Welcome to <span>The Umbrella Lady</span></h1>
-    <img class="umbrella-login" src="./images/icons8-umbrella-48 (1).png" alt="colorful umbrella icon">
-    <form>
-      <label for="name-field">User Name:</label>
-      <input class="user-name" id="name-field" type="text" name="user" required>
-      <label for="password-field">Password:</label>
-      <input class="password" id="password-field" type="text" name="pass" required>
-      <button type="submit" id="user-login-submit-btn">Submit</button>
-    </form>
+  <section class="login-page" id="user-login-page">
+    <div class="form-area">
+      <h1 class="login-welcome"> Welcome to <span>The Umbrella Lady</span></h1>
+      <img class="umbrella-login" src="./images/icons8-umbrella-48 (1).png" alt="colorful umbrella icon">
+      <form>
+        <label class="login-label" for="name-field">User Name:</label>
+        <input class="user-name" id="name-field"type="text" pattern="[a-zA-Z0-9-]+"name="user" required>
+        <label class="login-label" for="password-field">Password:</label>
+        <input class="password" id="password-field" type="text" name="pass" required>
+        <button type="submit" id="user-login-submit-btn">Submit</button>
+      </form>
+    </div>
     <footer>
-      <a href="our-page-section" class="our-story"> Our Story </a>
+      <a class="our-story" id="our-story-link" aria-label="link to the our story page"> Our Story </a>
       <div>
-        <a class="facebook-icon" arai-label="future link to our Facebook page">
+        <a class="facebook-icon" aria-label="future link to our Facebook page">
           <img class="facebook" src="./images/icons8-facebook-30.png" alt="Facebook icon">
         </a>
-        <a class="twitter-icon" arai-label="future link to our Twitter">
+        <a class="twitter-icon" aria-label="future link to our Twitter">
           <img class="twitter" src="./images/icons8-twitter-30.png" alt="Twitter icon">
         </a>
-        <a class="instagram-icon" arai-label="future link to our Instagram page">
+        <a class="instagram-icon" aria-label="future link to our Instagram page">
           <img class="instagram" src="./images/icons8-instagram-logo-30.png" alt="Instagram icon">
         </a>
       </div>
     </footer>
   </section>
    
-  <header class="hidden">
-    <h1>Umbrella Lady</h1>
+  <header class="hidden" id="company-header">
+    <h1 class="company-name"> Umbrella Lady</h1>
     <img class="umbrella-logo" src="./images/icons8-umbrella-48 (1).png" alt="small umbrella icon">
   </header>
 

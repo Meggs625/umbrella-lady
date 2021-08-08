@@ -1,8 +1,11 @@
 const domUpdates = {
 
   toggleView(show, hide) {
+    const mainHeader = document.getElementById('company-header');
+    mainHeader.classList.remove('hidden');
     show.classList.remove('hidden');
     hide.classList.add('hidden');
+
   },
 
   renderWelcome(name) {
