@@ -33,7 +33,6 @@ const infoBtn = document.getElementById('user-info-btn');
 const startDate = document.getElementById('trip-start');
 const endDate = document.getElementById('trip-end');
 const numTravelers = document.getElementById('num-travelers');
-// const tripInput = document.querySelector('input');
 const tripGrid = document.getElementById('the-grid');
 const returnHomeFromTripsBtn = document.getElementById('return-home');
 const returnHomeFromAdvenBtn = document.getElementById('home-from-adventure');
@@ -78,7 +77,7 @@ returnHomeFromUserInfoBtn.addEventListener('click', function() {
 
 function fetchData() {
   Promise.all([
-    getData('travelers/17'), 
+    getData('travelers/7'), 
     getData('trips'), 
     getData('destinations')
   ])
@@ -242,6 +241,7 @@ function refreshPage() {
 }
 
 function displayConfirmation() {
+  window.scrollTo(0, 0);
   submitNewTrip(newTrip);
   domUpdates.toggleView(confirmationPage, newTripPage);
 }
