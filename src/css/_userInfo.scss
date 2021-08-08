@@ -12,7 +12,7 @@
 .user-info-display {
   @include flexAlignColumn();
   @include informationalCard();
-  
+  list-style-type: none;  
 }
 
 .user-descriptor {
