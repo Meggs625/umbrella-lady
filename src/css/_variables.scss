@@ -24,7 +24,6 @@ $image-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px
 @mixin informationalCard() {
   height: 60%;
   margin: 40px;
-  list-style-type: none;
   text-align: center;
   box-shadow: $image-shadow;
   border-radius: 20px;

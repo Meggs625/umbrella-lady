@@ -13,8 +13,6 @@ import Glide from '@glidejs/glide';
 import dayjs from 'dayjs';
 
 
-
-
 // An example of how you tell webpack to use an image 
 // (also need to link to it in the index.html)
 // import './images/turing-logo.png'
@@ -23,11 +21,17 @@ import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';
+import './images/icons8-facebook-30.png';
+import './images/icons8-instagram-logo-30.png';
+import './images/icons8-twitter-30.png';
 
+const loginSubmitBtn = document.getElementById('user-login-submit-btn');
+const userNameField = document.getElementById('name-field');
+const passwordField = document.getElementById('password-field');
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
-const submitBtn = document.getElementById('trip-submit-btn');
+const tripSubmitBtn = document.getElementById('trip-submit-btn');
 const returnToBrowsingBtn = document.getElementById('continue-browsing-btn');
 const infoBtn = document.getElementById('user-info-btn');
 const startDate = document.getElementById('trip-start');
@@ -38,6 +42,7 @@ const returnHomeFromTripsBtn = document.getElementById('return-home');
 const returnHomeFromAdvenBtn = document.getElementById('home-from-adventure');
 const returnHomeFromConfirm = document.getElementById('home-from-confirmation');
 const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
+const loginPage = document.getElementById('user-login-page');
 const dashboard = document.getElementById('the-dashboard');
 const myTripsPage = document.getElementById('trips-page');
 const userInfoPage = document.getElementById('user-info-page');
@@ -46,14 +51,17 @@ const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
 let traveler, catalog, vault, trips, currentTripInfo, newTrip;
 
-window.addEventListener('load', fetchData);
+// window.addEventListener('load', fetchData);
+loginSubmitBtn.addEventListener('click', function(event) {
+  validateUser(event)
+});
 myTripsBtn.addEventListener('click', renderTripsPage);
 infoBtn.addEventListener('click', renderUserInfoPage);
 returnHomeFromConfirm.addEventListener('click', refreshPage);
 adventureBtn.addEventListener('click', function() {
   renderAdventurePage(dashboard)
 });
-submitBtn.addEventListener('click', function(event) {
+tripSubmitBtn.addEventListener('click', function(event) {
   storeTripInfo(event)
 });
 tripGrid.addEventListener('click', function(event) {
@@ -74,10 +82,45 @@ returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
 });
 
+function validateUser(event) {
+  event.preventDefault();
+  const partOne = userNameField.value.substring(0, 8);
+  const partTwo = 
+  parseInt(userNameField.value.substring(8, userNameField.value.length));
+  const passwordValue = passwordField.value;
+  const isTraveler = checkForTravler(partOne);
+  const isNum = checkForNum(partTwo);
+  const isPassword = checkForPassword(passwordValue);
+  if (isTraveler && isNum && isPassword) {
+    fetchData(partTwo)
+    renderHomePage(loginPage)
+    console.log('victory')
+  } else {
+    console.log('try again')
+  }
+}
 
-function fetchData() {
+function checkForTravler(string) {
+  if (string === 'traveler') {
+    return true;
+  } 
+}
+
+function checkForNum(theNum) {
+  if (theNum <= 50 && theNum > 0) {
+    return true;
+  }
+}
+
+function checkForPassword(thePassword) {
+  if (thePassword === 'travel') {
+    return true;
+  }
+}
+
+function fetchData(id) {
   Promise.all([
-    getData('travelers/7'), 
+    getData(`travelers/${id}`), 
     getData('trips'), 
     getData('destinations')
   ])
@@ -217,7 +260,8 @@ function gatherNewTripInfo(event) {
   }
   const tripCost = trips.calculateNewTripCost(newTrip, catalog);
   const thisDestination = catalog.findDestinationById(destinationId);
-  domUpdates.toggleView(newTripPage, adventurePage)
+  domUpdates.toggleView(newTripPage, adventurePage);
+  window.scrollTo(0, 0);
   domUpdates.renderTripDetails(thisDestination, tripCost)
 }
 
@@ -240,10 +284,10 @@ function refreshPage() {
   location.reload();
 }
 
-function displayConfirmation() {
-  window.scrollTo(0, 0);
+function displayConfirmation() {  
   submitNewTrip(newTrip);
   domUpdates.toggleView(confirmationPage, newTripPage);
+  window.scrollTo(0, 0);
 }
 
 function submitNewTrip(theNewTrip) {
@@ -277,7 +321,7 @@ function renderAdventurePage(hidePage) {
 }
 
 function renderHomePage(pageToHide) {
-  window.scrollTo(0, 0);
+  window.scrollTo(0, 0);  
   domUpdates.toggleView(dashboard, pageToHide);  
 }
 
