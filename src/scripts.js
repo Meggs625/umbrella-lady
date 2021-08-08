@@ -321,8 +321,7 @@ function renderAdventurePage(hidePage) {
 }
 
 function renderHomePage(pageToHide) {
-  window.scrollTo(0, 0);
-  
+  window.scrollTo(0, 0);  
   domUpdates.toggleView(dashboard, pageToHide);  
 }
 
