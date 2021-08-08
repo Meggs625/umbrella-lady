@@ -36,3 +36,7 @@
 .new-trip-cost-info {
   margin-bottom: 20px;
 }
+
+.new-trip-buttons {
+  @include flexAlignColumn();
+}

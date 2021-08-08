@@ -18,8 +18,7 @@
 }
 
 .current {
-  height: auto;
-  width: 75%;
+  @include setHeightAndWidth();
   @include flexAlignColumn();
   justify-content: center;
 }
@@ -31,13 +30,11 @@
 .upcoming-container,
 .pending-container,
 .past-container {
-  height: auto;
-  width: 75%;  
+@include setHeightAndWidth();
 }
 
 .glide_slide {
-  height: auto;
-  width: 75%;
+  @include setHeightAndWidth();
   @include flexAlignColumn();
 }
 
@@ -49,8 +46,7 @@
 
 .slide-pics,
 .current-trip-img {
-  width: 75%;
-  height: auto;
+  @include setHeightAndWidth();
   border: 1px solid $primary-font;
   box-shadow: $image-shadow;
   border-radius: 20px;
