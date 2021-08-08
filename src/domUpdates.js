@@ -98,14 +98,13 @@ const domUpdates = {
 
   renderUserInfo(theUser, tripLog, annualTripCost) {
     const userDisplay = document.getElementById('info-display');
-    // console.log(tripLog)
     userDisplay.innerHTML = `
     <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
     <li class="user-descriptor">
       So far, you've booked ${tripLog.length} trips with us.</p>
     <li class="user-descriptor">
-      Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}.</p>`
+      Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}</p>`
   }, 
 
   renderDestinationCards(destinations) {
@@ -125,6 +124,11 @@ const domUpdates = {
     })
   },
 
+  removeDestinations() {
+    const destinationDisplay = document.getElementById('the-grid');
+    destinationDisplay.innerHTML = '';
+  },
+
   renderTripDetails(destinationInfo, tripCost) {
     const tripDisplay = document.getElementById('selected-trip');
     console.log(destinationInfo)
@@ -136,7 +140,17 @@ const domUpdates = {
     <p class="new-trip-cost-info" id="pending-cost-info">For this trip, 
     the cost will be $${tripCost.toLocaleString('en-US')}*</p>
     `
-  }
+  },
+
+  renderFormError() {
+    const error = document.getElementById('error-msg');
+    error.innerText = 
+      'Something went wrong. Please check your inputs and try again';
+    setTimeout(function() {
+      error.innerText = 
+      '';
+    }, 1000)
+  },
 
 }
 
