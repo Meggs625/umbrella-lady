@@ -145,15 +145,11 @@ const domUpdates = {
     `
   },
 
-  renderFormError() {
-    const error = document.getElementById('error-msg');
-    error.innerText = 
-      'Something went wrong. Please check your inputs and try again';
-    setTimeout(function() {
-      error.innerText = 
-      '';
-    }, 1000)
-  },
+  renderErrorMessage(modal) {
+    const message = document.getElementById('the-problem');
+    message.innerText = 'Your end date is before your start date.'
+    modal.show('modal-1');
+  }
 
 }
 

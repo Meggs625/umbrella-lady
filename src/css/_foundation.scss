@@ -17,6 +17,56 @@ body {
   background-color: $primary-background;
 }
 
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 500px;
+  max-height: 100vh;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal__header,
+.error-advice {
+  text-align: center;
+}
+
+.modal-content {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.style-button {
+  @include flexAlignColumn();
+}
+
+.modal-close {
+  margin: 15px;
+}
+
 .hidden {
   display: none !important;
 }
