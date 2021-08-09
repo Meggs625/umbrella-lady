@@ -24,11 +24,16 @@ import './images/pexels-pixabay-274249.png';
 import './images/icons8-facebook-30.png';
 import './images/icons8-instagram-logo-30.png';
 import './images/icons8-twitter-30.png';
+import './images/Mexico.png';
+import './images/Guiness.png';
+import './images/Mom-and-Dad.png';
+import './images/Sangria.png';
+import './images/Umbrella-Lady.png';
 
 const loginSubmitBtn = document.getElementById('user-login-submit-btn');
 const userNameField = document.getElementById('name-field');
 const passwordField = document.getElementById('password-field');
-const loginError = document.getElementById('login-error-area');
+const ourStoryLink = document.getElementById('our-story-link');
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
@@ -44,6 +49,7 @@ const returnHomeFromAdvenBtn = document.getElementById('home-from-adventure');
 const returnHomeFromConfirm = document.getElementById('home-from-confirmation');
 const returnHomeFromUserInfoBtn = document.getElementById('home-from-user');
 const loginPage = document.getElementById('user-login-page');
+const ourStoryPage = document.getElementById('our-story-page');
 const dashboard = document.getElementById('the-dashboard');
 const myTripsPage = document.getElementById('trips-page');
 const userInfoPage = document.getElementById('user-info-page');
@@ -53,6 +59,7 @@ const confirmationPage = document.getElementById('confirmation-page');
 let traveler, catalog, vault, trips, currentTripInfo, newTrip;
 
 window.addEventListener('load', loadModal);
+ourStoryLink.addEventListener('click', displayOurStory)
 loginSubmitBtn.addEventListener('click', function(event) {
   validateUser(event)
 });
@@ -319,6 +326,15 @@ function addTrip(newTripPost) {
   console.log(trips.trips)
   trips.trips.push(newTripPost);
   console.log(trips)
+}
+
+function displayOurStory() {
+  domUpdates.toggleView(ourStoryPage, loginPage);
+  new Glide('.story-glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1
+  }).mount();
 }
 
 function renderAdventurePage(hidePage) {
