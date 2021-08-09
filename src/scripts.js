@@ -57,11 +57,11 @@ const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
-let traveler, catalog, vault, trips, currentTripInfo, newTrip;
+let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;
   
 
 
-window.addEventListener('load', loadModal);
+window.addEventListener('load', loadModalAndDate);
 ourStoryLink.addEventListener('click', displayOurStory);
 returnToLoginFromStory.addEventListener('click', displayLogIn)
 loginSubmitBtn.addEventListener('click', function(event) {
@@ -94,8 +94,10 @@ returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
 });
 
-function loadModal() {
+function loadModalAndDate() {
   MicroModal.init();
+  let today = new Date().toLocaleDateString();
+  currentDate = dayjs(today).format('YYYY/MM/DD');
 }
 
 function validateUser(event) {
@@ -165,8 +167,8 @@ function createDestinationData(allDestinations) {
 function renderTripsPage() {
   window.scrollTo(0, 0);
   domUpdates.toggleView(myTripsPage, dashboard);  
-  findTripsSlides('2021/03/28', 'future', 'upcoming-slides');  
-  findTripsSlides('2021/03/28', 'past', 'past-slides');
+  findTripsSlides(currentDate, 'future', 'upcoming-slides');  
+  findTripsSlides(currentDate, 'past', 'past-slides');
   renderPendingSlides();
   renderCurrentTrip();
   new Glide('.upcoming-glide', {
@@ -194,13 +196,12 @@ function renderPendingSlides() {
 }
 
 function renderCurrentTrip() {
-
   const currentTrip = trips.trips.filter(trip => {
     const allTripDays = [];
     for (let i = 0; i < trip.duration; i++) {
       let newDate = dayjs(trip.date).add((i + 1), 'day').$d
       allTripDays.push(dayjs(newDate).format('YYYY/MM/DD'))}
-    if (allTripDays.includes('2020/07/04')) {
+    if (allTripDays.includes(currentDate)) {
       return trip;
     }
   })  
