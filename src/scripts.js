@@ -34,6 +34,7 @@ const loginSubmitBtn = document.getElementById('user-login-submit-btn');
 const userNameField = document.getElementById('name-field');
 const passwordField = document.getElementById('password-field');
 const ourStoryLink = document.getElementById('our-story-link');
+const returnToLoginFromStory = document.getElementById('return-to-login');
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
@@ -59,7 +60,8 @@ const confirmationPage = document.getElementById('confirmation-page');
 let traveler, catalog, vault, trips, currentTripInfo, newTrip;
 
 window.addEventListener('load', loadModal);
-ourStoryLink.addEventListener('click', displayOurStory)
+ourStoryLink.addEventListener('click', displayOurStory);
+returnToLoginFromStory.addEventListener('click', displayLogIn)
 loginSubmitBtn.addEventListener('click', function(event) {
   validateUser(event)
 });
@@ -330,11 +332,11 @@ function addTrip(newTripPost) {
 
 function displayOurStory() {
   domUpdates.toggleView(ourStoryPage, loginPage);
-  new Glide('.story-glide', {
-    type: 'carousel',
-    startAt: 0,
-    perView: 1
-  }).mount();
+}
+
+function displayLogIn() {
+  domUpdates.toggleView(loginPage, ourStoryPage);
+  domUpdates.hideHeader();
 }
 
 function renderAdventurePage(hidePage) {

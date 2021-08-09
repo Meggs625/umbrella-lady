@@ -5,7 +5,11 @@ const domUpdates = {
     mainHeader.classList.remove('hidden');
     show.classList.remove('hidden');
     hide.classList.add('hidden');
+  },
 
+  hideHeader() {
+    const mainHeader = document.getElementById('company-header');
+    mainHeader.classList.add('hidden');
   },
 
   renderWelcome(name) {

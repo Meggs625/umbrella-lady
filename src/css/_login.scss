@@ -52,5 +52,8 @@ a {
 
 .our-story-tag {
   text-decoration: underline;
+    &:hover {
+      color: $accent-color;
+    }
 }
 
