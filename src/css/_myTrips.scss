@@ -29,8 +29,7 @@
 
 .upcoming-container,
 .pending-container,
-.past-container,
-.story-container {
+.past-container {
 @include setHeightAndWidth();
 }
 
