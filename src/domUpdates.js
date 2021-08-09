@@ -17,14 +17,14 @@ const domUpdates = {
     welcomeMsg.innerText = `Welcome, ${name}!`
   },
 
-  renderPastTrips(pastList) {
-    const ul = document.getElementById(`past-slides`);
-    if (pastList.length === 0) {
+  renderTrips(tripList, glideElement) {
+    const ul = document.getElementById(glideElement);
+    if (tripList.length === 0) {
       this.renderPlaceHolder(ul)
-    } else {   
+    } else {       
       let card = '';
-      pastList.forEach(trip => {
-        card += `
+      tripList.forEach(trip => {
+        card +=  `
       <li class="glide_slide">
         <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
@@ -34,28 +34,33 @@ const domUpdates = {
       </li>`
       })
       ul.innerHTML = card;
+     
     }
   },
 
-  renderPendingTrips(pendingList) {
-    const ul = document.getElementById(`pending-slides`);
-    if (pendingList.length === 0) {
-      this.renderPlaceHolder(ul)
-    } else {      
-      let card = '';
-      pendingList.forEach(trip => {
-        card += `
-      <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-        <div class="trip-details">
-          <p class="trip-tag">${trip[1]}</p>
-          <p class="trip-tag">${trip[0]}</p>
-        </div>
-      </li>`
-      })
-      ul.innerHTML = card;
-    }
-  },
+  // renderTrips(tripList, glideElement) {
+  //   const ul = document.getElementById(glideElement);
+  //   if (tripList.length === 0) {
+  //     this.renderPlaceHolder(ul)
+  //   } else {       
+  //     // let card = '';
+  //     tripList.forEach(trip => {
+  //       let newListItem = document.createElement('li');
+  //       newListItem.innerHTML =  `
+  //     <li class="glide_slide">
+  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
+  //       <div class="trip-details">
+  //         <p class="trip-tag">${trip[1]}</p>
+  //         <p class="trip-tag">${trip[0]}</p>
+  //       </div>
+  //     </li>`
+  //       ul.appendChild(newListItem);
+  //     })
+  //   }
+  // },
+
+  // renderPastTrips(pastList) {
+
 
   renderCurrentTrip(currentInfo) {
     const currentDisplayArea = document.getElementById('current-trip-area');
@@ -68,26 +73,6 @@ const domUpdates = {
       <p class="trip-tag">${currentInfo[1]}</p>
       <p class="trip-tag">${currentInfo[0]}</p>
     </div>`
-  },
-
-  renderFutureTrips(theList) {
-    const ul = document.getElementById(`upcoming-slides`);
-    if (theList.length === 0) {
-      this.renderPlaceHolder(ul)
-    } else {   
-      let card = '';
-      theList.forEach(trip => {
-        card += `
-      <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-        <div class="trip-details">
-          <p class="trip-tag">${trip[1]}</p>
-          <p class="trip-tag">${trip[0]}</p>
-        </div>
-      </li>`
-      })
-      ul.innerHTML = card;
-    }
   },
 
   renderPlaceHolder(parentElement) {
@@ -148,6 +133,30 @@ const domUpdates = {
     the cost will be $${tripCost.toLocaleString('en-US')}*</p>
     `
   },
+
+  // appendNewPendingTrip(newTrip) {
+  //   const ul = document.getElementById('pending-slides');
+  //   let newListItem = document.createElement('li');
+  //   newListItem.innerHTML =  `
+  //     <li class="glide_slide">
+  //       <img class="slide-pics" src="${newTrip[2]}" alt="${newTrip[3]}"> 
+  //       <div class="trip-details">
+  //         <p class="trip-tag">${newTrip[1]}</p>
+  //         <p class="trip-tag">${newTrip[0]}</p>
+  //       </div>
+  //     </li>`
+  //   ul.appendChild(newListItem);
+  // },
+
+  // removeListItems() {
+  //   const ul = document.getElementById('pending-slides');
+  //   if (ul.childNodes.length > 0) {
+  //     console.log(ul.childNodes)
+  //     ul.childNodes.forEach(child => 
+  //       ul.removeChild(child))
+  //   }
+  //   // ul.childNodes.forEach(clone => clone.remove())
+  // },
 
   renderErrorMessage(modal) {
     const message = document.getElementById('the-problem');
