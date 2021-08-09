@@ -22,7 +22,7 @@
         <label class="login-label" for="name-field">User Name:</label>
         <input class="user-name" id="name-field"type="text" pattern="[a-zA-Z0-9-]+"name="user" required>
         <label class="login-label" for="password-field">Password:</label>
-        <input class="password" id="password-field" type="text" name="pass" required>
+        <input class="password" id="password-field" type="password" name="pass" required>
         <button type="submit" id="user-login-submit-btn" >Submit</button>
       </form>
     </div>
@@ -158,16 +158,18 @@
   
   <div class="modal" id="modal-1" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+      <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
         <header class="modal__header">
           <h2 id="modal-1-title">
             Something went wrong!
           </h2>       
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close>Close</button>
         </header>
-        <div id="modal-1-content">
-          Please check your inputs and try again.
-        </div>
+        <div class="model-content" id="modal-1-content">
+          <p class="error-advice">Please check your inputs and try again.</p>         
+        </div>   
+        <div class="style-button">
+          <button class="modal-close" aria-label="Close modal" data-micromodal-close>Close</button>
+        </div>     
       </div>
     </div>
   </div>

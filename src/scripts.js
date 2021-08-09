@@ -227,6 +227,7 @@ function storeTripInfo(event) {
   } else {
     event.preventDefault();
     domUpdates.renderErrorMessage(MicroModal);
+    
   }
 }
 

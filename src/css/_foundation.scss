@@ -37,7 +37,7 @@ body {
   align-items: center;
 }
 
-.modal__container {
+.modal-container {
   background-color: #fff;
   padding: 30px;
   max-width: 500px;
@@ -45,6 +45,26 @@ body {
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
+}
+
+.modal__header,
+.error-advice {
+  text-align: center;
+}
+
+.modal-content {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.style-button {
+  @include flexAlignColumn();
+}
+
+.modal-close {
+  margin: 15px;
 }
 
 .hidden {
