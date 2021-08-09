@@ -1,0 +1,50 @@
+
+.our-story {
+  height: 92%;;
+  width: 100%;
+  @include flexAlignColumn();  
+}
+
+
+.real-umbrella-lady {
+  font-family: $title-font;
+  margin: 20px;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.story-container {
+  height: auto;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.story-slide-pics {
+  height: auto;
+  width: 80%;
+  border: 1px solid $primary-font;
+  box-shadow: $image-shadow;
+  border-radius: 20px;
+}
+
+.the-story {
+  height: auto;
+  width: 80%;
+  font-size: $mobile-size;
+  box-shadow: $image-shadow;
+  border-radius: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.story-part {
+  margin-bottom: 10px;
+}
+
+.return-login-button {
+  height: auto;
+}
+
+
