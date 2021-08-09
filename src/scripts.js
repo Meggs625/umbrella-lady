@@ -163,17 +163,12 @@ function createDestinationData(allDestinations) {
 }
 
 function renderTripsPage() {
-  // console.log(trips)
   window.scrollTo(0, 0);
-  domUpdates.toggleView(myTripsPage, dashboard);
-  
+  domUpdates.toggleView(myTripsPage, dashboard);  
   findTripsSlides('2021/03/28', 'future', 'upcoming-slides');  
   findTripsSlides('2021/03/28', 'past', 'past-slides');
   renderPendingSlides();
   renderCurrentTrip();
-
-  // renderNewPending();
-  // renderPastSlides();
   new Glide('.upcoming-glide', {
     type: 'carousel',
     startAt: 0,
@@ -191,18 +186,11 @@ function renderTripsPage() {
   }).mount();
 }
 
-
-// function renderPastSlides() {
-//   const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
-//   const pastTripInfo = getDestinationInfo(pastTrips);
-//   domUpdates.renderTrips(pastTripInfo, 'past-slides');
-// }
-
 function renderPendingSlides() {
   const pendingTrips = trips.findTripsByStatus('pending')
   const pendingTripInfo = getDestinationInfo(pendingTrips);
   domUpdates.renderTrips(pendingTripInfo, 'pending-slides');
-  // domUpdates.renderPendingTrips(pendingTripInfo);
+  
 }
 
 function renderCurrentTrip() {
@@ -211,15 +199,7 @@ function renderCurrentTrip() {
     const thisTrip = getDestinationInfo(currentTrip);
     domUpdates.renderCurrentTrip(thisTrip[0]);
   } 
-  // findFutureSlides();  
 }
-
-// function findFutureSlides() {
-//   const futureTrips = trips.findTripsByDate('2021/03/28', 'future');
-//   const futureTripInfo = getDestinationInfo(futureTrips);
-//   domUpdates.renderTrips(futureTripInfo, 'upcoming-slides');
-//   // domUpdates.renderFutureTrips(futureTripInfo);
-// }
 
 function findTripsSlides(date, status, parentElement) {
   const tripsList = trips.findTripsByDate(date, status);
@@ -321,26 +301,10 @@ function refreshPage() {
 
 function displayConfirmation() {  
   submitNewTrip(newTrip);
-  // domUpdates.removeListItems();
-  // const newInfo = catalog.findDestinationById(newTrip.destinationID);
-  // const renderInfo = [newTrip.date, 
-  //   newInfo.destination,
-  //   newInfo.image,
-  //   newInfo.alt];
-  // domUpdates.appendNewPendingTrip(renderInfo);
   resetForm();
   domUpdates.toggleView(confirmationPage, newTripPage);
   window.scrollTo(0, 0);
 }
-
-// function renderNewPending() {
-//   const newInfo = catalog.findDestinationById(newTrip.destinationID);
-//   const renderInfo = [newTrip.date, 
-//     newInfo.destination,
-//     newInfo.image,
-//     newInfo.alt];
-//   domUpdates.appendNewPendingTrip(renderInfo);
-// }
 
 function submitNewTrip(theNewTrip) {
   fetch('http://localhost:3001/api/v1/trips', {

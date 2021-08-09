@@ -60,47 +60,7 @@ const domUpdates = {
   // },
 
   // renderPastTrips(pastList) {
-    
 
-
-  //   const ul = document.getElementById(`past-slides`);
-  //   if (pastList.length === 0) {
-  //     this.renderPlaceHolder(ul)
-  //   } else {   
-  //     let card = '';
-  //     pastList.forEach(trip => {
-  //       card += `
-  //     <li class="glide_slide">
-  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-  //       <div class="trip-details">
-  //         <p class="trip-tag">${trip[1]}</p>
-  //         <p class="trip-tag">${trip[0]}</p>
-  //       </div>
-  //     </li>`
-  //     })
-  //     ul.innerHTML = card;
-  //   }
-  // },
-
-  // renderPendingTrips(pendingList) {
-  //   const ul = document.getElementById(`pending-slides`);
-  //   if (pendingList.length === 0) {
-  //     this.renderPlaceHolder(ul)
-  //   } else {      
-  //     let card = '';
-  //     pendingList.forEach(trip => {
-  //       card += `
-  //     <li class="glide_slide">
-  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-  //       <div class="trip-details">
-  //         <p class="trip-tag">${trip[1]}</p>
-  //         <p class="trip-tag">${trip[0]}</p>
-  //       </div>
-  //     </li>`
-  //     })
-  //     ul.innerHTML = card;
-  //   }
-  // },
 
   renderCurrentTrip(currentInfo) {
     const currentDisplayArea = document.getElementById('current-trip-area');
@@ -114,26 +74,6 @@ const domUpdates = {
       <p class="trip-tag">${currentInfo[0]}</p>
     </div>`
   },
-
-  // renderFutureTrips(theList) {
-  //   const ul = document.getElementById(`upcoming-slides`);
-  //   if (theList.length === 0) {
-  //     this.renderPlaceHolder(ul)
-  //   } else {   
-  //     let card = '';
-  //     theList.forEach(trip => {
-  //       card += `
-  //     <li class="glide_slide">
-  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-  //       <div class="trip-details">
-  //         <p class="trip-tag">${trip[1]}</p>
-  //         <p class="trip-tag">${trip[0]}</p>
-  //       </div>
-  //     </li>`
-  //     })
-  //     ul.innerHTML = card;
-  //   }
-  // },
 
   renderPlaceHolder(parentElement) {
     parentElement.innerHTML = `
@@ -208,15 +148,15 @@ const domUpdates = {
   //   ul.appendChild(newListItem);
   // },
 
-  removeListItems() {
-    const ul = document.getElementById('pending-slides');
-    if (ul.childNodes.length > 0) {
-      console.log(ul.childNodes)
-      ul.childNodes.forEach(child => 
-        ul.removeChild(child))
-    }
-    // ul.childNodes.forEach(clone => clone.remove())
-  },
+  // removeListItems() {
+  //   const ul = document.getElementById('pending-slides');
+  //   if (ul.childNodes.length > 0) {
+  //     console.log(ul.childNodes)
+  //     ul.childNodes.forEach(child => 
+  //       ul.removeChild(child))
+  //   }
+  //   // ul.childNodes.forEach(clone => clone.remove())
+  // },
 
   renderErrorMessage(modal) {
     const message = document.getElementById('the-problem');
