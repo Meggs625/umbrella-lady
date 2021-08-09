@@ -1,0 +1,94 @@
+.choose-adventure {
+  @include flexAlignColumn();
+}
+
+.adventure-heading {
+  font-family: $title-font;
+  margin: 20px;
+  font-size: 2.5em;
+}
+
+form {
+  height: auto;
+  @include flexAlignColumn();
+}
+
+label {
+  margin: 10px;
+}
+
+.num-passengers {
+  width: 190px;
+  height: 27px;
+  margin-bottom: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1em 0em;
+  width: 100%;
+}
+
+.display-card {
+  height: 250px;
+  width: 300px;
+  margin: auto;
+  @include flexAlignColumn();
+  justify-content: space-around;
+  text-align: center;
+}
+
+.card-image {
+  @include setHeightAndWidth();
+  border-radius: 20px;
+}
+
+.new-trip {
+  @include flexAlignColumn();
+}
+
+.trip-choice {
+  @include flexAlignColumn();
+  width: 80%;
+  height: auto;
+  text-align: center;
+}
+
+.new-trip-location {
+  margin-top: 30px;
+}
+
+.new-trip-pic {
+  width: 70%;
+  height: auto;
+  border: 1px solid $primary-font;
+  box-shadow: $image-shadow;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.encouragement {
+  font-size: 2.5em;
+  font-family: $title-font;
+  margin: 20px;
+}
+
+.included-fee {
+  font-size: 0.5em;
+  margin: 60px;
+}
+
+.new-trip-cost-info {
+  margin-bottom: 20px;
+}
+
+.new-trip-buttons {
+  @include flexAlignColumn();
+}
+
+.confirmation {
+  @include informationalCard();
+  @include flexAlignColumn();  
+}
+
