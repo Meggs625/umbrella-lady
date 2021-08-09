@@ -155,6 +155,10 @@ const domUpdates = {
     }, 1000)
   },
 
+  renderErrorMessage(modal) {
+    modal.show('modal-1');
+  }
+
 }
 
 

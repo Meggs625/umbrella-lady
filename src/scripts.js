@@ -13,7 +13,6 @@ import Glide from '@glidejs/glide';
 import dayjs from 'dayjs';
 import MicroModal from 'micromodal';
 
-
 // An example of how you tell webpack to use an image 
 // (also need to link to it in the index.html)
 // import './images/turing-logo.png'
@@ -29,7 +28,7 @@ import './images/icons8-twitter-30.png';
 const loginSubmitBtn = document.getElementById('user-login-submit-btn');
 const userNameField = document.getElementById('name-field');
 const passwordField = document.getElementById('password-field');
-const loginError = document.getElementById('login-error');
+const loginError = document.getElementById('login-error-area');
 const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
@@ -53,7 +52,7 @@ const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
 let traveler, catalog, vault, trips, currentTripInfo, newTrip;
 
-// window.addEventListener('load', fetchData);
+window.addEventListener('load', loadModal);
 loginSubmitBtn.addEventListener('click', function(event) {
   validateUser(event)
 });
@@ -84,6 +83,10 @@ returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
 });
 
+function loadModal() {
+  MicroModal.init();
+}
+
 function validateUser(event) {
   event.preventDefault();
   const partOne = userNameField.value.substring(0, 8);
@@ -97,7 +100,7 @@ function validateUser(event) {
     fetchData(partTwo)
     renderHomePage(loginPage)
   } else {
-    loginError.MicroModal.init();
+    domUpdates.renderErrorMessage(MicroModal);
   }
 }
 
@@ -223,7 +226,7 @@ function storeTripInfo(event) {
     domUpdates.renderDestinationCards(catalog.destinations);
   } else {
     event.preventDefault();
-    domUpdates.renderFormError();
+    domUpdates.renderErrorMessage(MicroModal);
   }
 }
 
@@ -332,4 +335,5 @@ function renderUserInfoPage() {
   const tripCost = trips.calculateAnnualTripCosts('2020', catalog)
   domUpdates.renderUserInfo(traveler, trips.trips, tripCost)
 }
+
 
