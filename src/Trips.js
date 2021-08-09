@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 
 class Trips {
   constructor(travelerTrips) {
@@ -21,6 +22,10 @@ class Trips {
         trip.status !== 'pending')
     }
   }
+
+  // case 'current':
+  //     return this.trips.filter(trip => trip.date === searchDate &&
+  //       trip.status !== 'pending');
 
   calculateAnnualTripCosts(year, destinationRepo) {
     let sum = 0;

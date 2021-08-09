@@ -194,7 +194,16 @@ function renderPendingSlides() {
 }
 
 function renderCurrentTrip() {
-  const currentTrip = trips.findTripsByDate('2021/03/28', 'current');
+
+  const currentTrip = trips.trips.filter(trip => {
+    const allTripDays = [];
+    for (let i = 0; i < trip.duration; i++) {
+      let newDate = dayjs(trip.date).add((i + 1), 'day').$d
+      allTripDays.push(dayjs(newDate).format('YYYY/MM/DD'))}
+    if (allTripDays.includes('2020/07/04')) {
+      return trip;
+    }
+  })  
   if (currentTrip.length !== 0) {
     const thisTrip = getDestinationInfo(currentTrip);
     domUpdates.renderCurrentTrip(thisTrip[0]);
