@@ -35,7 +35,6 @@ const domUpdates = {
       </li>`
         ul.appendChild(newListItem);
       })
-      console.log(ul)
     }
   },
 
@@ -172,6 +171,20 @@ const domUpdates = {
     <p class="new-trip-cost-info" id="pending-cost-info">For this trip, 
     the cost will be $${tripCost.toLocaleString('en-US')}*</p>
     `
+  },
+
+  appendNewPendingTrip(newTrip) {
+    const ul = document.getElementById('pending-slides');
+    let newListItem = document.createElement('li');
+    newListItem.innerHTML =  `
+      <li class="glide_slide">
+        <img class="slide-pics" src="${newTrip[2]}" alt="${newTrip[3]}"> 
+        <div class="trip-details">
+          <p class="trip-tag">${newTrip[1]}</p>
+          <p class="trip-tag">${newTrip[0]}</p>
+        </div>
+      </li>`
+    ul.insertBefore(newListItem, null);
   },
 
   renderErrorMessage(modal) {

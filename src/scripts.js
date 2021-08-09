@@ -86,7 +86,7 @@ confirmBtn.addEventListener('click', function() {
 returnHomeFromTripsBtn.addEventListener('click', function() {
   renderHomePage(myTripsPage)
 });
-returnHomeFromAdvenBtn.addEventListener('click', resetForm);
+returnHomeFromAdvenBtn.addEventListener('click', displayHome);
 
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
@@ -164,10 +164,14 @@ function renderTripsPage() {
   console.log(trips)
   window.scrollTo(0, 0)
   domUpdates.toggleView(myTripsPage, dashboard);
-  findFutureSlides(); 
+  // findFutureSlides(); 
+  findTripsSlides('2021/03/28', 'future', 'upcoming-slides');  
+  findTripsSlides('2021/03/28', 'past', 'past-slides');
   renderPendingSlides();
-  renderPastSlides();
   renderCurrentTrip();
+  
+  // renderPastSlides();
+  
   
   new Glide('.upcoming-glide', {
     type: 'carousel',
@@ -186,11 +190,11 @@ function renderTripsPage() {
   }).mount();
 }
 
-function renderPastSlides() {
-  const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
-  const pastTripInfo = getDestinationInfo(pastTrips);
-  domUpdates.renderTrips(pastTripInfo, 'past-slides');
-}
+// function renderPastSlides() {
+//   const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
+//   const pastTripInfo = getDestinationInfo(pastTrips);
+//   domUpdates.renderTrips(pastTripInfo, 'past-slides');
+// }
 
 function renderPendingSlides() {
   const pendingTrips = trips.findTripsByStatus('pending')
@@ -208,11 +212,18 @@ function renderCurrentTrip() {
   // findFutureSlides();  
 }
 
-function findFutureSlides() {
-  const futureTrips = trips.findTripsByDate('2021/03/28', 'future');
-  const futureTripInfo = getDestinationInfo(futureTrips);
-  domUpdates.renderTrips(futureTripInfo, 'upcoming-slides');
-  // domUpdates.renderFutureTrips(futureTripInfo);
+// function findFutureSlides() {
+//   const futureTrips = trips.findTripsByDate('2021/03/28', 'future');
+//   const futureTripInfo = getDestinationInfo(futureTrips);
+//   domUpdates.renderTrips(futureTripInfo, 'upcoming-slides');
+//   // domUpdates.renderFutureTrips(futureTripInfo);
+// }
+
+function findTripsSlides(date, status, parentElement) {
+  const tripsList = trips.findTripsByDate(date, status);
+  console.log(tripsList)
+  const tripInfo = getDestinationInfo(tripsList);
+  domUpdates.renderTrips(tripInfo, parentElement);
 }
 
 function getDestinationInfo(tripInfo) {
@@ -289,21 +300,32 @@ function calculateDuration(date2, date1) {
   return returnDate.diff(depart, 'day');
 }
 
+function displayHome() {
+  resetForm();
+  renderHomePage(adventurePage);
+}
+
 function resetForm() {
   startDate.value = '';
   endDate.value = '';
   numTravelers.value = '';
-  domUpdates.removeDestinations();
-  renderHomePage(adventurePage);
+  domUpdates.removeDestinations();  
 }
 
 function refreshPage() { 
   domUpdates.toggleView(dashboard, confirmationPage);
-  location.reload();
+  // location.reload();
 }
 
 function displayConfirmation() {  
   submitNewTrip(newTrip);
+  const newInfo = catalog.findDestinationById(newTrip.destinationID);
+  const renderInfo = [newTrip.date, 
+    newInfo.destination,
+    newInfo.image,
+    newInfo.alt];
+  domUpdates.appendNewPendingTrip(renderInfo);
+  resetForm();
   domUpdates.toggleView(confirmationPage, newTripPage);
   window.scrollTo(0, 0);
 }
@@ -328,8 +350,9 @@ function checkForErrors(res) {
 }
 
 function addTrip(newTripPost) {
+  console.log(newTripPost.newTrip)
   console.log(trips.trips)
-  trips.trips.push(newTripPost);
+  trips.trips.push(newTripPost.newTrip);
   console.log(trips)
 }
 
