@@ -256,7 +256,9 @@ function validateDuration(duration) {
 }
 
 function checkFields() {
-  if (startDate.value !== '' && endDate.value !== '' && numTravelers.value) {
+  let numPassengers = parseInt(numTravelers.value);
+  if (startDate.value !== '' && endDate.value !== '' && 
+  Number.isInteger(numPassengers)) {
     return true;
   } else {
     return false;
@@ -364,7 +366,7 @@ function renderHomePage(pageToHide) {
 function renderUserInfoPage() {
   window.scrollTo(0, 0);
   domUpdates.toggleView(userInfoPage, dashboard);
-  const tripCost = trips.calculateAnnualTripCosts('2020', catalog)
+  const tripCost = trips.calculateAnnualTripCosts('2021', catalog)
   domUpdates.renderUserInfo(traveler, trips.trips, tripCost)
 }
 

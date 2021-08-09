@@ -90,13 +90,14 @@ const domUpdates = {
 
   renderUserInfo(theUser, tripLog, annualTripCost) {
     const userDisplay = document.getElementById('info-display');
+    const currency = this.renderCurrency(annualTripCost);
     userDisplay.innerHTML = `
     <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
     <li class="user-descriptor">
       So far, you've booked ${tripLog.length} trips with us.</p>
     <li class="user-descriptor">
-      Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}</p>`
+      Total Trip Cost: ${currency}</p>`  
   }, 
 
   renderDestinationCards(destinations) {
@@ -123,6 +124,7 @@ const domUpdates = {
 
   renderTripDetails(destinationInfo, tripCost) {
     const tripDisplay = document.getElementById('selected-trip');
+    const costInCurrency = this.renderCurrency(tripCost)
     console.log(destinationInfo)
     tripDisplay.innerHTML = `
     <h3 class="new-trip-location">${destinationInfo.destination}</h3>
@@ -130,7 +132,7 @@ const domUpdates = {
     src="${destinationInfo.image}" alt="${destinationInfo.alt}">
     <h4 class="encouragement" id="small-encouragement">Excellent!<h4>
     <p class="new-trip-cost-info" id="pending-cost-info">For this trip, 
-    the cost will be $${tripCost.toLocaleString('en-US')}*</p>
+    the cost will be ${costInCurrency}*</p>
     `
   },
 
@@ -157,6 +159,10 @@ const domUpdates = {
   //   }
   //   // ul.childNodes.forEach(clone => clone.remove())
   // },
+
+  renderCurrency(cost) {
+    return cost.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+  },
 
   renderErrorMessage(modal) {
     const message = document.getElementById('the-problem');
