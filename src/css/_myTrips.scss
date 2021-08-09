@@ -33,9 +33,17 @@
 @include setHeightAndWidth();
 }
 
-.glide_slide {
+.glide_slides {
   @include setHeightAndWidth();
   @include flexAlignColumn();
+  margin: 0px;
+}
+
+.glide_slide {
+  height:auto;
+  width: auto;
+  @include flexAlignColumn();
+  margin: 0px;
 }
 
 .trip-details {

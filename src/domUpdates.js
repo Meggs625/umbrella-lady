@@ -17,14 +17,15 @@ const domUpdates = {
     welcomeMsg.innerText = `Welcome, ${name}!`
   },
 
-  renderPastTrips(pastList) {
-    const ul = document.getElementById(`past-slides`);
-    if (pastList.length === 0) {
+  renderTrips(tripList, glideElement) {
+    const ul = document.getElementById(glideElement);
+    if (tripList.length === 0) {
       this.renderPlaceHolder(ul)
-    } else {   
-      let card = '';
-      pastList.forEach(trip => {
-        card += `
+    } else {       
+      // let card = '';
+      tripList.forEach(trip => {
+        let newListItem = document.createElement('li');
+        newListItem.innerHTML =  `
       <li class="glide_slide">
         <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
         <div class="trip-details">
@@ -32,30 +33,54 @@ const domUpdates = {
           <p class="trip-tag">${trip[0]}</p>
         </div>
       </li>`
+        ul.appendChild(newListItem);
       })
-      ul.innerHTML = card;
+      console.log(ul)
     }
   },
 
-  renderPendingTrips(pendingList) {
-    const ul = document.getElementById(`pending-slides`);
-    if (pendingList.length === 0) {
-      this.renderPlaceHolder(ul)
-    } else {      
-      let card = '';
-      pendingList.forEach(trip => {
-        card += `
-      <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-        <div class="trip-details">
-          <p class="trip-tag">${trip[1]}</p>
-          <p class="trip-tag">${trip[0]}</p>
-        </div>
-      </li>`
-      })
-      ul.innerHTML = card;
-    }
-  },
+  // renderPastTrips(pastList) {
+    
+
+
+  //   const ul = document.getElementById(`past-slides`);
+  //   if (pastList.length === 0) {
+  //     this.renderPlaceHolder(ul)
+  //   } else {   
+  //     let card = '';
+  //     pastList.forEach(trip => {
+  //       card += `
+  //     <li class="glide_slide">
+  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
+  //       <div class="trip-details">
+  //         <p class="trip-tag">${trip[1]}</p>
+  //         <p class="trip-tag">${trip[0]}</p>
+  //       </div>
+  //     </li>`
+  //     })
+  //     ul.innerHTML = card;
+  //   }
+  // },
+
+  // renderPendingTrips(pendingList) {
+  //   const ul = document.getElementById(`pending-slides`);
+  //   if (pendingList.length === 0) {
+  //     this.renderPlaceHolder(ul)
+  //   } else {      
+  //     let card = '';
+  //     pendingList.forEach(trip => {
+  //       card += `
+  //     <li class="glide_slide">
+  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
+  //       <div class="trip-details">
+  //         <p class="trip-tag">${trip[1]}</p>
+  //         <p class="trip-tag">${trip[0]}</p>
+  //       </div>
+  //     </li>`
+  //     })
+  //     ul.innerHTML = card;
+  //   }
+  // },
 
   renderCurrentTrip(currentInfo) {
     const currentDisplayArea = document.getElementById('current-trip-area');
@@ -70,25 +95,25 @@ const domUpdates = {
     </div>`
   },
 
-  renderFutureTrips(theList) {
-    const ul = document.getElementById(`upcoming-slides`);
-    if (theList.length === 0) {
-      this.renderPlaceHolder(ul)
-    } else {   
-      let card = '';
-      theList.forEach(trip => {
-        card += `
-      <li class="glide_slide">
-        <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-        <div class="trip-details">
-          <p class="trip-tag">${trip[1]}</p>
-          <p class="trip-tag">${trip[0]}</p>
-        </div>
-      </li>`
-      })
-      ul.innerHTML = card;
-    }
-  },
+  // renderFutureTrips(theList) {
+  //   const ul = document.getElementById(`upcoming-slides`);
+  //   if (theList.length === 0) {
+  //     this.renderPlaceHolder(ul)
+  //   } else {   
+  //     let card = '';
+  //     theList.forEach(trip => {
+  //       card += `
+  //     <li class="glide_slide">
+  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
+  //       <div class="trip-details">
+  //         <p class="trip-tag">${trip[1]}</p>
+  //         <p class="trip-tag">${trip[0]}</p>
+  //       </div>
+  //     </li>`
+  //     })
+  //     ul.innerHTML = card;
+  //   }
+  // },
 
   renderPlaceHolder(parentElement) {
     parentElement.innerHTML = `

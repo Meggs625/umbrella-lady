@@ -164,11 +164,12 @@ function renderTripsPage() {
   console.log(trips)
   window.scrollTo(0, 0)
   domUpdates.toggleView(myTripsPage, dashboard);
+  findFutureSlides(); 
   renderPendingSlides();
   renderPastSlides();
   renderCurrentTrip();
   
-  new Glide('.glide', {
+  new Glide('.upcoming-glide', {
     type: 'carousel',
     startAt: 0,
     perView: 1
@@ -188,13 +189,14 @@ function renderTripsPage() {
 function renderPastSlides() {
   const pastTrips = trips.findTripsByDate('2021/03/28', 'past');
   const pastTripInfo = getDestinationInfo(pastTrips);
-  domUpdates.renderPastTrips(pastTripInfo);
+  domUpdates.renderTrips(pastTripInfo, 'past-slides');
 }
 
 function renderPendingSlides() {
   const pendingTrips = trips.findTripsByStatus('pending')
   const pendingTripInfo = getDestinationInfo(pendingTrips);
-  domUpdates.renderPendingTrips(pendingTripInfo);
+  domUpdates.renderTrips(pendingTripInfo, 'pending-slides');
+  // domUpdates.renderPendingTrips(pendingTripInfo);
 }
 
 function renderCurrentTrip() {
@@ -203,13 +205,14 @@ function renderCurrentTrip() {
     const thisTrip = getDestinationInfo(currentTrip);
     domUpdates.renderCurrentTrip(thisTrip[0]);
   } 
-  findFutureSlides();  
+  // findFutureSlides();  
 }
 
 function findFutureSlides() {
   const futureTrips = trips.findTripsByDate('2021/03/28', 'future');
   const futureTripInfo = getDestinationInfo(futureTrips);
-  domUpdates.renderFutureTrips(futureTripInfo);
+  domUpdates.renderTrips(futureTripInfo, 'upcoming-slides');
+  // domUpdates.renderFutureTrips(futureTripInfo);
 }
 
 function getDestinationInfo(tripInfo) {
