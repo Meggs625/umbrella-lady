@@ -101,6 +101,7 @@ function validateUser(event) {
     renderHomePage(loginPage)
   } else {
     domUpdates.renderErrorMessage(MicroModal);
+    passwordField.value = '';
   }
 }
 
@@ -227,7 +228,7 @@ function storeTripInfo(event) {
   } else {
     event.preventDefault();
     domUpdates.renderErrorMessage(MicroModal);
-    
+
   }
 }
 
