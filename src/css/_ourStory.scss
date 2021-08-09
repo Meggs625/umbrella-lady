@@ -1,7 +1,7 @@
 
 .our-story {
-  height: 100vh;
-  width: 100vw;
+  height: 92%;;
+  width: 100%;
   @include flexAlignColumn();  
 }
 
@@ -14,16 +14,16 @@
 }
 
 .story-container {
-  height: 50%;
-  width: auto;
+  height: auto;
+  width: 100%;
   padding: 20px;
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .story-slide-pics {
-  height: 80%;
-  width: auto;
+  height: auto;
+  width: 80%;
   border: 1px solid $primary-font;
   box-shadow: $image-shadow;
   border-radius: 20px;
@@ -37,6 +37,14 @@
   border-radius: 20px;
   justify-content: center;
   padding: 20px;
+}
+
+.story-part {
+  margin-bottom: 10px;
+}
+
+.return-login-button {
+  height: auto;
 }
 
 
