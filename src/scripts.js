@@ -39,6 +39,7 @@ const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
 const tripSubmitBtn = document.getElementById('trip-submit-btn');
+const signOutBtn = document.getElementById('sign-out-btn');
 const returnToBrowsingBtn = document.getElementById('continue-browsing-btn');
 const infoBtn = document.getElementById('user-info-btn');
 const startDate = document.getElementById('trip-start');
@@ -63,7 +64,8 @@ let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;
 
 window.addEventListener('load', loadModalAndDate);
 ourStoryLink.addEventListener('click', displayOurStory);
-returnToLoginFromStory.addEventListener('click', displayLogIn)
+returnToLoginFromStory.addEventListener('click', displayLogIn);
+signOutBtn.addEventListener('click', userSignOut);
 loginSubmitBtn.addEventListener('click', function(event) {
   validateUser(event)
 });
@@ -112,9 +114,11 @@ function validateUser(event) {
   if (isTraveler && isNum && isPassword) {
     fetchData(partTwo)
     renderHomePage(loginPage)
-  } else {
-    domUpdates.renderErrorMessage(MicroModal);
-    passwordField.value = '';
+  } else if (!isPassword) {
+    domUpdates.renderErrorMessage(MicroModal, 'password');
+    passwordField.value = '';    
+  } else if (!isTraveler || !isNum) {
+    domUpdates.renderErrorMessage(MicroModal, 'username');
   }
 }
 
@@ -308,7 +312,6 @@ function resetForm() {
 
 function refreshPage() { 
   domUpdates.toggleView(dashboard, confirmationPage);
-  // location.reload();
 }
 
 function displayConfirmation() {  
@@ -368,6 +371,10 @@ function renderUserInfoPage() {
   domUpdates.toggleView(userInfoPage, dashboard);
   const tripCost = trips.calculateAnnualTripCosts('2021', catalog)
   domUpdates.renderUserInfo(traveler, trips.trips, tripCost)
+}
+
+function userSignOut() {
+  location.reload();
 }
 
 

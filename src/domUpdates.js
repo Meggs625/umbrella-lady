@@ -126,10 +126,20 @@ const domUpdates = {
     return cost.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
   },
 
-  renderErrorMessage(modal) {
+  renderErrorMessage(modal, problem) {
     const message = document.getElementById('the-problem');
-    message.innerText = 'Your end date is before your start date.'
-    modal.show('modal-1');
+    switch (problem) {
+    case 'password':
+      message.innerText = 'Incorrect password. Please try again.'
+      modal.show('modal-1');
+      break;
+    case 'username':
+      message.innerText = 'Incorrect username. Please try again.'
+      modal.show('modal-1');
+      break;
+    }
+    // message.innerText = 'Your end date is before your start date.'
+    // modal.show('modal-1');
   }
 
 }
