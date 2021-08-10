@@ -1,4 +1,73 @@
-# Webpack Starter Kit
+# The Umbrella Lady
+  Turing School of Software and Design Mod 2 Final Project
+
+## Table of Contents
+- [Abstract](#abstract)
+- [Technologies](#technologies)
+- [How to Use Application](#how-to-use-application)
+- [Illustrations](#illustrations)
+- [Install and Setup](#install-and-set-up)
+- [Contributors](#contributors)
+- [Wins](#wins)
+- [Challenges and Improvements](#challenges-and-improvements)
+- [Project Specs](#project-specs)
+
+## Abstract
+	Being the final project, this was an opportunity to apply everything that we've learned in the last 5 weeks and then some. We needed to be able to utilize API fetch calls to manage our data, implement SASS for styling, apply third party packages, as well as dabble with a user login page for the first time. 
+  All of this was to be used to create an app to track your travels as well as allow you to create a new trip plan. 
+
+## Technologies
+  * Javascript
+  * HTML
+  * Sass
+  * node
+  * Webpack
+  * eslint
+  * Mocha/Chai for testing
+  * Glide.js
+  * Day.js
+  * MicroModal
+  * Miro for wireframing
+
+## How to Use Application
+
+  The page you will see is the user login page where identity will be verified with username and password. Once that has been successfully entered, the user will see a dashboard where they have different options for the information they would like displayed next:
+
+  ![recording](https://user-images.githubusercontent.com/78767067/128924263-a76169c9-349a-4747-8f46-f6d75e2b2f88.gif)
+
+  Selecting the "My Trips" button will display the user's trips: current, upcoming, pending approval by an agent, and past trips. The user may scroll through all of these sections if there is more than one trip to display. 
+
+  ![recording (1)](https://user-images.githubusercontent.com/78767067/128924703-78f24d0d-b506-42c9-a2f4-81d8398c4f83.gif)
+
+  If the user is up for planning a new adventure, they can select the "Choose My Next Adventure" button to be taken to a form. Once all aspects of the form have been properly filled out, the destination options will be revealed. The user can select the "View Details" button under their desired selection and be taken to a page that will break down the cost of that trip including flight and lodging costs. Should they wish to continue with this selection, they can select the "Let's Do It!" button to book their trip. This new trip will be in a pending status and display as such until an agent has the opportunity to review. 
+  If the user would like to continue browsing the destination options, they can select that button as well. 
+
+  ![recording (3)](https://user-images.githubusercontent.com/78767067/128930159-de4bce34-94c2-4f1c-959f-55e6112e8d13.gif)
+
+  In addition, there is a section where the user can see their total number of trips book with The Umbrella Lady as well as how much they have spent for the calender year of 2021 thus far(pending trip costs are also added to this total).
+
+  ![recording (4)](https://user-images.githubusercontent.com/78767067/128931827-0f1b686c-e7aa-4817-86e4-76172633ff8f.gif)
+
+
+## Illustrations
+  This application is fully responsive to all screen sizes across all pages.
+
+![Screen Shot 2021-08-10 at 2 42 30 PM](https://user-images.githubusercontent.com/78767067/128932328-bcde84ce-7c17-4971-934e-b861b8b7d6b3.png)
+
+![Screen Shot 2021-08-10 at 2 43 24 PM](https://user-images.githubusercontent.com/78767067/128932338-30ef945a-cfb2-45ae-9ed9-d0761fc6135e.png)
+
+![Screen Shot 2021-08-10 at 2 42 58 PM](https://user-images.githubusercontent.com/78767067/128932373-81817869-a730-4b86-8f99-c9e96c02c477.png)
+
+![Screen Shot 2021-08-10 at 2 43 09 PM](https://user-images.githubusercontent.com/78767067/128932382-7118ea93-685a-42b2-bc0b-3365496d2a93.png)
+
+
+## Install and Setup
+
+1. Clone this repo to your local machine in the directory of your choice. 
+2. Run `npm install`
+3. Clone the local API to your machine in a different terminal tab from this [site](https://github.com/turingschool-examples/travel-tracker-api)
+4. Run `npm install` on the API and then `npm start`
+5. Once the API is running, run `npm start` in this repo's cloned directory
 
 ## Clone This Repo
 
@@ -10,96 +79,33 @@ That's right, _clone_ not fork. You will use this repo multiple times, but you c
 1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
 1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Contributors
+- [Megan Mcbride](https://github.com/Meggs625)
+- [Janika Hortizuela](https://github.com/jhortizu01)
+- [Hannah Hudson](https://github.com/hannahhch) (as Project Manager)
 
-## Setup
+## Wins
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+This was a daunting project with lots of bumps along the way, but there were also a lot of wins. 
+The first, was my attempt at working with Sass. We didn't have the opportunity to get there in my group project, and so this was the first time that I dove in. Although there is definitely room for improvement, I did enjoy the clean set up it provided. 
+The second win: finally getting the Glide.js package to function as I was hoping. There was a lot of trial and error with this feature and I stubbornly sunk hours into getting it. However, once it worked, it was exactly what I had hoped for!
+The last win was figuring out a way to have the user login work for all users. I really enjoyed playing around with what logic to use to allow for this and what errors might pop up and need managed. 
 
-Then install the library dependencies. Run:
+## Challenges and Improvements
 
-```bash
-npm install
-```
+As mentioned above, there were a lot of bumps along this project road. 
+One challenge I ran into was the implementation of the third party packages. Both Glide.js and MicroModal took some time to figure out and use within the project as I had intended. It took much longer than I had originally planned to figure out how to use them and then style them as well. Although this did make the victory sweeter when they worked - it was a huge challenge with the project that almost made me change my plan altogether. 
+Another challenge included the POST request. Unfortunately, I continually ran into struggles when trying to pass the information to be posted to the request if I housed it in the apiCalls file as I had wanted. I worked through some trouble shooting, but ultimately left it in my scripts file. Given more time, I would like to get this moved to the apiCalls file and working smoothly. I would also like a little more time and understanding of the best way to create the error handling functions that go along with both the GET and POST requests. 
+A last challenge I faced was simply: time. There was a lot more that I wanted to do with this project but was unable to. This leads me into the next section of Improvements.
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+To improve this project I would like to do the following:
+* Clean up my API calls 
+* Complete the fourth iteration which would allow for travel agent access. I had hoped to get through this and my code still has some of the original setup that I would like to see to through to the end. 
+* Take time to clean up some functions and improve error handling.
+* Add a type in search field to the destinations on the "Choose Your Next Adventure" page and possibly a toggle feature that would remove any destinations that user had already visited.
+* Implement another modal to pop up with all trip details when a user clicks on a trip in their "My Trips" page. 
+* Possibly change color scheme. 
 
-## Where to Add Your Code
-
-### JavaScript
-
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
-
-**Create all of your feature code files in the `src` directory.**
-
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
-
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### CSS (SCSS/SASS)
-
-This project is setup to use SCSS/Sass files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
-
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+## Project Specs 
+The original project spec can be found [here](https://frontend.turing.edu/projects/travel-tracker.html).
+My original wireframe can be found [here](https://miro.com/app/board/o9J_l3zJKDw=/)
