@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './sass/base.scss';
 import domUpdates from './domUpdates';
 import {getData} from './apiCalls';
@@ -13,22 +9,12 @@ import Glide from '@glidejs/glide';
 import dayjs from 'dayjs';
 import MicroModal from 'micromodal';
 
-// An example of how you tell webpack to use an image 
-// (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-// import './images/icons8-umbrella-48.png';
-// import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-umbrella-96.png';
-import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';
 import './images/icons8-facebook-30.png';
 import './images/icons8-instagram-logo-30.png';
 import './images/icons8-twitter-30.png';
-import './images/Mexico.png';
-import './images/Guiness.png';
-import './images/Mom-and-Dad.png';
-import './images/Sangria.png';
 import './images/Umbrella-Lady.png';
 
 const loginSubmitBtn = document.getElementById('user-login-submit-btn');
@@ -59,8 +45,7 @@ const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
-let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;
-  
+let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;  
 
 
 window.addEventListener('load', loadModalAndDate);
