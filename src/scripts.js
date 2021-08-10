@@ -2,7 +2,7 @@
 // Do not delete or rename this file ********
 
 // An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
+import './sass/base.scss';
 import domUpdates from './domUpdates';
 import {getData} from './apiCalls';
 import Traveler from './Traveler';
