@@ -244,10 +244,12 @@ function storeTripInfo(event) {
     currentTripInfo = [travelerTotal, date2, tripDuration];
     console.log(currentTripInfo)
     domUpdates.renderDestinationCards(catalog.destinations);
-  } else {
+  } else if (!validateDuration(tripDuration)) {
     event.preventDefault();
-    domUpdates.renderErrorMessage(MicroModal);
-
+    domUpdates.renderErrorMessage(MicroModal, 'dates');
+  } else  {
+    event.preventDefault();
+    domUpdates.renderErrorMessage(MicroModal, 'passengers');
   }
 }
 

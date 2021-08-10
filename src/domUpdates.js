@@ -131,17 +131,23 @@ const domUpdates = {
     switch (problem) {
     case 'password':
       message.innerText = 'Incorrect password. Please try again.'
-      modal.show('modal-1');
       break;
     case 'username':
       message.innerText = 'Incorrect username. Please try again.'
-      modal.show('modal-1');
       break;
+    case 'dates':
+      message.innerText = 
+      'Something is wrong with your dates. Please try again.'
+      break;
+    case 'passengers':
+      message.innerText = 'Incorrect passenger entry. Please try again.'
+      break;
+    default: 
+      message.innerText = 
+      'Something went wrong. Please check inputs and try again.'
     }
-    // message.innerText = 'Your end date is before your start date.'
-    // modal.show('modal-1');
+    modal.show('modal-1');
   }
-
 }
 
 
