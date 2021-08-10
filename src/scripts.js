@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './sass/base.scss';
 import domUpdates from './domUpdates';
 import {getData} from './apiCalls';
@@ -13,22 +9,12 @@ import Glide from '@glidejs/glide';
 import dayjs from 'dayjs';
 import MicroModal from 'micromodal';
 
-// An example of how you tell webpack to use an image 
-// (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-// import './images/icons8-umbrella-48.png';
-// import './images/icons8-umbrella-48 (1).png';
 import './images/icons8-umbrella-96.png';
-import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';
 import './images/icons8-facebook-30.png';
 import './images/icons8-instagram-logo-30.png';
 import './images/icons8-twitter-30.png';
-import './images/Mexico.png';
-import './images/Guiness.png';
-import './images/Mom-and-Dad.png';
-import './images/Sangria.png';
 import './images/Umbrella-Lady.png';
 
 const loginSubmitBtn = document.getElementById('user-login-submit-btn');
@@ -59,19 +45,16 @@ const userInfoPage = document.getElementById('user-info-page');
 const adventurePage = document.getElementById('adventure-page');
 const newTripPage = document.getElementById('new-trip-page');
 const confirmationPage = document.getElementById('confirmation-page');
-let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;
-  
+let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;  
 
 
 window.addEventListener('load', loadModalAndDate);
 ourStoryLink.addEventListener('click', displayOurStory);
 returnToLoginFromStory.addEventListener('click', displayLogIn);
-signOutBtn.addEventListener('click', userSignOut);
 loginSubmitBtn.addEventListener('click', function(event) {
   validateUser(event)
 });
 myTripsBtn.addEventListener('click', renderTripsPage);
-infoBtn.addEventListener('click', renderUserInfoPage);
 returnHomeFromConfirm.addEventListener('click', refreshPage);
 adventureBtn.addEventListener('click', function() {
   renderAdventurePage(dashboard)
@@ -96,6 +79,8 @@ returnHomeFromAdvenBtn.addEventListener('click', displayHome);
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
 });
+infoBtn.addEventListener('click', renderUserInfoPage);
+signOutBtn.addEventListener('click', userSignOut);
 
 function loadModalAndDate() {
   MicroModal.init();
@@ -113,8 +98,8 @@ function validateUser(event) {
   const isNum = checkForNum(partTwo);
   const isPassword = checkForPassword(passwordValue);
   if (isTraveler && isNum && isPassword) {
-    fetchData(partTwo)
-    renderHomePage(loginPage)
+    fetchData(partTwo);
+    renderHomePage(loginPage);
   } else if (!isPassword) {
     domUpdates.renderErrorMessage(MicroModal, 'password');
     passwordField.value = '';    
@@ -196,8 +181,7 @@ function renderTripsPage() {
 function renderPendingSlides() {
   const pendingTrips = trips.findTripsByStatus('pending')
   const pendingTripInfo = getDestinationInfo(pendingTrips);
-  domUpdates.renderTrips(pendingTripInfo, 'pending-slides');
-  
+  domUpdates.renderTrips(pendingTripInfo, 'pending-slides');  
 }
 
 function renderCurrentTrip() {
@@ -219,7 +203,6 @@ function renderCurrentTrip() {
 
 function findTripsSlides(date, status, parentElement) {
   const tripsList = trips.findTripsByDate(date, status);
-  console.log(tripsList)
   const tripInfo = getDestinationInfo(tripsList);
   domUpdates.renderTrips(tripInfo, parentElement);
 }
@@ -244,7 +227,6 @@ function storeTripInfo(event) {
     event.preventDefault();
     const travelerTotal = parseInt(numTravelers.value);
     currentTripInfo = [travelerTotal, date2, tripDuration];
-    console.log(currentTripInfo)
     domUpdates.renderDestinationCards(catalog.destinations);
   } else if (!validateDuration(tripDuration)) {
     event.preventDefault();
@@ -272,7 +254,6 @@ function checkFields() {
     return false;
   }
 }
-
 
 function gatherNewTripInfo(event) {
   let destinationId;
@@ -333,7 +314,7 @@ function submitNewTrip(theNewTrip) {
   })
     .then(response => checkForErrors(response, MicroModal))
     .then(newTripPost => addTrip(newTripPost))
-    .catch(err => renderError(MicroModal))
+    .catch(err => renderError(MicroModal, err))
 }
 
 function checkForErrors(res, modal) {
@@ -344,15 +325,13 @@ function checkForErrors(res, modal) {
   }
 }
 
-function renderError(modal) {
-  domUpdates.renderErrorMessage(modal, 'post');
+function renderError(modal, err) {
+  console.log(err);
+  domUpdates.renderErrorMessage(modal, 'post error');
 }
 
 function addTrip(newTripPost) {
-  console.log(newTripPost.newTrip)
-  console.log(trips.trips)
   trips.trips.push(newTripPost.newTrip);
-  console.log(trips)
 }
 
 function displayOurStory() {

@@ -46,7 +46,6 @@ span {
 footer {
   height: 10%;
   width: 80%;
-  // margin-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,5 +76,11 @@ a {
   .umbrella-login {
     height: auto;
     width: 2.5em;
+  }
+}
+
+@media (max-width: 320px) {
+  .form-area {
+    margin: 5px;
   }
 }
