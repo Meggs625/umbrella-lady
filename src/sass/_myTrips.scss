@@ -71,3 +71,12 @@
   @include flexAlignColumn();
 }
 
+@media (min-width: 625px) {
+  .my-trips-header {
+    font-size: 4em;
+  }
+  .trips-time-headings {
+    font-size: 3em;
+  }
+
+}

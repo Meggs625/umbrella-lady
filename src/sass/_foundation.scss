@@ -17,6 +17,10 @@ body {
   background-color: $primary-background;
 }
 
+input {
+  border-radius: 10px;
+}
+
 .hidden {
   display: none !important;
 }
