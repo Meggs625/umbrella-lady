@@ -146,6 +146,7 @@ const domUpdates = {
     case 'post':
       message.innerText = 'Check trip information and try again.';
       break;
+    case 'post error':
     default: 
       message.innerText = 
       'Something went wrong. Please check inputs and try again.'

@@ -44,7 +44,8 @@ describe('Trip Vault', () => {
         "duration": 9,
         "status": "pending",
         "suggestedActivities": []
-      },{
+      },
+      {
         "id": 10,
         "userID": 2,
         "destinationID": 50,

@@ -314,7 +314,7 @@ function submitNewTrip(theNewTrip) {
   })
     .then(response => checkForErrors(response, MicroModal))
     .then(newTripPost => addTrip(newTripPost))
-    .catch(err => renderError(MicroModal))
+    .catch(err => renderError(MicroModal, err))
 }
 
 function checkForErrors(res, modal) {
@@ -325,8 +325,9 @@ function checkForErrors(res, modal) {
   }
 }
 
-function renderError(modal) {
-  domUpdates.renderErrorMessage(modal, 'post');
+function renderError(modal, err) {
+  console.log(err);
+  domUpdates.renderErrorMessage(modal, 'post error');
 }
 
 function addTrip(newTripPost) {
