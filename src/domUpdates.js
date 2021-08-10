@@ -100,15 +100,25 @@ const domUpdates = {
 
   renderTripDetails(destinationInfo, tripCost) {
     const tripDisplay = document.getElementById('selected-trip');
-    const costInCurrency = this.renderCurrency(tripCost)
-    console.log(destinationInfo)
+    // const costInCurrency = this.renderCurrency(tripCost)
+    console.log(tripCost)
     tripDisplay.innerHTML = `
     <h3 class="new-trip-location">${destinationInfo.destination}</h3>
     <img class="new-trip-pic" 
     src="${destinationInfo.image}" alt="${destinationInfo.alt}">
     <h4 class="encouragement" id="small-encouragement">Excellent!<h4>
     <p class="new-trip-cost-info" id="pending-cost-info">For this trip, 
-    the cost will be ${costInCurrency}*</p>
+    the cost will be:</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[0])}: for the flight</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[1])}: for the hotel</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[2])}: subtotal</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[3])}: fees*</p>
+    <p class="new-trip-cost-info total">
+    ${this.renderCurrency(tripCost[4])}: TOTAL</p>
     `
   },
 
