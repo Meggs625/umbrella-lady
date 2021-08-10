@@ -1,4 +1,49 @@
-# Webpack Starter Kit
+# The Umbrella Lady
+  Turing School of Software and Design Mod 2 Final Project
+
+## Table of Contents
+- [Abstract](#abstract)
+- [Technologies](#technologies)
+- [How to Use Application](#how-to-use-application)
+- [Illustrations](#illustrations)
+- [Install + Setup](#set-up)
+- [Contributors](#contributors)
+- [Wins](#wins)
+- [Challenges + Improvements](#challenges-+-Improvements)
+- [Project Specs](#project-specs)
+
+## Abstract
+	Being the final project, this was an opportunity to apply everything that we've learned in the last 5 weeks and then some. We needed to be able to utilize API fetch calls to manage our data, implement SASS for styling, apply third party packages, as well as dabble with a user login page for the first time. 
+  All of this was to be used to create an app to track your travels as well as allow you to create a new trip plan. 
+
+## Technologies
+  * Javascript
+  * HTML
+  * Sass
+  * node
+  * Webpack
+  * eslint
+  * Mocha/Chai for testing
+  * Glide.js
+  * Day.js
+  * MicroModal
+  * Miro for wireframing
+
+## How to Use Application
+
+  The page you will see is the user login page where identity will be verified with username and password. Once that has been successfully entered, the user will see a dashboard where they have different options for the information they would like displayed next:
+
+  ![recording](https://user-images.githubusercontent.com/78767067/128924263-a76169c9-349a-4747-8f46-f6d75e2b2f88.gif)
+
+  Selecting the "My Trips" button will display the user's trips: current, upcoming, pending approval by an agent, and past trips. The user may scroll through all of these sections if there is more than one trip to display. 
+
+  ![recording (1)](https://user-images.githubusercontent.com/78767067/128924703-78f24d0d-b506-42c9-a2f4-81d8398c4f83.gif)
+
+  If the user is up for planning a new adventure, they can select the "Choose My Next Adventure" button to be taken to a form. Once all aspects of the form have been properly filled out, the destination options will be revealed. The user can select the "View Details" button under their desired selection and be taken to a page that will break down the cost of that trip including flight and lodging costs. Should they wish to continue with this selection, they can select the "Let's Do It!" button to book their trip. This new trip will be in a pending status and display as such until an agent has the opportunity to review. 
+  If the user would like to continue browsing the destination options, they can select that button as well. 
+
+  
+
 
 ## Clone This Repo
 
