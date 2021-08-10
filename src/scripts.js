@@ -330,17 +330,21 @@ function submitNewTrip(theNewTrip) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(theNewTrip)
   })
-    .then(response => checkForErrors(response))
+    .then(response => checkForErrors(response, MicroModal))
     .then(newTripPost => addTrip(newTripPost))
-    .catch(error => console.log(error))
+    .catch(err => renderError(MicroModal))
 }
 
-function checkForErrors(res) {
+function checkForErrors(res, modal) {
   if (!res.ok) {
-    throw new Error("Please make sure to supply all needed information");
+    domUpdates.renderErrorMessage(modal, 'post');
   } else {
     return res.json();
   }
+}
+
+function renderError(modal) {
+  domUpdates.renderErrorMessage(modal, 'post');
 }
 
 function addTrip(newTripPost) {
