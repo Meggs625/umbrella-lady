@@ -16,8 +16,9 @@ import MicroModal from 'micromodal';
 // An example of how you tell webpack to use an image 
 // (also need to link to it in the index.html)
 // import './images/turing-logo.png'
-import './images/icons8-umbrella-48.png';
-import './images/icons8-umbrella-48 (1).png';
+// import './images/icons8-umbrella-48.png';
+// import './images/icons8-umbrella-48 (1).png';
+import './images/icons8-umbrella-96.png';
 import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';
@@ -142,9 +143,9 @@ function checkForPassword(thePassword) {
 
 function fetchData(id) {
   Promise.all([
-    getData(`travelers/${id}`), 
-    getData('trips'), 
-    getData('destinations')
+    getData(`travelers/${id}`, MicroModal), 
+    getData('trips', MicroModal), 
+    getData('destinations', MicroModal)
   ])
     .then(data => {
       createTravelerData(data[0])
@@ -204,7 +205,8 @@ function renderCurrentTrip() {
     const allTripDays = [];
     for (let i = 0; i < trip.duration; i++) {
       let newDate = dayjs(trip.date).add((i + 1), 'day').$d
-      allTripDays.push(dayjs(newDate).format('YYYY/MM/DD'))}
+      allTripDays.push(dayjs(newDate).format('YYYY/MM/DD'))
+    }
     if (allTripDays.includes(currentDate) && trip.status !== 'pending') {
       return trip;
     }
@@ -329,17 +331,21 @@ function submitNewTrip(theNewTrip) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(theNewTrip)
   })
-    .then(response => checkForErrors(response))
+    .then(response => checkForErrors(response, MicroModal))
     .then(newTripPost => addTrip(newTripPost))
-    .catch(error => console.log(error))
+    .catch(err => renderError(MicroModal))
 }
 
-function checkForErrors(res) {
+function checkForErrors(res, modal) {
   if (!res.ok) {
-    throw new Error("Please make sure to supply all needed information");
+    domUpdates.renderErrorMessage(modal, 'post');
   } else {
     return res.json();
   }
+}
+
+function renderError(modal) {
+  domUpdates.renderErrorMessage(modal, 'post');
 }
 
 function addTrip(newTripPost) {

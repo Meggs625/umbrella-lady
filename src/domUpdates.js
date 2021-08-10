@@ -142,6 +142,12 @@ const domUpdates = {
     case 'passengers':
       message.innerText = 'Incorrect passenger entry. Please try again.'
       break;
+    case 'network':
+      message.innerText = 'Check network connections. Sign out and try again.';
+      break;
+    case 'post':
+      message.innerText = 'Check trip information and try again.';
+      break;
     default: 
       message.innerText = 
       'Something went wrong. Please check inputs and try again.'
