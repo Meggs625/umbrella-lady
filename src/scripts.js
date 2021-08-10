@@ -16,8 +16,9 @@ import MicroModal from 'micromodal';
 // An example of how you tell webpack to use an image 
 // (also need to link to it in the index.html)
 // import './images/turing-logo.png'
-import './images/icons8-umbrella-48.png';
-import './images/icons8-umbrella-48 (1).png';
+// import './images/icons8-umbrella-48.png';
+// import './images/icons8-umbrella-48 (1).png';
+import './images/icons8-umbrella-96.png';
 import './images/icons8-user-30.png';
 import './images/pexels-nubia-navarro-_nubikini_-385997.png';
 import './images/pexels-pixabay-274249.png';

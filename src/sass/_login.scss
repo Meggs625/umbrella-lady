@@ -13,6 +13,7 @@
   margin-top: 30px;
   border-radius: 20px;
   background: $primary-font;
+  border: 1.5px solid $secondary-backgroud;
 }
 
 .login-welcome {
@@ -25,11 +26,17 @@
   color: $primary-background;  
 }
 
-span {
-  padding-top: 50px;
+span {  
+  padding: 20px;
   font-family: $title-font;
   color: $accent-color;
-  font-size: 1.5em;
+  font-size: 1.5em;  
+}
+
+.umbrella-login {
+  transform: rotate(-20deg);
+  height: auto;
+  width: 4em;
 }
 
 .login-label {
@@ -59,5 +66,16 @@ a {
 @media (min-width: 625px) {
   .login-brand {
     font-size: 2.5em;
+  }
+  .umbrella-login {
+    height: auto;
+    width: 5em;
+  }
+}
+
+@media (max-width: 370px) {
+  .umbrella-login {
+    height: auto;
+    width: 2.5em;
   }
 }
