@@ -38,30 +38,6 @@ const domUpdates = {
     }
   },
 
-  // renderTrips(tripList, glideElement) {
-  //   const ul = document.getElementById(glideElement);
-  //   if (tripList.length === 0) {
-  //     this.renderPlaceHolder(ul)
-  //   } else {       
-  //     // let card = '';
-  //     tripList.forEach(trip => {
-  //       let newListItem = document.createElement('li');
-  //       newListItem.innerHTML =  `
-  //     <li class="glide_slide">
-  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-  //       <div class="trip-details">
-  //         <p class="trip-tag">${trip[1]}</p>
-  //         <p class="trip-tag">${trip[0]}</p>
-  //       </div>
-  //     </li>`
-  //       ul.appendChild(newListItem);
-  //     })
-  //   }
-  // },
-
-  // renderPastTrips(pastList) {
-
-
   renderCurrentTrip(currentInfo) {
     const currentDisplayArea = document.getElementById('current-trip-area');
     currentDisplayArea.classList.remove('hidden');
@@ -90,13 +66,14 @@ const domUpdates = {
 
   renderUserInfo(theUser, tripLog, annualTripCost) {
     const userDisplay = document.getElementById('info-display');
+    const currency = this.renderCurrency(annualTripCost);
     userDisplay.innerHTML = `
     <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
     <li class="user-descriptor">You are a ${theUser.type}!</p>
     <li class="user-descriptor">
       So far, you've booked ${tripLog.length} trips with us.</p>
     <li class="user-descriptor">
-      Total Trip Cost: $${annualTripCost.toLocaleString('en-US')}</p>`
+      Total trip costs this year: ${currency}</p>`  
   }, 
 
   renderDestinationCards(destinations) {
@@ -123,47 +100,54 @@ const domUpdates = {
 
   renderTripDetails(destinationInfo, tripCost) {
     const tripDisplay = document.getElementById('selected-trip');
-    console.log(destinationInfo)
+    // const costInCurrency = this.renderCurrency(tripCost)
+    console.log(tripCost)
     tripDisplay.innerHTML = `
     <h3 class="new-trip-location">${destinationInfo.destination}</h3>
     <img class="new-trip-pic" 
     src="${destinationInfo.image}" alt="${destinationInfo.alt}">
     <h4 class="encouragement" id="small-encouragement">Excellent!<h4>
     <p class="new-trip-cost-info" id="pending-cost-info">For this trip, 
-    the cost will be $${tripCost.toLocaleString('en-US')}*</p>
+    the cost will be:</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[0])}: for the flight</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[1])}: for the hotel</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[2])}: subtotal</p>
+    <p class="new-trip-cost-info">
+    ${this.renderCurrency(tripCost[3])}: fees*</p>
+    <p class="new-trip-cost-info total">
+    ${this.renderCurrency(tripCost[4])}: TOTAL</p>
     `
   },
 
-  // appendNewPendingTrip(newTrip) {
-  //   const ul = document.getElementById('pending-slides');
-  //   let newListItem = document.createElement('li');
-  //   newListItem.innerHTML =  `
-  //     <li class="glide_slide">
-  //       <img class="slide-pics" src="${newTrip[2]}" alt="${newTrip[3]}"> 
-  //       <div class="trip-details">
-  //         <p class="trip-tag">${newTrip[1]}</p>
-  //         <p class="trip-tag">${newTrip[0]}</p>
-  //       </div>
-  //     </li>`
-  //   ul.appendChild(newListItem);
-  // },
+  renderCurrency(cost) {
+    return cost.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+  },
 
-  // removeListItems() {
-  //   const ul = document.getElementById('pending-slides');
-  //   if (ul.childNodes.length > 0) {
-  //     console.log(ul.childNodes)
-  //     ul.childNodes.forEach(child => 
-  //       ul.removeChild(child))
-  //   }
-  //   // ul.childNodes.forEach(clone => clone.remove())
-  // },
-
-  renderErrorMessage(modal) {
+  renderErrorMessage(modal, problem) {
     const message = document.getElementById('the-problem');
-    message.innerText = 'Your end date is before your start date.'
+    switch (problem) {
+    case 'password':
+      message.innerText = 'Incorrect password. Please try again.'
+      break;
+    case 'username':
+      message.innerText = 'Incorrect username. Please try again.'
+      break;
+    case 'dates':
+      message.innerText = 
+      'Something is wrong with your dates. Please try again.'
+      break;
+    case 'passengers':
+      message.innerText = 'Incorrect passenger entry. Please try again.'
+      break;
+    default: 
+      message.innerText = 
+      'Something went wrong. Please check inputs and try again.'
+    }
     modal.show('modal-1');
   }
-
 }
 
 

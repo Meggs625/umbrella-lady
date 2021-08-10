@@ -1,10 +1,7 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
 @import 'variables';
 @import 'ourStory';
 @import 'login';
-@import 'newTrip';
-@import 'adventure';
-@import 'confirmation';
+@import 'newAdventure';
 @import 'normalize';
 @import 'foundation';
 @import 'myTrips';
@@ -12,14 +9,7 @@
 @import 'dashboard';
 @import 'buttons';
 @import 'userInfo';
+@import 'modal';
 @import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
-// @import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
-
-
-// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-
-// body {
-//   background: $primary-background
-// }
 
 

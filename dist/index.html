@@ -53,13 +53,14 @@
       <button class="my-trips-button" id="my-trips-btn">My Trips</button>
       <button class="adventure-button" id="adventure-btn">Choose My Next Adventure</button>
       <button class="user-info-button" id="user-info-btn">About Me</button>
+      <button class="sign-out-button" id="sign-out-btn">Sign Out</button>
   </div>
   </section>
 
   <section class="my-trips hidden" id="trips-page">
     <h2 class="my-trips-header">My Trips</h2>
     <secion class="current hidden" id="current-trip-area">
-      <h3>Current!</h3>
+      <h3 class="trips-time-headings">Current!</h3>
       <section class="current-display" id="display-current-trip">
       </section>
     </secion>
@@ -115,12 +116,12 @@
     <h3 class="error-message" id="error-msg"></h3>
     <form>
       <label for="trip-start">Start Date:</label>
-      <input class="start-date" id="trip-start" type="date" name="start" required>
+      <input class="start-date" id="trip-start" type="date" name="start">
       <label for="trip-end">End Date:</label>
-      <input class="end-date" id="trip-end" type="date" name="end" required>
+      <input class="end-date" id="trip-end" type="date" name="end" >
       <label for="num-travelers">Number of Passengers:</label>
       <input class="num-passengers" id="num-travelers" type="text" name="passengers" 
-        placeholder="How many travelers?" required>
+        placeholder="How many travelers?" >
       <button type="submit" class="trip-submit" id="trip-submit-btn">Submit</button>
     </form>
     <button id="home-from-adventure">Return Home</button>
@@ -138,7 +139,7 @@
       <button id="confirmation-btn">Let's Do It!</button>
       <button id="continue-browsing-btn">Return to Browsing</button>   
     </div>   
-    <p class="included-fee">*10% agency fee included</p> 
+    <p class="included-fee">*10% agency fee</p> 
   </section>
 
   <section class="confirmation hidden" id="confirmation-page">
@@ -158,7 +159,6 @@
     <h2 class="real-umbrella-lady">The Real Umbrella Lady</h2>
     <div class="story-container">
       <img class="story-slide-pics" src="./images/Umbrella-Lady.png" alt="woman with an umbrella in the rain in Ireland">            
-      <!-- <img class="story-slide-pics" src="./images/Guiness.png" alt="Two women and a man with pints of Guiness posing">  -->
     </div> 
     <div class="the-story">
       <p class="story-part">The real umbrella lady is my incredible mother. </p>

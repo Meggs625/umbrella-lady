@@ -81,11 +81,6 @@ describe('Trips', () => {
     expect(futureTrips).to.deep.equal([tripInfo[2]]);
   })
 
-  it('should return a trip of the same date', () => {
-    const thisTrip = myTrips.findTripsByDate('2021/04/30', 'current');
-    expect(thisTrip).to.deep.equal([tripInfo[1]]);
-  })
-
   it('should not include pending trips in the date search', () => {
     const futureTrips = myTrips.findTripsByDate('2017/01/01', 'future');
     expect(futureTrips).to.deep.equal([tripInfo[1], tripInfo[2]]);
@@ -185,6 +180,12 @@ describe('Trips', () => {
       }
     ]);
     const newCost = myTrips.calculateNewTripCost(newTrip, destinationRepo);
-    expect(newCost).to.equal(3014);
+    expect(newCost).to.deep.equal([
+      2500,
+      240,
+      2740,
+      274,
+      3014
+    ]);
   })
 })

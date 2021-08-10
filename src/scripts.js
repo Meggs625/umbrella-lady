@@ -39,6 +39,7 @@ const myTripsBtn = document.getElementById('my-trips-btn');
 const adventureBtn = document.getElementById('adventure-btn');
 const confirmBtn = document.getElementById('confirmation-btn');
 const tripSubmitBtn = document.getElementById('trip-submit-btn');
+const signOutBtn = document.getElementById('sign-out-btn');
 const returnToBrowsingBtn = document.getElementById('continue-browsing-btn');
 const infoBtn = document.getElementById('user-info-btn');
 const startDate = document.getElementById('trip-start');
@@ -63,7 +64,8 @@ let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;
 
 window.addEventListener('load', loadModalAndDate);
 ourStoryLink.addEventListener('click', displayOurStory);
-returnToLoginFromStory.addEventListener('click', displayLogIn)
+returnToLoginFromStory.addEventListener('click', displayLogIn);
+signOutBtn.addEventListener('click', userSignOut);
 loginSubmitBtn.addEventListener('click', function(event) {
   validateUser(event)
 });
@@ -112,9 +114,11 @@ function validateUser(event) {
   if (isTraveler && isNum && isPassword) {
     fetchData(partTwo)
     renderHomePage(loginPage)
-  } else {
-    domUpdates.renderErrorMessage(MicroModal);
-    passwordField.value = '';
+  } else if (!isPassword) {
+    domUpdates.renderErrorMessage(MicroModal, 'password');
+    passwordField.value = '';    
+  } else if (!isTraveler || !isNum) {
+    domUpdates.renderErrorMessage(MicroModal, 'username');
   }
 }
 
@@ -201,7 +205,7 @@ function renderCurrentTrip() {
     for (let i = 0; i < trip.duration; i++) {
       let newDate = dayjs(trip.date).add((i + 1), 'day').$d
       allTripDays.push(dayjs(newDate).format('YYYY/MM/DD'))}
-    if (allTripDays.includes(currentDate)) {
+    if (allTripDays.includes(currentDate) && trip.status !== 'pending') {
       return trip;
     }
   })  
@@ -240,10 +244,12 @@ function storeTripInfo(event) {
     currentTripInfo = [travelerTotal, date2, tripDuration];
     console.log(currentTripInfo)
     domUpdates.renderDestinationCards(catalog.destinations);
-  } else {
+  } else if (!validateDuration(tripDuration)) {
     event.preventDefault();
-    domUpdates.renderErrorMessage(MicroModal);
-
+    domUpdates.renderErrorMessage(MicroModal, 'dates');
+  } else  {
+    event.preventDefault();
+    domUpdates.renderErrorMessage(MicroModal, 'passengers');
   }
 }
 
@@ -256,7 +262,9 @@ function validateDuration(duration) {
 }
 
 function checkFields() {
-  if (startDate.value !== '' && endDate.value !== '' && numTravelers.value) {
+  let numPassengers = parseInt(numTravelers.value);
+  if (startDate.value !== '' && endDate.value !== '' && 
+  Number.isInteger(numPassengers)) {
     return true;
   } else {
     return false;
@@ -306,7 +314,6 @@ function resetForm() {
 
 function refreshPage() { 
   domUpdates.toggleView(dashboard, confirmationPage);
-  // location.reload();
 }
 
 function displayConfirmation() {  
@@ -364,8 +371,12 @@ function renderHomePage(pageToHide) {
 function renderUserInfoPage() {
   window.scrollTo(0, 0);
   domUpdates.toggleView(userInfoPage, dashboard);
-  const tripCost = trips.calculateAnnualTripCosts('2020', catalog)
+  const tripCost = trips.calculateAnnualTripCosts('2021', catalog)
   domUpdates.renderUserInfo(traveler, trips.trips, tripCost)
+}
+
+function userSignOut() {
+  location.reload();
 }
 
 
