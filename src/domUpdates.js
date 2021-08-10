@@ -64,18 +64,6 @@ const domUpdates = {
       </li>`;
   },
 
-  renderUserInfo(theUser, tripLog, annualTripCost) {
-    const userDisplay = document.getElementById('info-display');
-    const currency = this.renderCurrency(annualTripCost);
-    userDisplay.innerHTML = `
-    <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
-    <li class="user-descriptor">You are a ${theUser.type}!</p>
-    <li class="user-descriptor">
-      So far, you've booked ${tripLog.length} trips with us.</p>
-    <li class="user-descriptor">
-      Total trip costs this year: ${currency}</p>`  
-  }, 
-
   renderDestinationCards(destinations) {
     const sortedLocations = destinations.sort((place1, place2) =>
       place1.destination > place2.destination ? 1 : -1);
@@ -100,8 +88,6 @@ const domUpdates = {
 
   renderTripDetails(destinationInfo, tripCost) {
     const tripDisplay = document.getElementById('selected-trip');
-    // const costInCurrency = this.renderCurrency(tripCost)
-    console.log(tripCost)
     tripDisplay.innerHTML = `
     <h3 class="new-trip-location">${destinationInfo.destination}</h3>
     <img class="new-trip-pic" 
@@ -125,6 +111,18 @@ const domUpdates = {
   renderCurrency(cost) {
     return cost.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
   },
+
+  renderUserInfo(theUser, tripLog, annualTripCost) {
+    const userDisplay = document.getElementById('info-display');
+    const currency = this.renderCurrency(annualTripCost);
+    userDisplay.innerHTML = `
+    <h2 class="user-info-welcome"> Hi, ${theUser.name}!</h2>
+    <li class="user-descriptor">You are a ${theUser.type}!</p>
+    <li class="user-descriptor">
+      So far, you've booked ${tripLog.length} trips with us.</p>
+    <li class="user-descriptor">
+      Total trip costs this year: ${currency}</p>`  
+  }, 
 
   renderErrorMessage(modal, problem) {
     const message = document.getElementById('the-problem');

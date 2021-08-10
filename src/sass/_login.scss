@@ -78,3 +78,9 @@ a {
     width: 2.5em;
   }
 }
+
+@media (max-width: 320px) {
+  .form-area {
+    margin: 5px;
+  }
+}

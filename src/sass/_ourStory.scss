@@ -20,7 +20,7 @@
   justify-content: center;
 }
 
-.story-slide-pics {
+.story-pic {
   height: auto;
   width: 80%;
   border: 1px solid $primary-font;
@@ -50,4 +50,11 @@
   .real-umbrella-lady {
     font-size: 4em;
   }
+
+  .story-container {
+    height: auto;
+    width: 50%;
+  }
 }
+
+

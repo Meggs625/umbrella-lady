@@ -51,12 +51,10 @@ let traveler, currentDate, catalog, vault, trips, currentTripInfo, newTrip;
 window.addEventListener('load', loadModalAndDate);
 ourStoryLink.addEventListener('click', displayOurStory);
 returnToLoginFromStory.addEventListener('click', displayLogIn);
-signOutBtn.addEventListener('click', userSignOut);
 loginSubmitBtn.addEventListener('click', function(event) {
   validateUser(event)
 });
 myTripsBtn.addEventListener('click', renderTripsPage);
-infoBtn.addEventListener('click', renderUserInfoPage);
 returnHomeFromConfirm.addEventListener('click', refreshPage);
 adventureBtn.addEventListener('click', function() {
   renderAdventurePage(dashboard)
@@ -81,6 +79,8 @@ returnHomeFromAdvenBtn.addEventListener('click', displayHome);
 returnHomeFromUserInfoBtn.addEventListener('click', function() {
   renderHomePage(userInfoPage)
 });
+infoBtn.addEventListener('click', renderUserInfoPage);
+signOutBtn.addEventListener('click', userSignOut);
 
 function loadModalAndDate() {
   MicroModal.init();
@@ -98,8 +98,8 @@ function validateUser(event) {
   const isNum = checkForNum(partTwo);
   const isPassword = checkForPassword(passwordValue);
   if (isTraveler && isNum && isPassword) {
-    fetchData(partTwo)
-    renderHomePage(loginPage)
+    fetchData(partTwo);
+    renderHomePage(loginPage);
   } else if (!isPassword) {
     domUpdates.renderErrorMessage(MicroModal, 'password');
     passwordField.value = '';    
@@ -181,8 +181,7 @@ function renderTripsPage() {
 function renderPendingSlides() {
   const pendingTrips = trips.findTripsByStatus('pending')
   const pendingTripInfo = getDestinationInfo(pendingTrips);
-  domUpdates.renderTrips(pendingTripInfo, 'pending-slides');
-  
+  domUpdates.renderTrips(pendingTripInfo, 'pending-slides');  
 }
 
 function renderCurrentTrip() {
@@ -204,7 +203,6 @@ function renderCurrentTrip() {
 
 function findTripsSlides(date, status, parentElement) {
   const tripsList = trips.findTripsByDate(date, status);
-  console.log(tripsList)
   const tripInfo = getDestinationInfo(tripsList);
   domUpdates.renderTrips(tripInfo, parentElement);
 }
@@ -229,7 +227,6 @@ function storeTripInfo(event) {
     event.preventDefault();
     const travelerTotal = parseInt(numTravelers.value);
     currentTripInfo = [travelerTotal, date2, tripDuration];
-    console.log(currentTripInfo)
     domUpdates.renderDestinationCards(catalog.destinations);
   } else if (!validateDuration(tripDuration)) {
     event.preventDefault();
@@ -257,7 +254,6 @@ function checkFields() {
     return false;
   }
 }
-
 
 function gatherNewTripInfo(event) {
   let destinationId;
@@ -334,10 +330,7 @@ function renderError(modal) {
 }
 
 function addTrip(newTripPost) {
-  console.log(newTripPost.newTrip)
-  console.log(trips.trips)
   trips.trips.push(newTripPost.newTrip);
-  console.log(trips)
 }
 
 function displayOurStory() {
