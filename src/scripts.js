@@ -205,7 +205,8 @@ function renderCurrentTrip() {
     const allTripDays = [];
     for (let i = 0; i < trip.duration; i++) {
       let newDate = dayjs(trip.date).add((i + 1), 'day').$d
-      allTripDays.push(dayjs(newDate).format('YYYY/MM/DD'))}
+      allTripDays.push(dayjs(newDate).format('YYYY/MM/DD'))
+    }
     if (allTripDays.includes(currentDate) && trip.status !== 'pending') {
       return trip;
     }
