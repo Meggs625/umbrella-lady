@@ -13,19 +13,12 @@ class Trips {
     switch (timeFrame) {
     case 'past':
       return this.trips.filter(trip => trip.date < searchDate && 
-        trip.status !== 'pending')
-    case 'current':
-      return this.trips.filter(trip => trip.date === searchDate &&
         trip.status !== 'pending');
     case 'future':
       return this.trips.filter(trip => trip.date > searchDate &&
-        trip.status !== 'pending')
+        trip.status !== 'pending');
     }
   }
-
-  // case 'current':
-  //     return this.trips.filter(trip => trip.date === searchDate &&
-  //       trip.status !== 'pending');
 
   calculateAnnualTripCosts(year, destinationRepo) {
     let sum = 0;
@@ -42,9 +35,17 @@ class Trips {
   calculateNewTripCost(newTripInfo, destinationRepo) {
     const allCosts = 
       destinationRepo.returnDestinationCosts(newTripInfo.destinationID);
-    const sum = (newTripInfo.travelers * allCosts[2]) + 
-      (newTripInfo.duration * allCosts[1])
-    return sum + (sum * 0.1);
+    const flightCost = newTripInfo.travelers * allCosts[2];
+    const lodgingCost = newTripInfo.duration * allCosts[1];
+    const sum = flightCost + lodgingCost;
+    const fee = sum * 0.1;
+    const total = sum + (sum * 0.1);
+    return [
+      flightCost,
+      lodgingCost, 
+      sum,
+      fee, 
+      total]
   }
 }
 

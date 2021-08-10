@@ -38,30 +38,6 @@ const domUpdates = {
     }
   },
 
-  // renderTrips(tripList, glideElement) {
-  //   const ul = document.getElementById(glideElement);
-  //   if (tripList.length === 0) {
-  //     this.renderPlaceHolder(ul)
-  //   } else {       
-  //     // let card = '';
-  //     tripList.forEach(trip => {
-  //       let newListItem = document.createElement('li');
-  //       newListItem.innerHTML =  `
-  //     <li class="glide_slide">
-  //       <img class="slide-pics" src="${trip[2]}" alt="${trip[3]}"> 
-  //       <div class="trip-details">
-  //         <p class="trip-tag">${trip[1]}</p>
-  //         <p class="trip-tag">${trip[0]}</p>
-  //       </div>
-  //     </li>`
-  //       ul.appendChild(newListItem);
-  //     })
-  //   }
-  // },
-
-  // renderPastTrips(pastList) {
-
-
   renderCurrentTrip(currentInfo) {
     const currentDisplayArea = document.getElementById('current-trip-area');
     currentDisplayArea.classList.remove('hidden');
@@ -97,7 +73,7 @@ const domUpdates = {
     <li class="user-descriptor">
       So far, you've booked ${tripLog.length} trips with us.</p>
     <li class="user-descriptor">
-      Total Trip Cost: ${currency}</p>`  
+      Total trip costs this year: ${currency}</p>`  
   }, 
 
   renderDestinationCards(destinations) {
@@ -135,30 +111,6 @@ const domUpdates = {
     the cost will be ${costInCurrency}*</p>
     `
   },
-
-  // appendNewPendingTrip(newTrip) {
-  //   const ul = document.getElementById('pending-slides');
-  //   let newListItem = document.createElement('li');
-  //   newListItem.innerHTML =  `
-  //     <li class="glide_slide">
-  //       <img class="slide-pics" src="${newTrip[2]}" alt="${newTrip[3]}"> 
-  //       <div class="trip-details">
-  //         <p class="trip-tag">${newTrip[1]}</p>
-  //         <p class="trip-tag">${newTrip[0]}</p>
-  //       </div>
-  //     </li>`
-  //   ul.appendChild(newListItem);
-  // },
-
-  // removeListItems() {
-  //   const ul = document.getElementById('pending-slides');
-  //   if (ul.childNodes.length > 0) {
-  //     console.log(ul.childNodes)
-  //     ul.childNodes.forEach(child => 
-  //       ul.removeChild(child))
-  //   }
-  //   // ul.childNodes.forEach(clone => clone.remove())
-  // },
 
   renderCurrency(cost) {
     return cost.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
