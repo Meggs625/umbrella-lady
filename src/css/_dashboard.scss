@@ -29,3 +29,13 @@
   height: auto;
   @include flexAlignColumn();
 }
+
+@media (min-width: 625px) {
+  .welcome {
+    font-size: 3.75em;
+  }
+
+  .tag-line {
+    font-size: 2.25em;
+  }
+}

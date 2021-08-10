@@ -26,3 +26,18 @@ button {
   font-size: .75em;
   padding-top: 5px;
 }
+
+.our-story-tag {
+  background-color: $primary-background;
+  border:none;
+  box-shadow: none;
+  height: auto;
+  width: auto;
+
+    &:hover {
+      background-color: $primary-background;
+      box-shadow: none;
+      color: $secondary-font;
+    }
+
+}
