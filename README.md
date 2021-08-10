@@ -1,4 +1,4 @@
-# The Umbrella Lady
+# The Umbrella Lady ☂️
   Turing School of Software and Design Mod 2 Final Project
 
 ## Table of Contents
