@@ -15,7 +15,6 @@ class DestinationCatalog {
       selectedDestination.estimatedLodgingCostPerDay,
       selectedDestination.estimatedFlightCostPerPerson]
   }
-
 }
 
 export default DestinationCatalog; 

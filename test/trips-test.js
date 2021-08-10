@@ -47,44 +47,44 @@ describe('Trips', () => {
       "suggestedActivities": []
     }]
     myTrips = new Trips(tripInfo)
-  })
+  });
 
   it('should be a function', () => {
     expect(Trips).to.be.a('function');
-  })
+  });
 
   it('should be an instance of the Trip class', () => {
     expect(myTrips).to.be.an.instanceOf(Trips);
-  })
+  });
 
   it('should store one travelers trip data', () => {
     expect(myTrips.trips).to.deep.equal(tripInfo);
-  })
+  });
 
   it('should return all the trips with a certain status', () => {
     const pendingTrips = myTrips.findTripsByStatus('pending');
     expect(pendingTrips).to.deep.equal([tripInfo[0], tripInfo[3]]);
-  })
+  });
 
   it('should return all the trips with a different status', () => {
     const pendingTrips = myTrips.findTripsByStatus('approved');
     expect(pendingTrips).to.deep.equal([tripInfo[1], tripInfo[2]]);
-  })
+  });
 
   it('should return trips already taken', () => {
     const pastTrips = myTrips.findTripsByDate('2021/08/03', 'past');
     expect(pastTrips).to.deep.equal([tripInfo[1]]);
-  })
+  });
 
   it('should return future trips', () => {
     const futureTrips = myTrips.findTripsByDate('2021/08/03', 'future');
     expect(futureTrips).to.deep.equal([tripInfo[2]]);
-  })
+  });
 
   it('should not include pending trips in the date search', () => {
     const futureTrips = myTrips.findTripsByDate('2017/01/01', 'future');
     expect(futureTrips).to.deep.equal([tripInfo[1], tripInfo[2]]);
-  })
+  });
 
   it('should calculate total cost for traveling within a given year', () => {
     let destinationRepo = new DestinationCatalog([
@@ -128,7 +128,7 @@ describe('Trips', () => {
     const thisYearsTravels = 
       myTrips.calculateAnnualTripCosts('2021', destinationRepo);
     expect(thisYearsTravels).to.equal(14663)
-  })
+  });
 
   it('should calculate the cost for a newly selected trip', () => {
     const newTrip = {
@@ -187,5 +187,5 @@ describe('Trips', () => {
       274,
       3014
     ]);
-  })
+  });
 })

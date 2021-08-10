@@ -8,19 +8,19 @@ describe('Trip Vault', () => {
 
   beforeEach(() => {
     newVault = new TripVault(sampleTripData);
-  })
+  });
 
   it('should be a function', () => {
     expect(TripVault).to.be.a('function');
-  })
+  });
 
   it('should be an instance of Trip Vault', () => {
     expect(newVault).to.be.an.instanceOf(TripVault);
-  })
+  });
 
   it('should house all trip data', () => {
     expect(newVault.trips).to.deep.equal(sampleTripData);
-  })
+  });
 
   it('should return all of the trips for one specified user', () => {
     const travelerTrips = newVault.findTravelerTripsById(2);
@@ -55,7 +55,7 @@ describe('Trip Vault', () => {
         "suggestedActivities": []
       }
     ]);
-  })
+  });
 
   it('should calculate the total cost for a trip based on trip id', () => {
     const jakarta = [{
@@ -71,6 +71,6 @@ describe('Trip Vault', () => {
     const locationCosts = newDestination.returnDestinationCosts(6);
     const tripCost = newVault.calculateCostByDestination(locationCosts);
     expect(tripCost).to.equal(3630);
-  })
+  });
 
 })
