@@ -143,9 +143,9 @@ function checkForPassword(thePassword) {
 
 function fetchData(id) {
   Promise.all([
-    getData(`travelers/${id}`), 
-    getData('trips'), 
-    getData('destinations')
+    getData(`travelers/${id}`, MicroModal), 
+    getData('trips', MicroModal), 
+    getData('destinations', MicroModal)
   ])
     .then(data => {
       createTravelerData(data[0])
