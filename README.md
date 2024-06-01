@@ -106,6 +106,6 @@ To improve this project I would like to do the following:
 * Possibly change the color scheme. 
 
 ## Project Specs 
-The original project spec can be found [here](https://frontend.turing.edu/projects/travel-tracker.html).
+The original project spec can be found [here](https://frontend.turing.edu/projects/module-2/travel-tracker.html).
 
 My original wireframe can be found [here](https://miro.com/app/board/o9J_l3zJKDw=/).
